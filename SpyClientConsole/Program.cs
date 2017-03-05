@@ -12,15 +12,15 @@ namespace SpyClientConsole
     {
         static void Main(string[] args)
         {
-            /*ScreenShot newscreen = new ScreenShot();
-            newscreen.generateCurrentScreen();
-            */
-            while (true)
+            ScreenShot newscreen = new ScreenShot();
+            var a = newscreen.generateCurrentScreen();
+            
+            /*while (true)
             {
                 TaskManager t1 = new TaskManager();
                 t1.getOpenPrograms();
                 
-            }   
+            } */  
         }
     }
 }

