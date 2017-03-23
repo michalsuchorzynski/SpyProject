@@ -12,15 +12,15 @@ namespace SpyClientLibrary
     {
         public Bitmap _currentScreen { get; set; }
         public DateTime _scrrenData { get; set; }
-        public string _user { get; set; }
+        public User _user { get; set; }
         public string _screenName { get; set; }
 
-        public ScreenShot()
+        public ScreenShot(User user)
         {
-            getWindowsUser();
+            _user=user;
         }
 
-        public ScreenShot generateCurrentScreen()
+        public ScreenShot GenerateCurrentScreen()
         {
             _scrrenData = DateTime.Now;
 
@@ -37,14 +37,14 @@ namespace SpyClientLibrary
                 }
                 _currentScreen = bmpScreenCapture;    
             }            
-            createScreenName();
+            CreateScreenName();
             return this;
         }
 
-        private string createScreenName()
+        private string CreateScreenName()
         {
             //FORMAT : username_YYYY_M_D_h_m.bmp
-            _screenName = _user + "_" + 
+            _screenName = _user._userName + "_" + 
                           _scrrenData.Year.ToString() + "_" +
                           _scrrenData.Month.ToString() +"_" +
                           _scrrenData.Day.ToString() + "_" +
@@ -52,11 +52,6 @@ namespace SpyClientLibrary
                           _scrrenData.Minute.ToString() + ".bmp";
             return _screenName;
         }
-        private void getWindowsUser()
-        {
-            var computerName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
-            if (!string.IsNullOrEmpty(computerName))
-                _user = computerName.Substring(computerName.IndexOf("\\")+1);
-        }
+        
     }
 }

@@ -10,12 +10,13 @@ namespace SpyClientLibrary
 {
     public class TaskManager
     {
-        public List<Process> _chromeProcess;
-        public List<Process> _IEProcess;
+        private List<Process> _chromeProcess;
+        private List<Process> _IEProcess;
         public List<Process> _edgeProcess;
-        public List<Process> _firefoxProcess;
-        public List<Process> _operaProcess;
-        public List<String> _openedPages;
+        private List<Process> _firefoxProcess;
+        private List<Process> _operaProcess;
+        private List<String> _openedPages;
+        private List<String> _acceptablePages;
 
         public TaskManager()
         {
@@ -25,44 +26,86 @@ namespace SpyClientLibrary
             _firefoxProcess = new List<Process>();
             _operaProcess = new List<Process>();
             _openedPages = new List<string>();
+            _acceptablePages = new List<string>();
+
+            GetAcceptablePagesFromDB();
         }
-        public void getOpenPrograms()
+
+        public bool CheckOpenPrograms()
         {
-            foreach (var p in Process.GetProcessesByName("chrome"))
+            ClearOpenPrograms();
+            GetOpenPrograms();
+            foreach(string opened in _openedPages)
             {
-                // TO DO              
-
-                //var url = GetChromeUrl(p);
-                //if (url != null)
-                //    _chromeProcess.Add(p);
-
+                foreach(string acceptabled in _acceptablePages)
+                {
+                    if(opened!=acceptabled)
+                    {
+                        return false;
+                    }
+                }
             }
+            return true;
+        }
+        public void GetOpenPrograms()
+        {
+            // TO DO FOR CHROME
+
+            //foreach (var p in Process.GetProcessesByName("chrome"))
+            //{
+            //    var url = GetChromeUrl(p);
+            //    if (url != null)
+            //        _chromeProcess.Add(p);
+            //}
+
+            // FIND URL ON FIREFOX
             foreach (var p in Process.GetProcessesByName("firefox"))
             {
                 var url = GetFirefoxUrl(p);
                 if (url != null)
-                {
-                    
-                    //_firefoxProcess.Add(p);
-                    _openedPages.Add(url);
-                    if(url.IndexOf("wp.pl")>-1)
-                    {
-                        ScreenShot s1 = new ScreenShot();
-                        s1.generateCurrentScreen();
-                    }
+                {                    
+                    _firefoxProcess.Add(p);
+                    _openedPages.Add(url);                    
                 }
             }
-            foreach (Process p in Process.GetProcessesByName("iexplore"))
-            {
-                // TO DO
 
-                //string url = GetInternetExplorerUrl(p);
-                //if (url != null)
-                //    _IEProcess.Add(p);
-            }
+            // TO DO FOR EXPLORER
+            //foreach (Process p in Process.GetProcessesByName("iexplore"))
+            //{
+            //    string url = GetInternetExplorerUrl(p);
+            //    if (url != null)
+            //        _IEProcess.Add(p);
+            //}
+
+            // TO DO FOR EDGE
+            //foreach (Process p in Process.GetProcessesByName("MicrosoftEdge"))
+            //{
+            //    string url = GetInternetExplorerUrl(p);
+            //    if (url != null)
+            //        _IEProcess.Add(p);
+            //}
+
+            // TO DO FOR OPERA
+            //foreach (Process p in Process.GetProcessesByName("opera"))
+            //{
+            //    string url = GetInternetExplorerUrl(p);
+            //    if (url != null)
+            //        _IEProcess.Add(p);
+            //}
         }
 
-        public static string GetChromeUrl(Process process)
+        public void ClearOpenPrograms()
+        {
+            _chromeProcess = new List<Process>();
+            _IEProcess = new List<Process>();
+            _edgeProcess = new List<Process>();
+            _firefoxProcess = new List<Process>();
+            _operaProcess = new List<Process>();
+
+        }
+
+        #region GET URL FROM BROWSER
+        private static string GetChromeUrl(Process process)
         {
             if (process == null)
                 throw new ArgumentNullException("process");
@@ -81,7 +124,7 @@ namespace SpyClientLibrary
 
             return ((ValuePattern)edit.GetCurrentPattern(ValuePattern.Pattern)).Current.Value as string;
         }
-        public static string GetInternetExplorerUrl(Process process)
+        private static string GetInternetExplorerUrl(Process process)
         {
             if (process == null)
                 throw new ArgumentNullException("process");
@@ -101,7 +144,7 @@ namespace SpyClientLibrary
 
             return ((ValuePattern)edit.GetCurrentPattern(ValuePattern.Pattern)).Current.Value as string;
         }
-        public static string GetFirefoxUrl(Process process)
+        private static string GetFirefoxUrl(Process process)
         {
             try
             {
@@ -135,6 +178,27 @@ namespace SpyClientLibrary
             }
             return null;
         }
+        #endregion
+
+        private List<String> GetAcceptablePagesFromDB()
+        {
+            //TO DO CONNECTION TO DB 
+            List<String> acceptablePages = new List<string>();
+            acceptablePages.Add("https://www.facebook.com/");
+            acceptablePages.Add("http://www.wp.pl/");
+
+
+            _acceptablePages = acceptablePages;
+            return acceptablePages;
+
+        }
+        private string GetDomainNameFromURL(string url)
+        {
+            Uri domainUri = new Uri(url);
+            return domainUri.Host;
+        }
+
+
 
     }
 }
