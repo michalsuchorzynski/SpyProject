@@ -12,9 +12,10 @@ namespace SpyClientConsole
     {
         static void Main(string[] args)
         {
-            
+
             Control controlmanager = new Control();
-            controlmanager.StartControl();
+            // controlmanager.SendScreenTest();
+            controlmanager.GetScreenTest();
         }
     }
 }

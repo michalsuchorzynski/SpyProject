@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="MainClientService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/SpyWcfService.Messages" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IClientService_SaveScreenShotToDB_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveScreenShotToDB" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_SaveScreenShotToDB_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveScreenShotToDBResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_GetScreenFromDB_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetScreenFromDB" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_GetScreenFromDB_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetScreenFromDBResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IClientService">
+    <wsdl:operation name="SaveScreenShotToDB">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/SaveScreenShotToDB" message="tns:IClientService_SaveScreenShotToDB_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/SaveScreenShotToDBResponse" message="tns:IClientService_SaveScreenShotToDB_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetScreenFromDB">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/GetScreenFromDB" message="tns:IClientService_GetScreenFromDB_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/GetScreenFromDBResponse" message="tns:IClientService_GetScreenFromDB_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IClientService" type="tns:IClientService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SaveScreenShotToDB">
+      <soap:operation soapAction="http://tempuri.org/IClientService/SaveScreenShotToDB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetScreenFromDB">
+      <soap:operation soapAction="http://tempuri.org/IClientService/GetScreenFromDB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MainClientService">
+    <wsdl:port name="BasicHttpBinding_IClientService" binding="tns:BasicHttpBinding_IClientService">
+      <soap:address location="http://localhost:8733/Design_Time_Addresses/SpyWcfService/MainClientService/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

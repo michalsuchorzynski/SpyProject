@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="97583883-ce21-448c-811f-f4db906f1fba" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/SpyWcfService/MainClientService/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="9bd0ad57-c9ee-49d3-9987-443a903f4c77" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/SpyWcfService/MainClientService/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="b22c46fd-4874-4161-bebe-b221a74f8ac2" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/SpyWcfService/MainClientService/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="c6532611-d493-4fc1-9121-97c8b1ecac7f" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/SpyWcfService/MainClientService/mex" />
+    <MetadataFile FileName="SpyWcfService.Messages.xsd" MetadataType="Schema" ID="271d88b1-8254-4949-ae56-81c9a945e971" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/SpyWcfService/MainClientService/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

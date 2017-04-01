@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SpyClientLibrary.ServiceReference;
+using System.Drawing;
+
 
 namespace SpyClientLibrary
 {
@@ -30,7 +33,35 @@ namespace SpyClientLibrary
         }
         public void SendScreeen(ScreenShot screen)
         {
-            var a = 0;
+         
+        }
+        public void SendScreenTest()
+        {
+            using (ClientServiceClient client = new ClientServiceClient())
+            {
+                ScreenShot screen = new ScreenShot(_user);
+                screen.GenerateCurrentScreen();
+                var response = client.SaveScreenShotToDB(
+                        new ClientRequest()
+                        {
+                            //_username = screen._user._userName,
+                            _scrrenDate = screen._scrrenDate,
+                            _scrrenName = screen._screenName,
+                            _data = screen._data
+                        });
+                var a = 0;
+
+            }
+        }
+        public void GetScreenTest()
+        {
+            using (ClientServiceClient client = new ClientServiceClient())
+            {
+                var response = client.GetScreenFromDB();
+                Image tosave =ScreenShot.byteArrayToImage(response);
+                tosave.Save("C:\\Users\\Michał\\Desktop\\nowy.png");
+                
+            }
         }
     }
 }
