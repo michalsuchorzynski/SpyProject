@@ -13,11 +13,9 @@ namespace SpyClientConsole
         static void Main(string[] args)
         {
 
-            /*Control controlmanager = new Control();
-            // controlmanager.SendScreenTest();
-            controlmanager.GetScreenTest();*/
-            TaskManager t = new TaskManager();
-            t.GetAcceptablePagesFromDB();
+            Control controlmanager = new Control();
+            controlmanager.StartControl();
+           
         }
     }
 }

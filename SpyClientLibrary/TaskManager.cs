@@ -18,8 +18,10 @@ namespace SpyClientLibrary
         private List<Process> _operaProcess;
         private List<String> _openedPages;
         private List<String> _acceptablePages;
+        private List<String> _sendedPages;
+        private int examSesionId;
 
-        public TaskManager()
+        public TaskManager(int examSesionId)
         {
             _chromeProcess = new List<Process>();
             _IEProcess = new List<Process>();
@@ -27,8 +29,9 @@ namespace SpyClientLibrary
             _firefoxProcess = new List<Process>();
             _operaProcess = new List<Process>();
             _openedPages = new List<string>();
+            _sendedPages = new List<string>();
             _acceptablePages = new List<string>();
-
+            this.examSesionId = examSesionId;
             GetAcceptablePagesFromDB();
         }
 
@@ -36,19 +39,17 @@ namespace SpyClientLibrary
         {
             ClearOpenPrograms();
             GetOpenPrograms();
-            foreach(string opened in _openedPages)
+            foreach (string opened in _openedPages)
             {
-                foreach(string acceptabled in _acceptablePages)
+                if (_acceptablePages.IndexOf(opened) == -1 && _sendedPages.IndexOf(opened) == -1)
                 {
-                    if(opened!=acceptabled)
-                    {
-                        return false;
-                    }
+                    _sendedPages.Add(opened);
+                    return false;
                 }
             }
             return true;
         }
-        public void GetOpenPrograms()
+        private void GetOpenPrograms()
         {
             // TO DO FOR CHROME
 
@@ -66,6 +67,7 @@ namespace SpyClientLibrary
                 if (url != null)
                 {                    
                     _firefoxProcess.Add(p);
+                    if(_openedPages.IndexOf(url)==-1)
                     _openedPages.Add(url);                    
                 }
             }
@@ -95,7 +97,7 @@ namespace SpyClientLibrary
             //}
         }
 
-        public void ClearOpenPrograms()
+        private void ClearOpenPrograms()
         {
             _chromeProcess = new List<Process>();
             _IEProcess = new List<Process>();
@@ -181,14 +183,14 @@ namespace SpyClientLibrary
         }
         #endregion
 
-        public void GetAcceptablePagesFromDB()
+        private void GetAcceptablePagesFromDB()
         {
             using (ClientServiceClient client = new ClientServiceClient())
             {
-                var pagelist = client.GetAcceptablePageFromDB(1);
+                var pagelist = client.GetAcceptablePageFromDB(examSesionId);
                 for(int i=0;i<pagelist.Count();i++)
                 {
-                    _acceptablePages.Add(pagelist[i].Url);
+                    _acceptablePages.Add(GetDomainNameFromURL(pagelist[i].Url));
                 }
             }
             

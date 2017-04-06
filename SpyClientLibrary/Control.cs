@@ -20,48 +20,47 @@ namespace SpyClientLibrary
         public void StartControl()
         {
             _user = new User();
-            _taskmanager = new TaskManager();
+            _taskmanager = new TaskManager(1);
             while(true)
             {
                 if (!_taskmanager.CheckOpenPrograms())
                 {
                     ScreenShot screen = new ScreenShot(_user);
                     screen.GenerateCurrentScreen();
-                    SendScreeen(screen);
+                    SendScreen(screen);
                 }
             }
         }
-        public void SendScreeen(ScreenShot screen)
-        {
-         
-        }
-        public void SendScreenTest()
+        public void SendScreen(ScreenShot screen)
         {
             using (ClientServiceClient client = new ClientServiceClient())
-            {
-                ScreenShot screen = new ScreenShot(_user);
+            {                
                 screen.GenerateCurrentScreen();
                 var response = client.SaveScreenShotToDB(
                         new ClientRequest()
                         {
-                            //_username = screen._user._userName,
+                            _username = screen._user._userName,
                             _scrrenDate = screen._scrrenDate,
                             _scrrenName = screen._screenName,
                             _data = screen._data
                         });
-                var a = 0;
-
             }
+            SaveScreenOnDisk(screen._data);
         }
-        public void GetScreenTest()
+        public Image GetLastScreenTest()
         {
             using (ClientServiceClient client = new ClientServiceClient())
             {
                 var response = client.GetScreenFromDB();
                 Image tosave =ScreenShot.byteArrayToImage(response);
-                tosave.Save("C:\\Users\\Michał\\Desktop\\nowy.png");
-                
+
+                return tosave;
             }
+        }
+        public void SaveScreenOnDisk(byte[] screen)
+        {
+            Image tosave = ScreenShot.byteArrayToImage(screen);
+            tosave.Save("C:\\Users\\Michał\\Desktop\\nowy.png");
         }
     }
 }
