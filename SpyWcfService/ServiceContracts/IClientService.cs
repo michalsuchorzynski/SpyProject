@@ -15,5 +15,7 @@ namespace SpyWcfService.ServiceContracts
         bool SaveScreenShotToDB(ClientRequest request);
         [OperationContract]
         byte[] GetScreenFromDB();
+        [OperationContract]
+        List<AcceptablePage> GetAcceptablePageFromDB(int GroupId);
     }
 }

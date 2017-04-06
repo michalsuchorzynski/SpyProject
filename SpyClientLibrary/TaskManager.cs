@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Windows.Automation;
+using SpyClientLibrary.ServiceReference;
 
 namespace SpyClientLibrary
 {
@@ -180,16 +181,17 @@ namespace SpyClientLibrary
         }
         #endregion
 
-        private List<String> GetAcceptablePagesFromDB()
+        public void GetAcceptablePagesFromDB()
         {
-            //TO DO CONNECTION TO DB 
-            List<String> acceptablePages = new List<string>();
-            acceptablePages.Add("https://www.facebook.com/");
-            acceptablePages.Add("http://www.wp.pl/");
-
-
-            _acceptablePages = acceptablePages;
-            return acceptablePages;
+            using (ClientServiceClient client = new ClientServiceClient())
+            {
+                var pagelist = client.GetAcceptablePageFromDB(1);
+                for(int i=0;i<pagelist.Count();i++)
+                {
+                    _acceptablePages.Add(pagelist[i].Url);
+                }
+            }
+            
 
         }
         private string GetDomainNameFromURL(string url)

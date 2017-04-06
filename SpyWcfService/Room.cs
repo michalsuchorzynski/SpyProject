@@ -12,19 +12,18 @@ namespace SpyWcfService
     using System;
     using System.Collections.Generic;
     
-    public partial class ScreenShot
+    public partial class Room
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ScreenShot()
+        public Room()
         {
-            this.ScreenShotsForWorkstations = new HashSet<ScreenShotsForWorkstation>();
+            this.WorkStations = new HashSet<WorkStation>();
         }
     
-        public int ScreenShotId { get; set; }
-        public byte[] Data { get; set; }
-        public Nullable<System.DateTime> ScreenDate { get; set; }
+        public int RoomId { get; set; }
+        public Nullable<int> RoomNumber { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ScreenShotsForWorkstation> ScreenShotsForWorkstations { get; set; }
+        public virtual ICollection<WorkStation> WorkStations { get; set; }
     }
 }

@@ -5,6 +5,64 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="SpyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AcceptablePage">
+          <Key>
+            <PropertyRef Name="AcceptablePageId" />
+          </Key>
+          <Property Name="AcceptablePageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Url" Type="varchar" MaxLength="255" />
+          <Property Name="HeadKeyWords" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="AcceptablePagesGroup">
+          <Key>
+            <PropertyRef Name="AcceptablePagesGroupId" />
+          </Key>
+          <Property Name="AcceptablePagesGroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="ClientUser">
+          <Key>
+            <PropertyRef Name="ClientUserId" />
+          </Key>
+          <Property Name="ClientUserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserLogin" Type="varchar" MaxLength="255" />
+          <Property Name="UserName" Type="varchar" MaxLength="255" />
+          <Property Name="UserSurname" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="ClientUserForWorkstations">
+          <Key>
+            <PropertyRef Name="ClientUserForWorkstationsId" />
+          </Key>
+          <Property Name="ClientUserForWorkstationsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientUserId" Type="int" />
+          <Property Name="WorkStationId" Type="int" />
+          <Property Name="LoginDate" Type="date" />
+          <Property Name="LogOutDate" Type="date" />
+        </EntityType>
+        <EntityType Name="ExamSession">
+          <Key>
+            <PropertyRef Name="ExamSessionId" />
+          </Key>
+          <Property Name="ExamSessionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+          <Property Name="AcceptablePagesGroupId" Type="int" />
+          <Property Name="WorkStationsGroupId" Type="int" />
+        </EntityType>
+        <EntityType Name="PagesForGroup">
+          <Key>
+            <PropertyRef Name="PagesForGroupId" />
+          </Key>
+          <Property Name="PagesForGroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AcceptablePagesGroupId" Type="int" />
+          <Property Name="AcceptablePageId" Type="int" />
+        </EntityType>
+        <EntityType Name="Room">
+          <Key>
+            <PropertyRef Name="RoomId" />
+          </Key>
+          <Property Name="RoomId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoomNumber" Type="int" />
+        </EntityType>
         <EntityType Name="ScreenShot">
           <Key>
             <PropertyRef Name="ScreenShotId" />
@@ -13,8 +71,226 @@
           <Property Name="Data" Type="varbinary(max)" />
           <Property Name="ScreenDate" Type="date" />
         </EntityType>
+        <EntityType Name="ScreenShotsForWorkstation">
+          <Key>
+            <PropertyRef Name="ScreenShotsForWorkstationsId" />
+          </Key>
+          <Property Name="ScreenShotsForWorkstationsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ScreenShotId" Type="int" />
+          <Property Name="WorkStationId" Type="int" />
+        </EntityType>
+        <EntityType Name="WorkStation">
+          <Key>
+            <PropertyRef Name="WorkStationId" />
+          </Key>
+          <Property Name="WorkStationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IP" Type="varchar" MaxLength="255" />
+          <Property Name="RoomId" Type="int" />
+        </EntityType>
+        <EntityType Name="WorkStationsForGroup">
+          <Key>
+            <PropertyRef Name="WorkStationsForGroupId" />
+          </Key>
+          <Property Name="WorkStationsForGroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WorkStationsGroupId" Type="int" />
+          <Property Name="WorkStationId" Type="int" />
+        </EntityType>
+        <EntityType Name="WorkStationsGroup">
+          <Key>
+            <PropertyRef Name="WorkStationsGroupId" />
+          </Key>
+          <Property Name="WorkStationsGroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <Association Name="FK__ClientUse__Clien__6754599E">
+          <End Role="ClientUser" Type="Self.ClientUser" Multiplicity="0..1" />
+          <End Role="ClientUserForWorkstations" Type="Self.ClientUserForWorkstations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientUser">
+              <PropertyRef Name="ClientUserId" />
+            </Principal>
+            <Dependent Role="ClientUserForWorkstations">
+              <PropertyRef Name="ClientUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ClientUse__WorkS__68487DD7">
+          <End Role="WorkStation" Type="Self.WorkStation" Multiplicity="0..1" />
+          <End Role="ClientUserForWorkstations" Type="Self.ClientUserForWorkstations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkStation">
+              <PropertyRef Name="WorkStationId" />
+            </Principal>
+            <Dependent Role="ClientUserForWorkstations">
+              <PropertyRef Name="WorkStationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExamSessi__Accep__5DCAEF64">
+          <End Role="AcceptablePagesGroup" Type="Self.AcceptablePagesGroup" Multiplicity="0..1" />
+          <End Role="ExamSession" Type="Self.ExamSession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AcceptablePagesGroup">
+              <PropertyRef Name="AcceptablePagesGroupId" />
+            </Principal>
+            <Dependent Role="ExamSession">
+              <PropertyRef Name="AcceptablePagesGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExamSessi__WorkS__5EBF139D">
+          <End Role="WorkStationsGroup" Type="Self.WorkStationsGroup" Multiplicity="0..1" />
+          <End Role="ExamSession" Type="Self.ExamSession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkStationsGroup">
+              <PropertyRef Name="WorkStationsGroupId" />
+            </Principal>
+            <Dependent Role="ExamSession">
+              <PropertyRef Name="WorkStationsGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PagesForG__Accep__5441852A">
+          <End Role="AcceptablePagesGroup" Type="Self.AcceptablePagesGroup" Multiplicity="0..1" />
+          <End Role="PagesForGroup" Type="Self.PagesForGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AcceptablePagesGroup">
+              <PropertyRef Name="AcceptablePagesGroupId" />
+            </Principal>
+            <Dependent Role="PagesForGroup">
+              <PropertyRef Name="AcceptablePagesGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PagesForG__Accep__5535A963">
+          <End Role="AcceptablePage" Type="Self.AcceptablePage" Multiplicity="0..1" />
+          <End Role="PagesForGroup" Type="Self.PagesForGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AcceptablePage">
+              <PropertyRef Name="AcceptablePageId" />
+            </Principal>
+            <Dependent Role="PagesForGroup">
+              <PropertyRef Name="AcceptablePageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ScreenSho__Scree__6EF57B66">
+          <End Role="ScreenShot" Type="Self.ScreenShot" Multiplicity="0..1" />
+          <End Role="ScreenShotsForWorkstation" Type="Self.ScreenShotsForWorkstation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScreenShot">
+              <PropertyRef Name="ScreenShotId" />
+            </Principal>
+            <Dependent Role="ScreenShotsForWorkstation">
+              <PropertyRef Name="ScreenShotId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ScreenSho__WorkS__6FE99F9F">
+          <End Role="WorkStation" Type="Self.WorkStation" Multiplicity="0..1" />
+          <End Role="ScreenShotsForWorkstation" Type="Self.ScreenShotsForWorkstation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkStation">
+              <PropertyRef Name="WorkStationId" />
+            </Principal>
+            <Dependent Role="ScreenShotsForWorkstation">
+              <PropertyRef Name="WorkStationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WorkStati__RoomI__4D94879B">
+          <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
+          <End Role="WorkStation" Type="Self.WorkStation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="RoomId" />
+            </Principal>
+            <Dependent Role="WorkStation">
+              <PropertyRef Name="RoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WorkStati__WorkS__59FA5E80">
+          <End Role="WorkStationsGroup" Type="Self.WorkStationsGroup" Multiplicity="0..1" />
+          <End Role="WorkStationsForGroup" Type="Self.WorkStationsForGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkStationsGroup">
+              <PropertyRef Name="WorkStationsGroupId" />
+            </Principal>
+            <Dependent Role="WorkStationsForGroup">
+              <PropertyRef Name="WorkStationsGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WorkStati__WorkS__5AEE82B9">
+          <End Role="WorkStation" Type="Self.WorkStation" Multiplicity="0..1" />
+          <End Role="WorkStationsForGroup" Type="Self.WorkStationsForGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkStation">
+              <PropertyRef Name="WorkStationId" />
+            </Principal>
+            <Dependent Role="WorkStationsForGroup">
+              <PropertyRef Name="WorkStationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="SpyModelStoreContainer">
+          <EntitySet Name="AcceptablePage" EntityType="Self.AcceptablePage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AcceptablePagesGroup" EntityType="Self.AcceptablePagesGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientUser" EntityType="Self.ClientUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientUserForWorkstations" EntityType="Self.ClientUserForWorkstations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExamSession" EntityType="Self.ExamSession" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PagesForGroup" EntityType="Self.PagesForGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Room" EntityType="Self.Room" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ScreenShot" EntityType="Self.ScreenShot" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ScreenShotsForWorkstation" EntityType="Self.ScreenShotsForWorkstation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkStation" EntityType="Self.WorkStation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkStationsForGroup" EntityType="Self.WorkStationsForGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkStationsGroup" EntityType="Self.WorkStationsGroup" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__ClientUse__Clien__6754599E" Association="Self.FK__ClientUse__Clien__6754599E">
+            <End Role="ClientUser" EntitySet="ClientUser" />
+            <End Role="ClientUserForWorkstations" EntitySet="ClientUserForWorkstations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ClientUse__WorkS__68487DD7" Association="Self.FK__ClientUse__WorkS__68487DD7">
+            <End Role="WorkStation" EntitySet="WorkStation" />
+            <End Role="ClientUserForWorkstations" EntitySet="ClientUserForWorkstations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExamSessi__Accep__5DCAEF64" Association="Self.FK__ExamSessi__Accep__5DCAEF64">
+            <End Role="AcceptablePagesGroup" EntitySet="AcceptablePagesGroup" />
+            <End Role="ExamSession" EntitySet="ExamSession" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExamSessi__WorkS__5EBF139D" Association="Self.FK__ExamSessi__WorkS__5EBF139D">
+            <End Role="WorkStationsGroup" EntitySet="WorkStationsGroup" />
+            <End Role="ExamSession" EntitySet="ExamSession" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PagesForG__Accep__5441852A" Association="Self.FK__PagesForG__Accep__5441852A">
+            <End Role="AcceptablePagesGroup" EntitySet="AcceptablePagesGroup" />
+            <End Role="PagesForGroup" EntitySet="PagesForGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PagesForG__Accep__5535A963" Association="Self.FK__PagesForG__Accep__5535A963">
+            <End Role="AcceptablePage" EntitySet="AcceptablePage" />
+            <End Role="PagesForGroup" EntitySet="PagesForGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ScreenSho__Scree__6EF57B66" Association="Self.FK__ScreenSho__Scree__6EF57B66">
+            <End Role="ScreenShot" EntitySet="ScreenShot" />
+            <End Role="ScreenShotsForWorkstation" EntitySet="ScreenShotsForWorkstation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ScreenSho__WorkS__6FE99F9F" Association="Self.FK__ScreenSho__WorkS__6FE99F9F">
+            <End Role="WorkStation" EntitySet="WorkStation" />
+            <End Role="ScreenShotsForWorkstation" EntitySet="ScreenShotsForWorkstation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WorkStati__RoomI__4D94879B" Association="Self.FK__WorkStati__RoomI__4D94879B">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="WorkStation" EntitySet="WorkStation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WorkStati__WorkS__59FA5E80" Association="Self.FK__WorkStati__WorkS__59FA5E80">
+            <End Role="WorkStationsGroup" EntitySet="WorkStationsGroup" />
+            <End Role="WorkStationsForGroup" EntitySet="WorkStationsForGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WorkStati__WorkS__5AEE82B9" Association="Self.FK__WorkStati__WorkS__5AEE82B9">
+            <End Role="WorkStation" EntitySet="WorkStation" />
+            <End Role="WorkStationsForGroup" EntitySet="WorkStationsForGroup" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -22,7 +298,62 @@
       <Schema Namespace="SpyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="SpyEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ScreenShots" EntityType="SpyModel.ScreenShot" />
-        </EntityContainer>
+          <EntitySet Name="AcceptablePages" EntityType="SpyModel.AcceptablePage" />
+          <EntitySet Name="AcceptablePagesGroups" EntityType="SpyModel.AcceptablePagesGroup" />
+          <EntitySet Name="ExamSessions" EntityType="SpyModel.ExamSession" />
+          <EntitySet Name="PagesForGroups" EntityType="SpyModel.PagesForGroup" />
+          <EntitySet Name="Rooms" EntityType="SpyModel.Room" />
+          <EntitySet Name="WorkStations" EntityType="SpyModel.WorkStation" />
+          <EntitySet Name="WorkStationsForGroups" EntityType="SpyModel.WorkStationsForGroup" />
+          <EntitySet Name="WorkStationsGroups" EntityType="SpyModel.WorkStationsGroup" />
+          <AssociationSet Name="FK__PagesForG__Accep__5535A963" Association="SpyModel.FK__PagesForG__Accep__5535A963">
+            <End Role="AcceptablePage" EntitySet="AcceptablePages" />
+            <End Role="PagesForGroup" EntitySet="PagesForGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExamSessi__Accep__5DCAEF64" Association="SpyModel.FK__ExamSessi__Accep__5DCAEF64">
+            <End Role="AcceptablePagesGroup" EntitySet="AcceptablePagesGroups" />
+            <End Role="ExamSession" EntitySet="ExamSessions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PagesForG__Accep__5441852A" Association="SpyModel.FK__PagesForG__Accep__5441852A">
+            <End Role="AcceptablePagesGroup" EntitySet="AcceptablePagesGroups" />
+            <End Role="PagesForGroup" EntitySet="PagesForGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExamSessi__WorkS__5EBF139D" Association="SpyModel.FK__ExamSessi__WorkS__5EBF139D">
+            <End Role="WorkStationsGroup" EntitySet="WorkStationsGroups" />
+            <End Role="ExamSession" EntitySet="ExamSessions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WorkStati__RoomI__4D94879B" Association="SpyModel.FK__WorkStati__RoomI__4D94879B">
+            <End Role="Room" EntitySet="Rooms" />
+            <End Role="WorkStation" EntitySet="WorkStations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WorkStati__WorkS__5AEE82B9" Association="SpyModel.FK__WorkStati__WorkS__5AEE82B9">
+            <End Role="WorkStation" EntitySet="WorkStations" />
+            <End Role="WorkStationsForGroup" EntitySet="WorkStationsForGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WorkStati__WorkS__59FA5E80" Association="SpyModel.FK__WorkStati__WorkS__59FA5E80">
+            <End Role="WorkStationsGroup" EntitySet="WorkStationsGroups" />
+            <End Role="WorkStationsForGroup" EntitySet="WorkStationsForGroups" />
+          </AssociationSet>
+          <EntitySet Name="ClientUsers" EntityType="SpyModel.ClientUser" />
+          <EntitySet Name="ClientUserForWorkstations" EntityType="SpyModel.ClientUserForWorkstation" />
+          <AssociationSet Name="FK__ClientUse__Clien__6754599E" Association="SpyModel.FK__ClientUse__Clien__6754599E">
+            <End Role="ClientUser" EntitySet="ClientUsers" />
+            <End Role="ClientUserForWorkstation" EntitySet="ClientUserForWorkstations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ClientUse__WorkS__68487DD7" Association="SpyModel.FK__ClientUse__WorkS__68487DD7">
+            <End Role="WorkStation" EntitySet="WorkStations" />
+            <End Role="ClientUserForWorkstation" EntitySet="ClientUserForWorkstations" />
+          </AssociationSet>
+          <EntitySet Name="ScreenShotsForWorkstations" EntityType="SpyModel.ScreenShotsForWorkstation" />
+          <AssociationSet Name="FK__ScreenSho__Scree__6EF57B66" Association="SpyModel.FK__ScreenSho__Scree__6EF57B66">
+            <End Role="ScreenShot" EntitySet="ScreenShots" />
+            <End Role="ScreenShotsForWorkstation" EntitySet="ScreenShotsForWorkstations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ScreenSho__WorkS__6FE99F9F" Association="SpyModel.FK__ScreenSho__WorkS__6FE99F9F">
+            <End Role="WorkStation" EntitySet="WorkStations" />
+            <End Role="ScreenShotsForWorkstation" EntitySet="ScreenShotsForWorkstations" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="ScreenShot">
           <Key>
             <PropertyRef Name="ScreenShotId" />
@@ -30,8 +361,251 @@
           <Property Name="ScreenShotId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Data" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="ScreenDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="ScreenShotsForWorkstations" Relationship="SpyModel.FK__ScreenSho__Scree__6EF57B66" FromRole="ScreenShot" ToRole="ScreenShotsForWorkstation" />
         </EntityType>
-      </Schema>
+        <EntityType Name="AcceptablePage">
+          <Key>
+            <PropertyRef Name="AcceptablePageId" />
+          </Key>
+          <Property Name="AcceptablePageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="HeadKeyWords" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PagesForGroups" Relationship="SpyModel.FK__PagesForG__Accep__5535A963" FromRole="AcceptablePage" ToRole="PagesForGroup" />
+        </EntityType>
+        <EntityType Name="AcceptablePagesGroup">
+          <Key>
+            <PropertyRef Name="AcceptablePagesGroupId" />
+          </Key>
+          <Property Name="AcceptablePagesGroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ExamSessions" Relationship="SpyModel.FK__ExamSessi__Accep__5DCAEF64" FromRole="AcceptablePagesGroup" ToRole="ExamSession" />
+          <NavigationProperty Name="PagesForGroups" Relationship="SpyModel.FK__PagesForG__Accep__5441852A" FromRole="AcceptablePagesGroup" ToRole="PagesForGroup" />
+        </EntityType>
+        <EntityType Name="ExamSession">
+          <Key>
+            <PropertyRef Name="ExamSessionId" />
+          </Key>
+          <Property Name="ExamSessionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="AcceptablePagesGroupId" Type="Int32" />
+          <Property Name="WorkStationsGroupId" Type="Int32" />
+          <NavigationProperty Name="AcceptablePagesGroup" Relationship="SpyModel.FK__ExamSessi__Accep__5DCAEF64" FromRole="ExamSession" ToRole="AcceptablePagesGroup" />
+          <NavigationProperty Name="WorkStationsGroup" Relationship="SpyModel.FK__ExamSessi__WorkS__5EBF139D" FromRole="ExamSession" ToRole="WorkStationsGroup" />
+        </EntityType>
+        <EntityType Name="PagesForGroup">
+          <Key>
+            <PropertyRef Name="PagesForGroupId" />
+          </Key>
+          <Property Name="PagesForGroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AcceptablePagesGroupId" Type="Int32" />
+          <Property Name="AcceptablePageId" Type="Int32" />
+          <NavigationProperty Name="AcceptablePage" Relationship="SpyModel.FK__PagesForG__Accep__5535A963" FromRole="PagesForGroup" ToRole="AcceptablePage" />
+          <NavigationProperty Name="AcceptablePagesGroup" Relationship="SpyModel.FK__PagesForG__Accep__5441852A" FromRole="PagesForGroup" ToRole="AcceptablePagesGroup" />
+        </EntityType>
+        <EntityType Name="Room">
+          <Key>
+            <PropertyRef Name="RoomId" />
+          </Key>
+          <Property Name="RoomId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoomNumber" Type="Int32" />
+          <NavigationProperty Name="WorkStations" Relationship="SpyModel.FK__WorkStati__RoomI__4D94879B" FromRole="Room" ToRole="WorkStation" />
+        </EntityType>
+        <EntityType Name="WorkStation">
+          <Key>
+            <PropertyRef Name="WorkStationId" />
+          </Key>
+          <Property Name="WorkStationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IP" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="RoomId" Type="Int32" />
+          <NavigationProperty Name="Room" Relationship="SpyModel.FK__WorkStati__RoomI__4D94879B" FromRole="WorkStation" ToRole="Room" />
+          <NavigationProperty Name="WorkStationsForGroups" Relationship="SpyModel.FK__WorkStati__WorkS__5AEE82B9" FromRole="WorkStation" ToRole="WorkStationsForGroup" />
+          <NavigationProperty Name="ClientUserForWorkstations" Relationship="SpyModel.FK__ClientUse__WorkS__68487DD7" FromRole="WorkStation" ToRole="ClientUserForWorkstation" />
+          <NavigationProperty Name="ScreenShotsForWorkstations" Relationship="SpyModel.FK__ScreenSho__WorkS__6FE99F9F" FromRole="WorkStation" ToRole="ScreenShotsForWorkstation" />
+        </EntityType>
+        <EntityType Name="WorkStationsForGroup">
+          <Key>
+            <PropertyRef Name="WorkStationsForGroupId" />
+          </Key>
+          <Property Name="WorkStationsForGroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WorkStationsGroupId" Type="Int32" />
+          <Property Name="WorkStationId" Type="Int32" />
+          <NavigationProperty Name="WorkStation" Relationship="SpyModel.FK__WorkStati__WorkS__5AEE82B9" FromRole="WorkStationsForGroup" ToRole="WorkStation" />
+          <NavigationProperty Name="WorkStationsGroup" Relationship="SpyModel.FK__WorkStati__WorkS__59FA5E80" FromRole="WorkStationsForGroup" ToRole="WorkStationsGroup" />
+        </EntityType>
+        <EntityType Name="WorkStationsGroup">
+          <Key>
+            <PropertyRef Name="WorkStationsGroupId" />
+          </Key>
+          <Property Name="WorkStationsGroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ExamSessions" Relationship="SpyModel.FK__ExamSessi__WorkS__5EBF139D" FromRole="WorkStationsGroup" ToRole="ExamSession" />
+          <NavigationProperty Name="WorkStationsForGroups" Relationship="SpyModel.FK__WorkStati__WorkS__59FA5E80" FromRole="WorkStationsGroup" ToRole="WorkStationsForGroup" />
+        </EntityType>
+        <Association Name="FK__PagesForG__Accep__5535A963">
+          <End Type="SpyModel.AcceptablePage" Role="AcceptablePage" Multiplicity="0..1" />
+          <End Type="SpyModel.PagesForGroup" Role="PagesForGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AcceptablePage">
+              <PropertyRef Name="AcceptablePageId" />
+            </Principal>
+            <Dependent Role="PagesForGroup">
+              <PropertyRef Name="AcceptablePageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExamSessi__Accep__5DCAEF64">
+          <End Type="SpyModel.AcceptablePagesGroup" Role="AcceptablePagesGroup" Multiplicity="0..1" />
+          <End Type="SpyModel.ExamSession" Role="ExamSession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AcceptablePagesGroup">
+              <PropertyRef Name="AcceptablePagesGroupId" />
+            </Principal>
+            <Dependent Role="ExamSession">
+              <PropertyRef Name="AcceptablePagesGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PagesForG__Accep__5441852A">
+          <End Type="SpyModel.AcceptablePagesGroup" Role="AcceptablePagesGroup" Multiplicity="0..1" />
+          <End Type="SpyModel.PagesForGroup" Role="PagesForGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AcceptablePagesGroup">
+              <PropertyRef Name="AcceptablePagesGroupId" />
+            </Principal>
+            <Dependent Role="PagesForGroup">
+              <PropertyRef Name="AcceptablePagesGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExamSessi__WorkS__5EBF139D">
+          <End Type="SpyModel.WorkStationsGroup" Role="WorkStationsGroup" Multiplicity="0..1" />
+          <End Type="SpyModel.ExamSession" Role="ExamSession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkStationsGroup">
+              <PropertyRef Name="WorkStationsGroupId" />
+            </Principal>
+            <Dependent Role="ExamSession">
+              <PropertyRef Name="WorkStationsGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WorkStati__RoomI__4D94879B">
+          <End Type="SpyModel.Room" Role="Room" Multiplicity="0..1" />
+          <End Type="SpyModel.WorkStation" Role="WorkStation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="RoomId" />
+            </Principal>
+            <Dependent Role="WorkStation">
+              <PropertyRef Name="RoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WorkStati__WorkS__5AEE82B9">
+          <End Type="SpyModel.WorkStation" Role="WorkStation" Multiplicity="0..1" />
+          <End Type="SpyModel.WorkStationsForGroup" Role="WorkStationsForGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkStation">
+              <PropertyRef Name="WorkStationId" />
+            </Principal>
+            <Dependent Role="WorkStationsForGroup">
+              <PropertyRef Name="WorkStationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WorkStati__WorkS__59FA5E80">
+          <End Type="SpyModel.WorkStationsGroup" Role="WorkStationsGroup" Multiplicity="0..1" />
+          <End Type="SpyModel.WorkStationsForGroup" Role="WorkStationsForGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkStationsGroup">
+              <PropertyRef Name="WorkStationsGroupId" />
+            </Principal>
+            <Dependent Role="WorkStationsForGroup">
+              <PropertyRef Name="WorkStationsGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ClientUser">
+          <Key>
+            <PropertyRef Name="ClientUserId" />
+          </Key>
+          <Property Name="ClientUserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserLogin" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UserSurname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ClientUserForWorkstations" Relationship="SpyModel.FK__ClientUse__Clien__6754599E" FromRole="ClientUser" ToRole="ClientUserForWorkstation" />
+        </EntityType>
+        <EntityType Name="ClientUserForWorkstation">
+          <Key>
+            <PropertyRef Name="ClientUserForWorkstationsId" />
+          </Key>
+          <Property Name="ClientUserForWorkstationsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientUserId" Type="Int32" />
+          <Property Name="WorkStationId" Type="Int32" />
+          <Property Name="LoginDate" Type="DateTime" Precision="0" />
+          <Property Name="LogOutDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="ClientUser" Relationship="SpyModel.FK__ClientUse__Clien__6754599E" FromRole="ClientUserForWorkstation" ToRole="ClientUser" />
+          <NavigationProperty Name="WorkStation" Relationship="SpyModel.FK__ClientUse__WorkS__68487DD7" FromRole="ClientUserForWorkstation" ToRole="WorkStation" />
+        </EntityType>
+        <Association Name="FK__ClientUse__Clien__6754599E">
+          <End Type="SpyModel.ClientUser" Role="ClientUser" Multiplicity="0..1" />
+          <End Type="SpyModel.ClientUserForWorkstation" Role="ClientUserForWorkstation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientUser">
+              <PropertyRef Name="ClientUserId" />
+            </Principal>
+            <Dependent Role="ClientUserForWorkstation">
+              <PropertyRef Name="ClientUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ClientUse__WorkS__68487DD7">
+          <End Type="SpyModel.WorkStation" Role="WorkStation" Multiplicity="0..1" />
+          <End Type="SpyModel.ClientUserForWorkstation" Role="ClientUserForWorkstation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkStation">
+              <PropertyRef Name="WorkStationId" />
+            </Principal>
+            <Dependent Role="ClientUserForWorkstation">
+              <PropertyRef Name="WorkStationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ScreenShotsForWorkstation">
+          <Key>
+            <PropertyRef Name="ScreenShotsForWorkstationsId" />
+          </Key>
+          <Property Name="ScreenShotsForWorkstationsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ScreenShotId" Type="Int32" />
+          <Property Name="WorkStationId" Type="Int32" />
+          <NavigationProperty Name="ScreenShot" Relationship="SpyModel.FK__ScreenSho__Scree__6EF57B66" FromRole="ScreenShotsForWorkstation" ToRole="ScreenShot" />
+          <NavigationProperty Name="WorkStation" Relationship="SpyModel.FK__ScreenSho__WorkS__6FE99F9F" FromRole="ScreenShotsForWorkstation" ToRole="WorkStation" />
+        </EntityType>
+        <Association Name="FK__ScreenSho__Scree__6EF57B66">
+          <End Type="SpyModel.ScreenShot" Role="ScreenShot" Multiplicity="0..1" />
+          <End Type="SpyModel.ScreenShotsForWorkstation" Role="ScreenShotsForWorkstation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScreenShot">
+              <PropertyRef Name="ScreenShotId" />
+            </Principal>
+            <Dependent Role="ScreenShotsForWorkstation">
+              <PropertyRef Name="ScreenShotId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ScreenSho__WorkS__6FE99F9F">
+          <End Type="SpyModel.WorkStation" Role="WorkStation" Multiplicity="0..1" />
+          <End Type="SpyModel.ScreenShotsForWorkstation" Role="ScreenShotsForWorkstation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkStation">
+              <PropertyRef Name="WorkStationId" />
+            </Principal>
+            <Dependent Role="ScreenShotsForWorkstation">
+              <PropertyRef Name="WorkStationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -43,6 +617,106 @@
                 <ScalarProperty Name="ScreenDate" ColumnName="ScreenDate" />
                 <ScalarProperty Name="Data" ColumnName="Data" />
                 <ScalarProperty Name="ScreenShotId" ColumnName="ScreenShotId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AcceptablePages">
+            <EntityTypeMapping TypeName="SpyModel.AcceptablePage">
+              <MappingFragment StoreEntitySet="AcceptablePage">
+                <ScalarProperty Name="HeadKeyWords" ColumnName="HeadKeyWords" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="AcceptablePageId" ColumnName="AcceptablePageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AcceptablePagesGroups">
+            <EntityTypeMapping TypeName="SpyModel.AcceptablePagesGroup">
+              <MappingFragment StoreEntitySet="AcceptablePagesGroup">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AcceptablePagesGroupId" ColumnName="AcceptablePagesGroupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExamSessions">
+            <EntityTypeMapping TypeName="SpyModel.ExamSession">
+              <MappingFragment StoreEntitySet="ExamSession">
+                <ScalarProperty Name="WorkStationsGroupId" ColumnName="WorkStationsGroupId" />
+                <ScalarProperty Name="AcceptablePagesGroupId" ColumnName="AcceptablePagesGroupId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ExamSessionId" ColumnName="ExamSessionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PagesForGroups">
+            <EntityTypeMapping TypeName="SpyModel.PagesForGroup">
+              <MappingFragment StoreEntitySet="PagesForGroup">
+                <ScalarProperty Name="AcceptablePageId" ColumnName="AcceptablePageId" />
+                <ScalarProperty Name="AcceptablePagesGroupId" ColumnName="AcceptablePagesGroupId" />
+                <ScalarProperty Name="PagesForGroupId" ColumnName="PagesForGroupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rooms">
+            <EntityTypeMapping TypeName="SpyModel.Room">
+              <MappingFragment StoreEntitySet="Room">
+                <ScalarProperty Name="RoomNumber" ColumnName="RoomNumber" />
+                <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkStations">
+            <EntityTypeMapping TypeName="SpyModel.WorkStation">
+              <MappingFragment StoreEntitySet="WorkStation">
+                <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="WorkStationId" ColumnName="WorkStationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkStationsForGroups">
+            <EntityTypeMapping TypeName="SpyModel.WorkStationsForGroup">
+              <MappingFragment StoreEntitySet="WorkStationsForGroup">
+                <ScalarProperty Name="WorkStationId" ColumnName="WorkStationId" />
+                <ScalarProperty Name="WorkStationsGroupId" ColumnName="WorkStationsGroupId" />
+                <ScalarProperty Name="WorkStationsForGroupId" ColumnName="WorkStationsForGroupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkStationsGroups">
+            <EntityTypeMapping TypeName="SpyModel.WorkStationsGroup">
+              <MappingFragment StoreEntitySet="WorkStationsGroup">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="WorkStationsGroupId" ColumnName="WorkStationsGroupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientUsers">
+            <EntityTypeMapping TypeName="SpyModel.ClientUser">
+              <MappingFragment StoreEntitySet="ClientUser">
+                <ScalarProperty Name="UserSurname" ColumnName="UserSurname" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserLogin" ColumnName="UserLogin" />
+                <ScalarProperty Name="ClientUserId" ColumnName="ClientUserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientUserForWorkstations">
+            <EntityTypeMapping TypeName="SpyModel.ClientUserForWorkstation">
+              <MappingFragment StoreEntitySet="ClientUserForWorkstations">
+                <ScalarProperty Name="LogOutDate" ColumnName="LogOutDate" />
+                <ScalarProperty Name="LoginDate" ColumnName="LoginDate" />
+                <ScalarProperty Name="WorkStationId" ColumnName="WorkStationId" />
+                <ScalarProperty Name="ClientUserId" ColumnName="ClientUserId" />
+                <ScalarProperty Name="ClientUserForWorkstationsId" ColumnName="ClientUserForWorkstationsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ScreenShotsForWorkstations">
+            <EntityTypeMapping TypeName="SpyModel.ScreenShotsForWorkstation">
+              <MappingFragment StoreEntitySet="ScreenShotsForWorkstation">
+                <ScalarProperty Name="WorkStationId" ColumnName="WorkStationId" />
+                <ScalarProperty Name="ScreenShotId" ColumnName="ScreenShotId" />
+                <ScalarProperty Name="ScreenShotsForWorkstationsId" ColumnName="ScreenShotsForWorkstationsId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

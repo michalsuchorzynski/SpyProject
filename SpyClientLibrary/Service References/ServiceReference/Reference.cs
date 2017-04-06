@@ -106,6 +106,1298 @@ namespace SpyClientLibrary.ServiceReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="AcceptablePage", Namespace="http://schemas.datacontract.org/2004/07/SpyWcfService")]
+    [System.SerializableAttribute()]
+    public partial class AcceptablePage : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int AcceptablePageIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string HeadKeyWordsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SpyClientLibrary.ServiceReference.PagesForGroup[] PagesForGroupsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UrlField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int AcceptablePageId {
+            get {
+                return this.AcceptablePageIdField;
+            }
+            set {
+                if ((this.AcceptablePageIdField.Equals(value) != true)) {
+                    this.AcceptablePageIdField = value;
+                    this.RaisePropertyChanged("AcceptablePageId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string HeadKeyWords {
+            get {
+                return this.HeadKeyWordsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HeadKeyWordsField, value) != true)) {
+                    this.HeadKeyWordsField = value;
+                    this.RaisePropertyChanged("HeadKeyWords");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SpyClientLibrary.ServiceReference.PagesForGroup[] PagesForGroups {
+            get {
+                return this.PagesForGroupsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PagesForGroupsField, value) != true)) {
+                    this.PagesForGroupsField = value;
+                    this.RaisePropertyChanged("PagesForGroups");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Url {
+            get {
+                return this.UrlField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UrlField, value) != true)) {
+                    this.UrlField = value;
+                    this.RaisePropertyChanged("Url");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PagesForGroup", Namespace="http://schemas.datacontract.org/2004/07/SpyWcfService")]
+    [System.SerializableAttribute()]
+    public partial class PagesForGroup : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SpyClientLibrary.ServiceReference.AcceptablePage AcceptablePageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> AcceptablePageIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SpyClientLibrary.ServiceReference.AcceptablePagesGroup AcceptablePagesGroupField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> AcceptablePagesGroupIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PagesForGroupIdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SpyClientLibrary.ServiceReference.AcceptablePage AcceptablePage {
+            get {
+                return this.AcceptablePageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AcceptablePageField, value) != true)) {
+                    this.AcceptablePageField = value;
+                    this.RaisePropertyChanged("AcceptablePage");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> AcceptablePageId {
+            get {
+                return this.AcceptablePageIdField;
+            }
+            set {
+                if ((this.AcceptablePageIdField.Equals(value) != true)) {
+                    this.AcceptablePageIdField = value;
+                    this.RaisePropertyChanged("AcceptablePageId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SpyClientLibrary.ServiceReference.AcceptablePagesGroup AcceptablePagesGroup {
+            get {
+                return this.AcceptablePagesGroupField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AcceptablePagesGroupField, value) != true)) {
+                    this.AcceptablePagesGroupField = value;
+                    this.RaisePropertyChanged("AcceptablePagesGroup");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> AcceptablePagesGroupId {
+            get {
+                return this.AcceptablePagesGroupIdField;
+            }
+            set {
+                if ((this.AcceptablePagesGroupIdField.Equals(value) != true)) {
+                    this.AcceptablePagesGroupIdField = value;
+                    this.RaisePropertyChanged("AcceptablePagesGroupId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int PagesForGroupId {
+            get {
+                return this.PagesForGroupIdField;
+            }
+            set {
+                if ((this.PagesForGroupIdField.Equals(value) != true)) {
+                    this.PagesForGroupIdField = value;
+                    this.RaisePropertyChanged("PagesForGroupId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="AcceptablePagesGroup", Namespace="http://schemas.datacontract.org/2004/07/SpyWcfService")]
+    [System.SerializableAttribute()]
+    public partial class AcceptablePagesGroup : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int AcceptablePagesGroupIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SpyClientLibrary.ServiceReference.ExamSession[] ExamSessionsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SpyClientLibrary.ServiceReference.PagesForGroup[] PagesForGroupsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int AcceptablePagesGroupId {
+            get {
+                return this.AcceptablePagesGroupIdField;
+            }
+            set {
+                if ((this.AcceptablePagesGroupIdField.Equals(value) != true)) {
+                    this.AcceptablePagesGroupIdField = value;
+                    this.RaisePropertyChanged("AcceptablePagesGroupId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SpyClientLibrary.ServiceReference.ExamSession[] ExamSessions {
+            get {
+                return this.ExamSessionsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ExamSessionsField, value) != true)) {
+                    this.ExamSessionsField = value;
+                    this.RaisePropertyChanged("ExamSessions");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SpyClientLibrary.ServiceReference.PagesForGroup[] PagesForGroups {
+            get {
+                return this.PagesForGroupsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PagesForGroupsField, value) != true)) {
+                    this.PagesForGroupsField = value;
+                    this.RaisePropertyChanged("PagesForGroups");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ExamSession", Namespace="http://schemas.datacontract.org/2004/07/SpyWcfService")]
+    [System.SerializableAttribute()]
+    public partial class ExamSession : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SpyClientLibrary.ServiceReference.AcceptablePagesGroup AcceptablePagesGroupField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> AcceptablePagesGroupIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ExamSessionIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SpyClientLibrary.ServiceReference.WorkStationsGroup WorkStationsGroupField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> WorkStationsGroupIdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SpyClientLibrary.ServiceReference.AcceptablePagesGroup AcceptablePagesGroup {
+            get {
+                return this.AcceptablePagesGroupField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AcceptablePagesGroupField, value) != true)) {
+                    this.AcceptablePagesGroupField = value;
+                    this.RaisePropertyChanged("AcceptablePagesGroup");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> AcceptablePagesGroupId {
+            get {
+                return this.AcceptablePagesGroupIdField;
+            }
+            set {
+                if ((this.AcceptablePagesGroupIdField.Equals(value) != true)) {
+                    this.AcceptablePagesGroupIdField = value;
+                    this.RaisePropertyChanged("AcceptablePagesGroupId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ExamSessionId {
+            get {
+                return this.ExamSessionIdField;
+            }
+            set {
+                if ((this.ExamSessionIdField.Equals(value) != true)) {
+                    this.ExamSessionIdField = value;
+                    this.RaisePropertyChanged("ExamSessionId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SpyClientLibrary.ServiceReference.WorkStationsGroup WorkStationsGroup {
+            get {
+                return this.WorkStationsGroupField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.WorkStationsGroupField, value) != true)) {
+                    this.WorkStationsGroupField = value;
+                    this.RaisePropertyChanged("WorkStationsGroup");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> WorkStationsGroupId {
+            get {
+                return this.WorkStationsGroupIdField;
+            }
+            set {
+                if ((this.WorkStationsGroupIdField.Equals(value) != true)) {
+                    this.WorkStationsGroupIdField = value;
+                    this.RaisePropertyChanged("WorkStationsGroupId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="WorkStationsGroup", Namespace="http://schemas.datacontract.org/2004/07/SpyWcfService")]
+    [System.SerializableAttribute()]
+    public partial class WorkStationsGroup : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SpyClientLibrary.ServiceReference.ExamSession[] ExamSessionsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SpyClientLibrary.ServiceReference.WorkStationsForGroup[] WorkStationsForGroupsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int WorkStationsGroupIdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SpyClientLibrary.ServiceReference.ExamSession[] ExamSessions {
+            get {
+                return this.ExamSessionsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ExamSessionsField, value) != true)) {
+                    this.ExamSessionsField = value;
+                    this.RaisePropertyChanged("ExamSessions");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SpyClientLibrary.ServiceReference.WorkStationsForGroup[] WorkStationsForGroups {
+            get {
+                return this.WorkStationsForGroupsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.WorkStationsForGroupsField, value) != true)) {
+                    this.WorkStationsForGroupsField = value;
+                    this.RaisePropertyChanged("WorkStationsForGroups");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int WorkStationsGroupId {
+            get {
+                return this.WorkStationsGroupIdField;
+            }
+            set {
+                if ((this.WorkStationsGroupIdField.Equals(value) != true)) {
+                    this.WorkStationsGroupIdField = value;
+                    this.RaisePropertyChanged("WorkStationsGroupId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="WorkStationsForGroup", Namespace="http://schemas.datacontract.org/2004/07/SpyWcfService")]
+    [System.SerializableAttribute()]
+    public partial class WorkStationsForGroup : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SpyClientLibrary.ServiceReference.WorkStation WorkStationField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> WorkStationIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int WorkStationsForGroupIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SpyClientLibrary.ServiceReference.WorkStationsGroup WorkStationsGroupField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> WorkStationsGroupIdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SpyClientLibrary.ServiceReference.WorkStation WorkStation {
+            get {
+                return this.WorkStationField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.WorkStationField, value) != true)) {
+                    this.WorkStationField = value;
+                    this.RaisePropertyChanged("WorkStation");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> WorkStationId {
+            get {
+                return this.WorkStationIdField;
+            }
+            set {
+                if ((this.WorkStationIdField.Equals(value) != true)) {
+                    this.WorkStationIdField = value;
+                    this.RaisePropertyChanged("WorkStationId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int WorkStationsForGroupId {
+            get {
+                return this.WorkStationsForGroupIdField;
+            }
+            set {
+                if ((this.WorkStationsForGroupIdField.Equals(value) != true)) {
+                    this.WorkStationsForGroupIdField = value;
+                    this.RaisePropertyChanged("WorkStationsForGroupId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SpyClientLibrary.ServiceReference.WorkStationsGroup WorkStationsGroup {
+            get {
+                return this.WorkStationsGroupField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.WorkStationsGroupField, value) != true)) {
+                    this.WorkStationsGroupField = value;
+                    this.RaisePropertyChanged("WorkStationsGroup");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> WorkStationsGroupId {
+            get {
+                return this.WorkStationsGroupIdField;
+            }
+            set {
+                if ((this.WorkStationsGroupIdField.Equals(value) != true)) {
+                    this.WorkStationsGroupIdField = value;
+                    this.RaisePropertyChanged("WorkStationsGroupId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="WorkStation", Namespace="http://schemas.datacontract.org/2004/07/SpyWcfService")]
+    [System.SerializableAttribute()]
+    public partial class WorkStation : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SpyClientLibrary.ServiceReference.ClientUserForWorkstation[] ClientUserForWorkstationsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IPField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SpyClientLibrary.ServiceReference.Room RoomField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> RoomIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SpyClientLibrary.ServiceReference.ScreenShotsForWorkstation[] ScreenShotsForWorkstationsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int WorkStationIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SpyClientLibrary.ServiceReference.WorkStationsForGroup[] WorkStationsForGroupsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SpyClientLibrary.ServiceReference.ClientUserForWorkstation[] ClientUserForWorkstations {
+            get {
+                return this.ClientUserForWorkstationsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ClientUserForWorkstationsField, value) != true)) {
+                    this.ClientUserForWorkstationsField = value;
+                    this.RaisePropertyChanged("ClientUserForWorkstations");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string IP {
+            get {
+                return this.IPField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IPField, value) != true)) {
+                    this.IPField = value;
+                    this.RaisePropertyChanged("IP");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SpyClientLibrary.ServiceReference.Room Room {
+            get {
+                return this.RoomField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RoomField, value) != true)) {
+                    this.RoomField = value;
+                    this.RaisePropertyChanged("Room");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> RoomId {
+            get {
+                return this.RoomIdField;
+            }
+            set {
+                if ((this.RoomIdField.Equals(value) != true)) {
+                    this.RoomIdField = value;
+                    this.RaisePropertyChanged("RoomId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SpyClientLibrary.ServiceReference.ScreenShotsForWorkstation[] ScreenShotsForWorkstations {
+            get {
+                return this.ScreenShotsForWorkstationsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ScreenShotsForWorkstationsField, value) != true)) {
+                    this.ScreenShotsForWorkstationsField = value;
+                    this.RaisePropertyChanged("ScreenShotsForWorkstations");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int WorkStationId {
+            get {
+                return this.WorkStationIdField;
+            }
+            set {
+                if ((this.WorkStationIdField.Equals(value) != true)) {
+                    this.WorkStationIdField = value;
+                    this.RaisePropertyChanged("WorkStationId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SpyClientLibrary.ServiceReference.WorkStationsForGroup[] WorkStationsForGroups {
+            get {
+                return this.WorkStationsForGroupsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.WorkStationsForGroupsField, value) != true)) {
+                    this.WorkStationsForGroupsField = value;
+                    this.RaisePropertyChanged("WorkStationsForGroups");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Room", Namespace="http://schemas.datacontract.org/2004/07/SpyWcfService")]
+    [System.SerializableAttribute()]
+    public partial class Room : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int RoomIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> RoomNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SpyClientLibrary.ServiceReference.WorkStation[] WorkStationsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int RoomId {
+            get {
+                return this.RoomIdField;
+            }
+            set {
+                if ((this.RoomIdField.Equals(value) != true)) {
+                    this.RoomIdField = value;
+                    this.RaisePropertyChanged("RoomId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> RoomNumber {
+            get {
+                return this.RoomNumberField;
+            }
+            set {
+                if ((this.RoomNumberField.Equals(value) != true)) {
+                    this.RoomNumberField = value;
+                    this.RaisePropertyChanged("RoomNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SpyClientLibrary.ServiceReference.WorkStation[] WorkStations {
+            get {
+                return this.WorkStationsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.WorkStationsField, value) != true)) {
+                    this.WorkStationsField = value;
+                    this.RaisePropertyChanged("WorkStations");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ClientUserForWorkstation", Namespace="http://schemas.datacontract.org/2004/07/SpyWcfService")]
+    [System.SerializableAttribute()]
+    public partial class ClientUserForWorkstation : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SpyClientLibrary.ServiceReference.ClientUser ClientUserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ClientUserForWorkstationsIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> ClientUserIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> LogOutDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> LoginDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SpyClientLibrary.ServiceReference.WorkStation WorkStationField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> WorkStationIdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SpyClientLibrary.ServiceReference.ClientUser ClientUser {
+            get {
+                return this.ClientUserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ClientUserField, value) != true)) {
+                    this.ClientUserField = value;
+                    this.RaisePropertyChanged("ClientUser");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ClientUserForWorkstationsId {
+            get {
+                return this.ClientUserForWorkstationsIdField;
+            }
+            set {
+                if ((this.ClientUserForWorkstationsIdField.Equals(value) != true)) {
+                    this.ClientUserForWorkstationsIdField = value;
+                    this.RaisePropertyChanged("ClientUserForWorkstationsId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> ClientUserId {
+            get {
+                return this.ClientUserIdField;
+            }
+            set {
+                if ((this.ClientUserIdField.Equals(value) != true)) {
+                    this.ClientUserIdField = value;
+                    this.RaisePropertyChanged("ClientUserId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> LogOutDate {
+            get {
+                return this.LogOutDateField;
+            }
+            set {
+                if ((this.LogOutDateField.Equals(value) != true)) {
+                    this.LogOutDateField = value;
+                    this.RaisePropertyChanged("LogOutDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> LoginDate {
+            get {
+                return this.LoginDateField;
+            }
+            set {
+                if ((this.LoginDateField.Equals(value) != true)) {
+                    this.LoginDateField = value;
+                    this.RaisePropertyChanged("LoginDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SpyClientLibrary.ServiceReference.WorkStation WorkStation {
+            get {
+                return this.WorkStationField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.WorkStationField, value) != true)) {
+                    this.WorkStationField = value;
+                    this.RaisePropertyChanged("WorkStation");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> WorkStationId {
+            get {
+                return this.WorkStationIdField;
+            }
+            set {
+                if ((this.WorkStationIdField.Equals(value) != true)) {
+                    this.WorkStationIdField = value;
+                    this.RaisePropertyChanged("WorkStationId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ScreenShotsForWorkstation", Namespace="http://schemas.datacontract.org/2004/07/SpyWcfService")]
+    [System.SerializableAttribute()]
+    public partial class ScreenShotsForWorkstation : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SpyClientLibrary.ServiceReference.ScreenShot ScreenShotField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> ScreenShotIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ScreenShotsForWorkstationsIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SpyClientLibrary.ServiceReference.WorkStation WorkStationField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> WorkStationIdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SpyClientLibrary.ServiceReference.ScreenShot ScreenShot {
+            get {
+                return this.ScreenShotField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ScreenShotField, value) != true)) {
+                    this.ScreenShotField = value;
+                    this.RaisePropertyChanged("ScreenShot");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> ScreenShotId {
+            get {
+                return this.ScreenShotIdField;
+            }
+            set {
+                if ((this.ScreenShotIdField.Equals(value) != true)) {
+                    this.ScreenShotIdField = value;
+                    this.RaisePropertyChanged("ScreenShotId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ScreenShotsForWorkstationsId {
+            get {
+                return this.ScreenShotsForWorkstationsIdField;
+            }
+            set {
+                if ((this.ScreenShotsForWorkstationsIdField.Equals(value) != true)) {
+                    this.ScreenShotsForWorkstationsIdField = value;
+                    this.RaisePropertyChanged("ScreenShotsForWorkstationsId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SpyClientLibrary.ServiceReference.WorkStation WorkStation {
+            get {
+                return this.WorkStationField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.WorkStationField, value) != true)) {
+                    this.WorkStationField = value;
+                    this.RaisePropertyChanged("WorkStation");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> WorkStationId {
+            get {
+                return this.WorkStationIdField;
+            }
+            set {
+                if ((this.WorkStationIdField.Equals(value) != true)) {
+                    this.WorkStationIdField = value;
+                    this.RaisePropertyChanged("WorkStationId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ClientUser", Namespace="http://schemas.datacontract.org/2004/07/SpyWcfService")]
+    [System.SerializableAttribute()]
+    public partial class ClientUser : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SpyClientLibrary.ServiceReference.ClientUserForWorkstation[] ClientUserForWorkstationsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ClientUserIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserLoginField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserSurnameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SpyClientLibrary.ServiceReference.ClientUserForWorkstation[] ClientUserForWorkstations {
+            get {
+                return this.ClientUserForWorkstationsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ClientUserForWorkstationsField, value) != true)) {
+                    this.ClientUserForWorkstationsField = value;
+                    this.RaisePropertyChanged("ClientUserForWorkstations");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ClientUserId {
+            get {
+                return this.ClientUserIdField;
+            }
+            set {
+                if ((this.ClientUserIdField.Equals(value) != true)) {
+                    this.ClientUserIdField = value;
+                    this.RaisePropertyChanged("ClientUserId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserLogin {
+            get {
+                return this.UserLoginField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserLoginField, value) != true)) {
+                    this.UserLoginField = value;
+                    this.RaisePropertyChanged("UserLogin");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserName {
+            get {
+                return this.UserNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserNameField, value) != true)) {
+                    this.UserNameField = value;
+                    this.RaisePropertyChanged("UserName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserSurname {
+            get {
+                return this.UserSurnameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserSurnameField, value) != true)) {
+                    this.UserSurnameField = value;
+                    this.RaisePropertyChanged("UserSurname");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ScreenShot", Namespace="http://schemas.datacontract.org/2004/07/SpyWcfService")]
+    [System.SerializableAttribute()]
+    public partial class ScreenShot : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte[] DataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> ScreenDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ScreenShotIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SpyClientLibrary.ServiceReference.ScreenShotsForWorkstation[] ScreenShotsForWorkstationsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte[] Data {
+            get {
+                return this.DataField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DataField, value) != true)) {
+                    this.DataField = value;
+                    this.RaisePropertyChanged("Data");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> ScreenDate {
+            get {
+                return this.ScreenDateField;
+            }
+            set {
+                if ((this.ScreenDateField.Equals(value) != true)) {
+                    this.ScreenDateField = value;
+                    this.RaisePropertyChanged("ScreenDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ScreenShotId {
+            get {
+                return this.ScreenShotIdField;
+            }
+            set {
+                if ((this.ScreenShotIdField.Equals(value) != true)) {
+                    this.ScreenShotIdField = value;
+                    this.RaisePropertyChanged("ScreenShotId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SpyClientLibrary.ServiceReference.ScreenShotsForWorkstation[] ScreenShotsForWorkstations {
+            get {
+                return this.ScreenShotsForWorkstationsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ScreenShotsForWorkstationsField, value) != true)) {
+                    this.ScreenShotsForWorkstationsField = value;
+                    this.RaisePropertyChanged("ScreenShotsForWorkstations");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IClientService")]
     public interface IClientService {
@@ -121,6 +1413,12 @@ namespace SpyClientLibrary.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetScreenFromDB", ReplyAction="http://tempuri.org/IClientService/GetScreenFromDBResponse")]
         System.Threading.Tasks.Task<byte[]> GetScreenFromDBAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetAcceptablePageFromDB", ReplyAction="http://tempuri.org/IClientService/GetAcceptablePageFromDBResponse")]
+        SpyClientLibrary.ServiceReference.AcceptablePage[] GetAcceptablePageFromDB(int GroupId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetAcceptablePageFromDB", ReplyAction="http://tempuri.org/IClientService/GetAcceptablePageFromDBResponse")]
+        System.Threading.Tasks.Task<SpyClientLibrary.ServiceReference.AcceptablePage[]> GetAcceptablePageFromDBAsync(int GroupId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -164,6 +1462,14 @@ namespace SpyClientLibrary.ServiceReference {
         
         public System.Threading.Tasks.Task<byte[]> GetScreenFromDBAsync() {
             return base.Channel.GetScreenFromDBAsync();
+        }
+        
+        public SpyClientLibrary.ServiceReference.AcceptablePage[] GetAcceptablePageFromDB(int GroupId) {
+            return base.Channel.GetAcceptablePageFromDB(GroupId);
+        }
+        
+        public System.Threading.Tasks.Task<SpyClientLibrary.ServiceReference.AcceptablePage[]> GetAcceptablePageFromDBAsync(int GroupId) {
+            return base.Channel.GetAcceptablePageFromDBAsync(GroupId);
         }
     }
 }
