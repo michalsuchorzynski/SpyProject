@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SpyClientLibrary.ServiceReference {
+namespace SpyAdminApplication.ServiceReference1 {
     using System.Runtime.Serialization;
     using System;
     
@@ -119,13 +119,13 @@ namespace SpyClientLibrary.ServiceReference {
         private int AcceptablePagesGroupIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SpyClientLibrary.ServiceReference.ExamSession[] ExamSessionsField;
+        private SpyAdminApplication.ServiceReference1.ExamSession[] ExamSessionsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SpyClientLibrary.ServiceReference.PagesForGroup[] PagesForGroupsField;
+        private SpyAdminApplication.ServiceReference1.PagesForGroup[] PagesForGroupsField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -151,7 +151,7 @@ namespace SpyClientLibrary.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SpyClientLibrary.ServiceReference.ExamSession[] ExamSessions {
+        public SpyAdminApplication.ServiceReference1.ExamSession[] ExamSessions {
             get {
                 return this.ExamSessionsField;
             }
@@ -177,7 +177,7 @@ namespace SpyClientLibrary.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SpyClientLibrary.ServiceReference.PagesForGroup[] PagesForGroups {
+        public SpyAdminApplication.ServiceReference1.PagesForGroup[] PagesForGroups {
             get {
                 return this.PagesForGroupsField;
             }
@@ -209,7 +209,7 @@ namespace SpyClientLibrary.ServiceReference {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SpyClientLibrary.ServiceReference.AcceptablePagesGroup AcceptablePagesGroupField;
+        private SpyAdminApplication.ServiceReference1.AcceptablePagesGroup AcceptablePagesGroupField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> AcceptablePagesGroupIdField;
@@ -221,7 +221,7 @@ namespace SpyClientLibrary.ServiceReference {
         private string NameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SpyClientLibrary.ServiceReference.WorkStationsGroup WorkStationsGroupField;
+        private SpyAdminApplication.ServiceReference1.WorkStationsGroup WorkStationsGroupField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> WorkStationsGroupIdField;
@@ -237,7 +237,7 @@ namespace SpyClientLibrary.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SpyClientLibrary.ServiceReference.AcceptablePagesGroup AcceptablePagesGroup {
+        public SpyAdminApplication.ServiceReference1.AcceptablePagesGroup AcceptablePagesGroup {
             get {
                 return this.AcceptablePagesGroupField;
             }
@@ -289,7 +289,7 @@ namespace SpyClientLibrary.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SpyClientLibrary.ServiceReference.WorkStationsGroup WorkStationsGroup {
+        public SpyAdminApplication.ServiceReference1.WorkStationsGroup WorkStationsGroup {
             get {
                 return this.WorkStationsGroupField;
             }
@@ -334,13 +334,13 @@ namespace SpyClientLibrary.ServiceReference {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SpyClientLibrary.ServiceReference.AcceptablePage AcceptablePageField;
+        private SpyAdminApplication.ServiceReference1.AcceptablePage AcceptablePageField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> AcceptablePageIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SpyClientLibrary.ServiceReference.AcceptablePagesGroup AcceptablePagesGroupField;
+        private SpyAdminApplication.ServiceReference1.AcceptablePagesGroup AcceptablePagesGroupField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> AcceptablePagesGroupIdField;
@@ -359,7 +359,7 @@ namespace SpyClientLibrary.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SpyClientLibrary.ServiceReference.AcceptablePage AcceptablePage {
+        public SpyAdminApplication.ServiceReference1.AcceptablePage AcceptablePage {
             get {
                 return this.AcceptablePageField;
             }
@@ -385,7 +385,7 @@ namespace SpyClientLibrary.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SpyClientLibrary.ServiceReference.AcceptablePagesGroup AcceptablePagesGroup {
+        public SpyAdminApplication.ServiceReference1.AcceptablePagesGroup AcceptablePagesGroup {
             get {
                 return this.AcceptablePagesGroupField;
             }
@@ -443,13 +443,13 @@ namespace SpyClientLibrary.ServiceReference {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SpyClientLibrary.ServiceReference.ExamSession[] ExamSessionsField;
+        private SpyAdminApplication.ServiceReference1.ExamSession[] ExamSessionsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SpyClientLibrary.ServiceReference.WorkStationsForGroup[] WorkStationsForGroupsField;
+        private SpyAdminApplication.ServiceReference1.WorkStationsForGroup[] WorkStationsForGroupsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int WorkStationsGroupIdField;
@@ -465,7 +465,7 @@ namespace SpyClientLibrary.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SpyClientLibrary.ServiceReference.ExamSession[] ExamSessions {
+        public SpyAdminApplication.ServiceReference1.ExamSession[] ExamSessions {
             get {
                 return this.ExamSessionsField;
             }
@@ -491,7 +491,7 @@ namespace SpyClientLibrary.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SpyClientLibrary.ServiceReference.WorkStationsForGroup[] WorkStationsForGroups {
+        public SpyAdminApplication.ServiceReference1.WorkStationsForGroup[] WorkStationsForGroups {
             get {
                 return this.WorkStationsForGroupsField;
             }
@@ -536,7 +536,7 @@ namespace SpyClientLibrary.ServiceReference {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SpyClientLibrary.ServiceReference.WorkStation WorkStationField;
+        private SpyAdminApplication.ServiceReference1.WorkStation WorkStationField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> WorkStationIdField;
@@ -545,7 +545,7 @@ namespace SpyClientLibrary.ServiceReference {
         private int WorkStationsForGroupIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SpyClientLibrary.ServiceReference.WorkStationsGroup WorkStationsGroupField;
+        private SpyAdminApplication.ServiceReference1.WorkStationsGroup WorkStationsGroupField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> WorkStationsGroupIdField;
@@ -561,7 +561,7 @@ namespace SpyClientLibrary.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SpyClientLibrary.ServiceReference.WorkStation WorkStation {
+        public SpyAdminApplication.ServiceReference1.WorkStation WorkStation {
             get {
                 return this.WorkStationField;
             }
@@ -600,7 +600,7 @@ namespace SpyClientLibrary.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SpyClientLibrary.ServiceReference.WorkStationsGroup WorkStationsGroup {
+        public SpyAdminApplication.ServiceReference1.WorkStationsGroup WorkStationsGroup {
             get {
                 return this.WorkStationsGroupField;
             }
@@ -645,25 +645,25 @@ namespace SpyClientLibrary.ServiceReference {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SpyClientLibrary.ServiceReference.ClientUserForWorkstation[] ClientUserForWorkstationsField;
+        private SpyAdminApplication.ServiceReference1.ClientUserForWorkstation[] ClientUserForWorkstationsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string IPField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SpyClientLibrary.ServiceReference.Room RoomField;
+        private SpyAdminApplication.ServiceReference1.Room RoomField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> RoomIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SpyClientLibrary.ServiceReference.ScreenShotsForWorkstation[] ScreenShotsForWorkstationsField;
+        private SpyAdminApplication.ServiceReference1.ScreenShotsForWorkstation[] ScreenShotsForWorkstationsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int WorkStationIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SpyClientLibrary.ServiceReference.WorkStationsForGroup[] WorkStationsForGroupsField;
+        private SpyAdminApplication.ServiceReference1.WorkStationsForGroup[] WorkStationsForGroupsField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -676,7 +676,7 @@ namespace SpyClientLibrary.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SpyClientLibrary.ServiceReference.ClientUserForWorkstation[] ClientUserForWorkstations {
+        public SpyAdminApplication.ServiceReference1.ClientUserForWorkstation[] ClientUserForWorkstations {
             get {
                 return this.ClientUserForWorkstationsField;
             }
@@ -702,7 +702,7 @@ namespace SpyClientLibrary.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SpyClientLibrary.ServiceReference.Room Room {
+        public SpyAdminApplication.ServiceReference1.Room Room {
             get {
                 return this.RoomField;
             }
@@ -728,7 +728,7 @@ namespace SpyClientLibrary.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SpyClientLibrary.ServiceReference.ScreenShotsForWorkstation[] ScreenShotsForWorkstations {
+        public SpyAdminApplication.ServiceReference1.ScreenShotsForWorkstation[] ScreenShotsForWorkstations {
             get {
                 return this.ScreenShotsForWorkstationsField;
             }
@@ -754,7 +754,7 @@ namespace SpyClientLibrary.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SpyClientLibrary.ServiceReference.WorkStationsForGroup[] WorkStationsForGroups {
+        public SpyAdminApplication.ServiceReference1.WorkStationsForGroup[] WorkStationsForGroups {
             get {
                 return this.WorkStationsForGroupsField;
             }
@@ -792,7 +792,7 @@ namespace SpyClientLibrary.ServiceReference {
         private System.Nullable<int> RoomNumberField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SpyClientLibrary.ServiceReference.WorkStation[] WorkStationsField;
+        private SpyAdminApplication.ServiceReference1.WorkStation[] WorkStationsField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -831,7 +831,7 @@ namespace SpyClientLibrary.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SpyClientLibrary.ServiceReference.WorkStation[] WorkStations {
+        public SpyAdminApplication.ServiceReference1.WorkStation[] WorkStations {
             get {
                 return this.WorkStationsField;
             }
@@ -863,7 +863,7 @@ namespace SpyClientLibrary.ServiceReference {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SpyClientLibrary.ServiceReference.ClientUser ClientUserField;
+        private SpyAdminApplication.ServiceReference1.ClientUser ClientUserField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int ClientUserForWorkstationsIdField;
@@ -878,7 +878,7 @@ namespace SpyClientLibrary.ServiceReference {
         private System.Nullable<System.DateTime> LoginDateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SpyClientLibrary.ServiceReference.WorkStation WorkStationField;
+        private SpyAdminApplication.ServiceReference1.WorkStation WorkStationField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> WorkStationIdField;
@@ -894,7 +894,7 @@ namespace SpyClientLibrary.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SpyClientLibrary.ServiceReference.ClientUser ClientUser {
+        public SpyAdminApplication.ServiceReference1.ClientUser ClientUser {
             get {
                 return this.ClientUserField;
             }
@@ -959,7 +959,7 @@ namespace SpyClientLibrary.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SpyClientLibrary.ServiceReference.WorkStation WorkStation {
+        public SpyAdminApplication.ServiceReference1.WorkStation WorkStation {
             get {
                 return this.WorkStationField;
             }
@@ -1004,7 +1004,7 @@ namespace SpyClientLibrary.ServiceReference {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SpyClientLibrary.ServiceReference.ScreenShot ScreenShotField;
+        private SpyAdminApplication.ServiceReference1.ScreenShot ScreenShotField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> ScreenShotIdField;
@@ -1013,7 +1013,7 @@ namespace SpyClientLibrary.ServiceReference {
         private int ScreenShotsForWorkstationsIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SpyClientLibrary.ServiceReference.WorkStation WorkStationField;
+        private SpyAdminApplication.ServiceReference1.WorkStation WorkStationField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> WorkStationIdField;
@@ -1029,7 +1029,7 @@ namespace SpyClientLibrary.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SpyClientLibrary.ServiceReference.ScreenShot ScreenShot {
+        public SpyAdminApplication.ServiceReference1.ScreenShot ScreenShot {
             get {
                 return this.ScreenShotField;
             }
@@ -1068,7 +1068,7 @@ namespace SpyClientLibrary.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SpyClientLibrary.ServiceReference.WorkStation WorkStation {
+        public SpyAdminApplication.ServiceReference1.WorkStation WorkStation {
             get {
                 return this.WorkStationField;
             }
@@ -1113,7 +1113,7 @@ namespace SpyClientLibrary.ServiceReference {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SpyClientLibrary.ServiceReference.ClientUserForWorkstation[] ClientUserForWorkstationsField;
+        private SpyAdminApplication.ServiceReference1.ClientUserForWorkstation[] ClientUserForWorkstationsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int ClientUserIdField;
@@ -1138,7 +1138,7 @@ namespace SpyClientLibrary.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SpyClientLibrary.ServiceReference.ClientUserForWorkstation[] ClientUserForWorkstations {
+        public SpyAdminApplication.ServiceReference1.ClientUserForWorkstation[] ClientUserForWorkstations {
             get {
                 return this.ClientUserForWorkstationsField;
             }
@@ -1231,7 +1231,7 @@ namespace SpyClientLibrary.ServiceReference {
         private int ScreenShotIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SpyClientLibrary.ServiceReference.ScreenShotsForWorkstation[] ScreenShotsForWorkstationsField;
+        private SpyAdminApplication.ServiceReference1.ScreenShotsForWorkstation[] ScreenShotsForWorkstationsField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -1283,7 +1283,7 @@ namespace SpyClientLibrary.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SpyClientLibrary.ServiceReference.ScreenShotsForWorkstation[] ScreenShotsForWorkstations {
+        public SpyAdminApplication.ServiceReference1.ScreenShotsForWorkstation[] ScreenShotsForWorkstations {
             get {
                 return this.ScreenShotsForWorkstationsField;
             }
@@ -1321,7 +1321,7 @@ namespace SpyClientLibrary.ServiceReference {
         private string HeadKeyWordsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SpyClientLibrary.ServiceReference.PagesForGroup[] PagesForGroupsField;
+        private SpyAdminApplication.ServiceReference1.PagesForGroup[] PagesForGroupsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string UrlField;
@@ -1363,7 +1363,7 @@ namespace SpyClientLibrary.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SpyClientLibrary.ServiceReference.PagesForGroup[] PagesForGroups {
+        public SpyAdminApplication.ServiceReference1.PagesForGroup[] PagesForGroups {
             get {
                 return this.PagesForGroupsField;
             }
@@ -1399,14 +1399,14 @@ namespace SpyClientLibrary.ServiceReference {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IClientService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IClientService")]
     public interface IClientService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/SaveScreenShotToDB", ReplyAction="http://tempuri.org/IClientService/SaveScreenShotToDBResponse")]
-        bool SaveScreenShotToDB(SpyClientLibrary.ServiceReference.ClientRequest request);
+        bool SaveScreenShotToDB(SpyAdminApplication.ServiceReference1.ClientRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/SaveScreenShotToDB", ReplyAction="http://tempuri.org/IClientService/SaveScreenShotToDBResponse")]
-        System.Threading.Tasks.Task<bool> SaveScreenShotToDBAsync(SpyClientLibrary.ServiceReference.ClientRequest request);
+        System.Threading.Tasks.Task<bool> SaveScreenShotToDBAsync(SpyAdminApplication.ServiceReference1.ClientRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetScreenFromDB", ReplyAction="http://tempuri.org/IClientService/GetScreenFromDBResponse")]
         byte[] GetScreenFromDB();
@@ -1415,31 +1415,31 @@ namespace SpyClientLibrary.ServiceReference {
         System.Threading.Tasks.Task<byte[]> GetScreenFromDBAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetPagesGroupFromDB", ReplyAction="http://tempuri.org/IClientService/GetPagesGroupFromDBResponse")]
-        SpyClientLibrary.ServiceReference.AcceptablePagesGroup[] GetPagesGroupFromDB();
+        SpyAdminApplication.ServiceReference1.AcceptablePagesGroup[] GetPagesGroupFromDB();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetPagesGroupFromDB", ReplyAction="http://tempuri.org/IClientService/GetPagesGroupFromDBResponse")]
-        System.Threading.Tasks.Task<SpyClientLibrary.ServiceReference.AcceptablePagesGroup[]> GetPagesGroupFromDBAsync();
+        System.Threading.Tasks.Task<SpyAdminApplication.ServiceReference1.AcceptablePagesGroup[]> GetPagesGroupFromDBAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetAcceptablePageFromDB", ReplyAction="http://tempuri.org/IClientService/GetAcceptablePageFromDBResponse")]
-        SpyClientLibrary.ServiceReference.AcceptablePage[] GetAcceptablePageFromDB();
+        SpyAdminApplication.ServiceReference1.AcceptablePage[] GetAcceptablePageFromDB();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetAcceptablePageFromDB", ReplyAction="http://tempuri.org/IClientService/GetAcceptablePageFromDBResponse")]
-        System.Threading.Tasks.Task<SpyClientLibrary.ServiceReference.AcceptablePage[]> GetAcceptablePageFromDBAsync();
+        System.Threading.Tasks.Task<SpyAdminApplication.ServiceReference1.AcceptablePage[]> GetAcceptablePageFromDBAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetAcceptablePageForGroupFromDB", ReplyAction="http://tempuri.org/IClientService/GetAcceptablePageForGroupFromDBResponse")]
-        SpyClientLibrary.ServiceReference.AcceptablePage[] GetAcceptablePageForGroupFromDB(int GroupId);
+        SpyAdminApplication.ServiceReference1.AcceptablePage[] GetAcceptablePageForGroupFromDB(int GroupId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetAcceptablePageForGroupFromDB", ReplyAction="http://tempuri.org/IClientService/GetAcceptablePageForGroupFromDBResponse")]
-        System.Threading.Tasks.Task<SpyClientLibrary.ServiceReference.AcceptablePage[]> GetAcceptablePageForGroupFromDBAsync(int GroupId);
+        System.Threading.Tasks.Task<SpyAdminApplication.ServiceReference1.AcceptablePage[]> GetAcceptablePageForGroupFromDBAsync(int GroupId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IClientServiceChannel : SpyClientLibrary.ServiceReference.IClientService, System.ServiceModel.IClientChannel {
+    public interface IClientServiceChannel : SpyAdminApplication.ServiceReference1.IClientService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ClientServiceClient : System.ServiceModel.ClientBase<SpyClientLibrary.ServiceReference.IClientService>, SpyClientLibrary.ServiceReference.IClientService {
+    public partial class ClientServiceClient : System.ServiceModel.ClientBase<SpyAdminApplication.ServiceReference1.IClientService>, SpyAdminApplication.ServiceReference1.IClientService {
         
         public ClientServiceClient() {
         }
@@ -1460,11 +1460,11 @@ namespace SpyClientLibrary.ServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public bool SaveScreenShotToDB(SpyClientLibrary.ServiceReference.ClientRequest request) {
+        public bool SaveScreenShotToDB(SpyAdminApplication.ServiceReference1.ClientRequest request) {
             return base.Channel.SaveScreenShotToDB(request);
         }
         
-        public System.Threading.Tasks.Task<bool> SaveScreenShotToDBAsync(SpyClientLibrary.ServiceReference.ClientRequest request) {
+        public System.Threading.Tasks.Task<bool> SaveScreenShotToDBAsync(SpyAdminApplication.ServiceReference1.ClientRequest request) {
             return base.Channel.SaveScreenShotToDBAsync(request);
         }
         
@@ -1476,27 +1476,27 @@ namespace SpyClientLibrary.ServiceReference {
             return base.Channel.GetScreenFromDBAsync();
         }
         
-        public SpyClientLibrary.ServiceReference.AcceptablePagesGroup[] GetPagesGroupFromDB() {
+        public SpyAdminApplication.ServiceReference1.AcceptablePagesGroup[] GetPagesGroupFromDB() {
             return base.Channel.GetPagesGroupFromDB();
         }
         
-        public System.Threading.Tasks.Task<SpyClientLibrary.ServiceReference.AcceptablePagesGroup[]> GetPagesGroupFromDBAsync() {
+        public System.Threading.Tasks.Task<SpyAdminApplication.ServiceReference1.AcceptablePagesGroup[]> GetPagesGroupFromDBAsync() {
             return base.Channel.GetPagesGroupFromDBAsync();
         }
         
-        public SpyClientLibrary.ServiceReference.AcceptablePage[] GetAcceptablePageFromDB() {
+        public SpyAdminApplication.ServiceReference1.AcceptablePage[] GetAcceptablePageFromDB() {
             return base.Channel.GetAcceptablePageFromDB();
         }
         
-        public System.Threading.Tasks.Task<SpyClientLibrary.ServiceReference.AcceptablePage[]> GetAcceptablePageFromDBAsync() {
+        public System.Threading.Tasks.Task<SpyAdminApplication.ServiceReference1.AcceptablePage[]> GetAcceptablePageFromDBAsync() {
             return base.Channel.GetAcceptablePageFromDBAsync();
         }
         
-        public SpyClientLibrary.ServiceReference.AcceptablePage[] GetAcceptablePageForGroupFromDB(int GroupId) {
+        public SpyAdminApplication.ServiceReference1.AcceptablePage[] GetAcceptablePageForGroupFromDB(int GroupId) {
             return base.Channel.GetAcceptablePageForGroupFromDB(GroupId);
         }
         
-        public System.Threading.Tasks.Task<SpyClientLibrary.ServiceReference.AcceptablePage[]> GetAcceptablePageForGroupFromDBAsync(int GroupId) {
+        public System.Threading.Tasks.Task<SpyAdminApplication.ServiceReference1.AcceptablePage[]> GetAcceptablePageForGroupFromDBAsync(int GroupId) {
             return base.Channel.GetAcceptablePageForGroupFromDBAsync(GroupId);
         }
     }

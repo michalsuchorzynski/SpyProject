@@ -15,6 +15,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpyClientLibrary", "SpyClie
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpyWcfService", "SpyWcfService\SpyWcfService.csproj", "{93E29D87-14C1-4FE0-AFFE-FE105778FE4E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpyAdminApplication", "SpyAdminApplication\SpyAdminApplication.csproj", "{ABAFADAF-F315-4A93-8F6E-6DAC57F89D69}"
+	ProjectSection(ProjectDependencies) = postProject
+		{93E29D87-14C1-4FE0-AFFE-FE105778FE4E} = {93E29D87-14C1-4FE0-AFFE-FE105778FE4E}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +38,10 @@ Global
 		{93E29D87-14C1-4FE0-AFFE-FE105778FE4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93E29D87-14C1-4FE0-AFFE-FE105778FE4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93E29D87-14C1-4FE0-AFFE-FE105778FE4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABAFADAF-F315-4A93-8F6E-6DAC57F89D69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABAFADAF-F315-4A93-8F6E-6DAC57F89D69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABAFADAF-F315-4A93-8F6E-6DAC57F89D69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABAFADAF-F315-4A93-8F6E-6DAC57F89D69}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

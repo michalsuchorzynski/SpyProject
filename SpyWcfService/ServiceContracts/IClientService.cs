@@ -16,6 +16,10 @@ namespace SpyWcfService.ServiceContracts
         [OperationContract]
         byte[] GetScreenFromDB();
         [OperationContract]
-        List<AcceptablePage> GetAcceptablePageFromDB(int GroupId);
+        List<AcceptablePagesGroup> GetPagesGroupFromDB();
+        [OperationContract]
+        List<AcceptablePage> GetAcceptablePageFromDB();
+        [OperationContract]
+        List<AcceptablePage> GetAcceptablePageForGroupFromDB(int GroupId);
     }
 }

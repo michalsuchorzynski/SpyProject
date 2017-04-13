@@ -187,7 +187,7 @@ namespace SpyClientLibrary
         {
             using (ClientServiceClient client = new ClientServiceClient())
             {
-                var pagelist = client.GetAcceptablePageFromDB(examSesionId);
+                var pagelist = client.GetAcceptablePageForGroupFromDB(examSesionId);
                 for(int i=0;i<pagelist.Count();i++)
                 {
                     _acceptablePages.Add(GetDomainNameFromURL(pagelist[i].Url));

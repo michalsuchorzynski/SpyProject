@@ -1,36 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/SpyWcfService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/SpyWcfService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="ArrayOfAcceptablePage">
+  <xs:complexType name="ArrayOfAcceptablePagesGroup">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="AcceptablePage" nillable="true" type="tns:AcceptablePage" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AcceptablePagesGroup" nillable="true" type="tns:AcceptablePagesGroup" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfAcceptablePage" nillable="true" type="tns:ArrayOfAcceptablePage" />
-  <xs:complexType name="AcceptablePage">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="AcceptablePageId" type="xs:int" />
-      <xs:element minOccurs="0" name="HeadKeyWords" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="PagesForGroups" nillable="true" type="tns:ArrayOfPagesForGroup" />
-      <xs:element minOccurs="0" name="Url" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="AcceptablePage" nillable="true" type="tns:AcceptablePage" />
-  <xs:complexType name="ArrayOfPagesForGroup">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="PagesForGroup" nillable="true" type="tns:PagesForGroup" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfPagesForGroup" nillable="true" type="tns:ArrayOfPagesForGroup" />
-  <xs:complexType name="PagesForGroup">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="AcceptablePage" nillable="true" type="tns:AcceptablePage" />
-      <xs:element minOccurs="0" name="AcceptablePageId" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="AcceptablePagesGroup" nillable="true" type="tns:AcceptablePagesGroup" />
-      <xs:element minOccurs="0" name="AcceptablePagesGroupId" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="PagesForGroupId" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="PagesForGroup" nillable="true" type="tns:PagesForGroup" />
+  <xs:element name="ArrayOfAcceptablePagesGroup" nillable="true" type="tns:ArrayOfAcceptablePagesGroup" />
   <xs:complexType name="AcceptablePagesGroup">
     <xs:sequence>
       <xs:element minOccurs="0" name="AcceptablePagesGroupId" type="xs:int" />
@@ -161,4 +136,35 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ScreenShot" nillable="true" type="tns:ScreenShot" />
+  <xs:complexType name="ArrayOfPagesForGroup">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PagesForGroup" nillable="true" type="tns:PagesForGroup" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPagesForGroup" nillable="true" type="tns:ArrayOfPagesForGroup" />
+  <xs:complexType name="PagesForGroup">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AcceptablePage" nillable="true" type="tns:AcceptablePage" />
+      <xs:element minOccurs="0" name="AcceptablePageId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="AcceptablePagesGroup" nillable="true" type="tns:AcceptablePagesGroup" />
+      <xs:element minOccurs="0" name="AcceptablePagesGroupId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PagesForGroupId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PagesForGroup" nillable="true" type="tns:PagesForGroup" />
+  <xs:complexType name="AcceptablePage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AcceptablePageId" type="xs:int" />
+      <xs:element minOccurs="0" name="HeadKeyWords" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PagesForGroups" nillable="true" type="tns:ArrayOfPagesForGroup" />
+      <xs:element minOccurs="0" name="Url" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AcceptablePage" nillable="true" type="tns:AcceptablePage" />
+  <xs:complexType name="ArrayOfAcceptablePage">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AcceptablePage" nillable="true" type="tns:AcceptablePage" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAcceptablePage" nillable="true" type="tns:ArrayOfAcceptablePage" />
 </xs:schema>

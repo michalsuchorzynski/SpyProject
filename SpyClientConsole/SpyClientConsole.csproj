@@ -60,15 +60,14 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Properties\DataSources\SpyClientLibrary.ServiceReference.AcceptablePage.datasource" />
+    <None Include="Properties\DataSources\SpyClientLibrary.ServiceReference.AcceptablePagesGroup.datasource" />
     <None Include="Service References\ServiceReference\service.wsdl" />
     <None Include="Service References\ServiceReference\service.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ServiceReference\service1.xsd">
       <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ServiceReference\SpyClientConsole.ServiceReference.AcceptablePage.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ServiceReference\SpyWcfService.Messages.xsd">
       <SubType>Designer</SubType>
