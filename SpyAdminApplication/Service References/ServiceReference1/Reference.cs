@@ -1427,10 +1427,46 @@ namespace SpyAdminApplication.ServiceReference1 {
         System.Threading.Tasks.Task<SpyAdminApplication.ServiceReference1.AcceptablePage[]> GetAcceptablePageFromDBAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetAcceptablePageForGroupFromDB", ReplyAction="http://tempuri.org/IClientService/GetAcceptablePageForGroupFromDBResponse")]
-        SpyAdminApplication.ServiceReference1.AcceptablePage[] GetAcceptablePageForGroupFromDB(int GroupId);
+        SpyAdminApplication.ServiceReference1.AcceptablePage[] GetAcceptablePageForGroupFromDB(int groupId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetAcceptablePageForGroupFromDB", ReplyAction="http://tempuri.org/IClientService/GetAcceptablePageForGroupFromDBResponse")]
-        System.Threading.Tasks.Task<SpyAdminApplication.ServiceReference1.AcceptablePage[]> GetAcceptablePageForGroupFromDBAsync(int GroupId);
+        System.Threading.Tasks.Task<SpyAdminApplication.ServiceReference1.AcceptablePage[]> GetAcceptablePageForGroupFromDBAsync(int groupId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/AddPagesGroup", ReplyAction="http://tempuri.org/IClientService/AddPagesGroupResponse")]
+        bool AddPagesGroup(SpyAdminApplication.ServiceReference1.AcceptablePagesGroup group);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/AddPagesGroup", ReplyAction="http://tempuri.org/IClientService/AddPagesGroupResponse")]
+        System.Threading.Tasks.Task<bool> AddPagesGroupAsync(SpyAdminApplication.ServiceReference1.AcceptablePagesGroup group);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/AddAcceptablePage", ReplyAction="http://tempuri.org/IClientService/AddAcceptablePageResponse")]
+        bool AddAcceptablePage(SpyAdminApplication.ServiceReference1.AcceptablePage page);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/AddAcceptablePage", ReplyAction="http://tempuri.org/IClientService/AddAcceptablePageResponse")]
+        System.Threading.Tasks.Task<bool> AddAcceptablePageAsync(SpyAdminApplication.ServiceReference1.AcceptablePage page);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/AddAcceptablePageForGroup", ReplyAction="http://tempuri.org/IClientService/AddAcceptablePageForGroupResponse")]
+        bool AddAcceptablePageForGroup(SpyAdminApplication.ServiceReference1.AcceptablePage page, SpyAdminApplication.ServiceReference1.AcceptablePagesGroup group);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/AddAcceptablePageForGroup", ReplyAction="http://tempuri.org/IClientService/AddAcceptablePageForGroupResponse")]
+        System.Threading.Tasks.Task<bool> AddAcceptablePageForGroupAsync(SpyAdminApplication.ServiceReference1.AcceptablePage page, SpyAdminApplication.ServiceReference1.AcceptablePagesGroup group);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/DeletePagesGroup", ReplyAction="http://tempuri.org/IClientService/DeletePagesGroupResponse")]
+        bool DeletePagesGroup(SpyAdminApplication.ServiceReference1.AcceptablePagesGroup group);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/DeletePagesGroup", ReplyAction="http://tempuri.org/IClientService/DeletePagesGroupResponse")]
+        System.Threading.Tasks.Task<bool> DeletePagesGroupAsync(SpyAdminApplication.ServiceReference1.AcceptablePagesGroup group);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/DeleteAcceptablePage", ReplyAction="http://tempuri.org/IClientService/DeleteAcceptablePageResponse")]
+        bool DeleteAcceptablePage(SpyAdminApplication.ServiceReference1.AcceptablePage page);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/DeleteAcceptablePage", ReplyAction="http://tempuri.org/IClientService/DeleteAcceptablePageResponse")]
+        System.Threading.Tasks.Task<bool> DeleteAcceptablePageAsync(SpyAdminApplication.ServiceReference1.AcceptablePage page);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/DeleteAcceptablePageForGroup", ReplyAction="http://tempuri.org/IClientService/DeleteAcceptablePageForGroupResponse")]
+        bool DeleteAcceptablePageForGroup(SpyAdminApplication.ServiceReference1.AcceptablePage page, SpyAdminApplication.ServiceReference1.AcceptablePagesGroup group);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/DeleteAcceptablePageForGroup", ReplyAction="http://tempuri.org/IClientService/DeleteAcceptablePageForGroupResponse")]
+        System.Threading.Tasks.Task<bool> DeleteAcceptablePageForGroupAsync(SpyAdminApplication.ServiceReference1.AcceptablePage page, SpyAdminApplication.ServiceReference1.AcceptablePagesGroup group);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1492,12 +1528,60 @@ namespace SpyAdminApplication.ServiceReference1 {
             return base.Channel.GetAcceptablePageFromDBAsync();
         }
         
-        public SpyAdminApplication.ServiceReference1.AcceptablePage[] GetAcceptablePageForGroupFromDB(int GroupId) {
-            return base.Channel.GetAcceptablePageForGroupFromDB(GroupId);
+        public SpyAdminApplication.ServiceReference1.AcceptablePage[] GetAcceptablePageForGroupFromDB(int groupId) {
+            return base.Channel.GetAcceptablePageForGroupFromDB(groupId);
         }
         
-        public System.Threading.Tasks.Task<SpyAdminApplication.ServiceReference1.AcceptablePage[]> GetAcceptablePageForGroupFromDBAsync(int GroupId) {
-            return base.Channel.GetAcceptablePageForGroupFromDBAsync(GroupId);
+        public System.Threading.Tasks.Task<SpyAdminApplication.ServiceReference1.AcceptablePage[]> GetAcceptablePageForGroupFromDBAsync(int groupId) {
+            return base.Channel.GetAcceptablePageForGroupFromDBAsync(groupId);
+        }
+        
+        public bool AddPagesGroup(SpyAdminApplication.ServiceReference1.AcceptablePagesGroup group) {
+            return base.Channel.AddPagesGroup(group);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AddPagesGroupAsync(SpyAdminApplication.ServiceReference1.AcceptablePagesGroup group) {
+            return base.Channel.AddPagesGroupAsync(group);
+        }
+        
+        public bool AddAcceptablePage(SpyAdminApplication.ServiceReference1.AcceptablePage page) {
+            return base.Channel.AddAcceptablePage(page);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AddAcceptablePageAsync(SpyAdminApplication.ServiceReference1.AcceptablePage page) {
+            return base.Channel.AddAcceptablePageAsync(page);
+        }
+        
+        public bool AddAcceptablePageForGroup(SpyAdminApplication.ServiceReference1.AcceptablePage page, SpyAdminApplication.ServiceReference1.AcceptablePagesGroup group) {
+            return base.Channel.AddAcceptablePageForGroup(page, group);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AddAcceptablePageForGroupAsync(SpyAdminApplication.ServiceReference1.AcceptablePage page, SpyAdminApplication.ServiceReference1.AcceptablePagesGroup group) {
+            return base.Channel.AddAcceptablePageForGroupAsync(page, group);
+        }
+        
+        public bool DeletePagesGroup(SpyAdminApplication.ServiceReference1.AcceptablePagesGroup group) {
+            return base.Channel.DeletePagesGroup(group);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeletePagesGroupAsync(SpyAdminApplication.ServiceReference1.AcceptablePagesGroup group) {
+            return base.Channel.DeletePagesGroupAsync(group);
+        }
+        
+        public bool DeleteAcceptablePage(SpyAdminApplication.ServiceReference1.AcceptablePage page) {
+            return base.Channel.DeleteAcceptablePage(page);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteAcceptablePageAsync(SpyAdminApplication.ServiceReference1.AcceptablePage page) {
+            return base.Channel.DeleteAcceptablePageAsync(page);
+        }
+        
+        public bool DeleteAcceptablePageForGroup(SpyAdminApplication.ServiceReference1.AcceptablePage page, SpyAdminApplication.ServiceReference1.AcceptablePagesGroup group) {
+            return base.Channel.DeleteAcceptablePageForGroup(page, group);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteAcceptablePageForGroupAsync(SpyAdminApplication.ServiceReference1.AcceptablePage page, SpyAdminApplication.ServiceReference1.AcceptablePagesGroup group) {
+            return base.Channel.DeleteAcceptablePageForGroupAsync(page, group);
         }
     }
 }

@@ -20,46 +20,58 @@
             <Grid Background="Black">                
             </Grid>
             <Grid Grid.Row="2" Background="Black">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
                 <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*" />
-                        <RowDefinition Height="50" />
-                        <RowDefinition Height="1*" />
-                        <RowDefinition Height="50" />
-                    </Grid.RowDefinitions>
-                    <ListBox x:Name="listBoxGroups" Margin="20,20,20,20" />
-                    <Grid Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1*"/>
-                        </Grid.ColumnDefinitions>
-                        <Button x:Name="buttonGroupAdd" Content="Dodaj" Margin="40,0,20,0"></Button>
-                        <Button x:Name="buttonGroupDelete" Content="Usuń" Margin="20,0,40,0" Grid.Column="1"></Button>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="50" />
+                        </Grid.RowDefinitions>
+                        <ListBox x:Name="listBoxGroups" Margin="20,20,20,20" SelectionChanged="listBoxGroups_SelectionChanged" />
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="buttonGroupAdd" Content="Dodaj" Margin="40,0,20,0" Click="buttonGroupAdd_Click"></Button>
+                            <Button x:Name="buttonGroupDelete" Content="Usuń" Margin="20,0,40,0" Grid.Column="1" Click="buttonGroupDelete_Click"></Button>
+                        </Grid>
+                        <ListBox x:Name="listBoxPagesForGroup" Grid.Row="2" Margin="20,20,20,20" SelectionChanged="listBoxPagesForGroup_SelectionChanged"/>
+                        <Grid Grid.Row="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="buttonPagesForGroupAdd" Content="Dodaj" IsEnabled="False" Margin="40,0,20,0"  Click="buttonPagesForGroupAdd_Click"></Button>
+                            <Button x:Name="buttonPagesForGroupDelete" Content="Usuń" IsEnabled="False" Margin="20,0,40,0" Grid.Column="1" Click="buttonPagesForGroupDelete_Click"></Button>
+                        </Grid>
+                    
                     </Grid>
-                    <ListBox x:Name="listBoxPagesForGroup" Grid.Row="2" Margin="20,20,20,20" />
-                    <Button x:Name="buttonPagesForGroupDelete" Content="Usuń" Margin="40,0,40,0" Grid.Row="3"></Button>
-                </Grid>
-                <Grid Grid.Column="1">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*" />
-                        <RowDefinition Height="50" />
-                    </Grid.RowDefinitions>
-                    <ListBox x:Name="listBoxPages" Margin="20,20,20,20" />
-                    <Grid Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1*"/>
-                        </Grid.ColumnDefinitions>
-                        <Button Name ="buttonPagesAdd" Content="Dodaj" Margin="40,0,20,0"></Button>
-                        <Button x:Name="buttonPagesDelete" Content="Usuń" Margin="20,0,40,0" Grid.Column="1"></Button>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="50" />
+                        </Grid.RowDefinitions>
+                        <ListBox x:Name="listBoxPages" Margin="20,20,20,20" SelectionChanged="listBoxPages_SelectionChanged" />
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name ="buttonPagesAdd" Content="Dodaj" Margin="40,0,20,0" Click="buttonPagesAdd_Click"></Button>
+                            <Button x:Name="buttonPagesDelete" Content="Usuń" Margin="20,0,40,0" Grid.Column="1" Click="buttonPagesDelete_Click"></Button>
+                        </Grid>
                     </Grid>
                 </Grid>
             </Grid>
-           
         </Grid>
 
 

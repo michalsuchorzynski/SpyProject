@@ -15,11 +15,33 @@ namespace SpyWcfService.ServiceContracts
         bool SaveScreenShotToDB(ClientRequest request);
         [OperationContract]
         byte[] GetScreenFromDB();
+
+        #region GetFromDB
         [OperationContract]
         List<AcceptablePagesGroup> GetPagesGroupFromDB();
         [OperationContract]
         List<AcceptablePage> GetAcceptablePageFromDB();
         [OperationContract]
-        List<AcceptablePage> GetAcceptablePageForGroupFromDB(int GroupId);
+        List<AcceptablePage> GetAcceptablePageForGroupFromDB(int groupId);
+        [OperationContract]
+        #endregion
+
+
+        #region UpdateToDb
+        bool AddPagesGroup(AcceptablePagesGroup group);
+        [OperationContract]
+        bool AddAcceptablePage(AcceptablePage page);
+        [OperationContract]
+        bool AddAcceptablePageForGroup(AcceptablePage page, AcceptablePagesGroup group);
+        #endregion
+
+        #region DeleteFromDB
+        [OperationContract]
+        bool DeletePagesGroup(AcceptablePagesGroup group);
+        [OperationContract]
+        bool DeleteAcceptablePage(AcceptablePage page);
+        [OperationContract]
+        bool DeleteAcceptablePageForGroup(AcceptablePage page, AcceptablePagesGroup group);
+        #endregion
     }
 }

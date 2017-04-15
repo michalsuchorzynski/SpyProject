@@ -68,7 +68,7 @@ namespace SpyClientLibrary
                 {                    
                     _firefoxProcess.Add(p);
                     if(_openedPages.IndexOf(url)==-1)
-                    _openedPages.Add(url);                    
+                    _openedPages.Add(GetDomainNameFromURL(url));                    
                 }
             }
 

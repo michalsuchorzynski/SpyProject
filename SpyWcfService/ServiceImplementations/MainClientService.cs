@@ -42,7 +42,9 @@ namespace SpyWcfService.ServiceImplementations
             }
             return true;
         }
-
+        
+        
+        #region GetFromDB
         public List<AcceptablePagesGroup> GetPagesGroupFromDB()
         {
             List<AcceptablePagesGroup> list = new List<AcceptablePagesGroup>();
@@ -54,7 +56,7 @@ namespace SpyWcfService.ServiceImplementations
                     Name = group.Name
                     
                 });
-            }            
+            }
             return list;
         }
         public List<AcceptablePage> GetAcceptablePageFromDB()
@@ -88,5 +90,60 @@ namespace SpyWcfService.ServiceImplementations
             }
             return list;            
         }
+        #endregion
+
+        #region AddFromDB
+        public bool AddPagesGroup(AcceptablePagesGroup group)
+        {
+            context.AcceptablePagesGroups.Add(group);
+            context.SaveChanges();
+            return true;
+        }
+        public bool AddAcceptablePage(AcceptablePage page)
+        {
+            context.AcceptablePages.Add(page);
+            context.SaveChanges();
+            return true;
+        }
+        public bool AddAcceptablePageForGroup(AcceptablePage page, AcceptablePagesGroup group)
+        {
+            PagesForGroup pagegroup = new PagesForGroup()
+            {
+                AcceptablePageId = page.AcceptablePageId,
+                AcceptablePagesGroupId = group.AcceptablePagesGroupId,
+            };
+            context.PagesForGroups.Add(pagegroup);
+            context.SaveChanges();
+            return true;
+        }
+        #endregion
+
+        #region DeleteFromDB
+        public bool DeletePagesGroup(AcceptablePagesGroup group)
+        {
+            var toDelete = context.AcceptablePagesGroups.FirstOrDefault(x => x.AcceptablePagesGroupId == group.AcceptablePagesGroupId);
+            foreach (PagesForGroup pageingroup in context.PagesForGroups.Where(x => x.AcceptablePagesGroupId == toDelete.AcceptablePagesGroupId))
+                context.PagesForGroups.Remove(pageingroup);
+            context.AcceptablePagesGroups.Remove(toDelete);
+            context.SaveChanges();
+            return true;
+        }
+        public bool DeleteAcceptablePage(AcceptablePage page)
+        {
+            var toDelete = context.AcceptablePages.FirstOrDefault(x => x.AcceptablePageId == page.AcceptablePageId);
+            foreach (PagesForGroup pageingroup in context.PagesForGroups.Where(x => x.AcceptablePageId == toDelete.AcceptablePageId))
+                context.PagesForGroups.Remove(pageingroup);
+            context.AcceptablePages.Remove(toDelete);
+            context.SaveChanges();
+            return true;
+        }
+        public bool DeleteAcceptablePageForGroup(AcceptablePage page, AcceptablePagesGroup group)
+        {
+            var toDelete = context.PagesForGroups.FirstOrDefault(x => x.AcceptablePageId == page.AcceptablePageId && x.AcceptablePagesGroupId == group.AcceptablePagesGroupId);
+            context.PagesForGroups.Remove(toDelete);
+            context.SaveChanges();
+            return true;
+        }
+        #endregion
     }
 }
