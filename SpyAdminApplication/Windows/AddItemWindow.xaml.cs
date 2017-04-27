@@ -22,6 +22,7 @@ namespace SpyAdminApplication.Windows
     public partial class AddItemWindow : Window
     {
         private AcceptablePagesPage sourcePage;
+        private WorkstatationsPage sourceWorkstationPage;
         private AddWindowType type;
         private ListBox target;
 
@@ -33,6 +34,17 @@ namespace SpyAdminApplication.Windows
             GenerateContent();
         }
         public AddItemWindow(AcceptablePagesPage sourcePage, AddWindowType type, ListBox target) : this(sourcePage, type)
+        {
+            this.target = target;
+        }
+        public AddItemWindow(WorkstatationsPage sourcePage, AddWindowType type)
+        {
+            this.type = type;
+            this.sourceWorkstationPage = sourcePage;
+            InitializeComponent();
+            GenerateContent();
+        }
+        public AddItemWindow(WorkstatationsPage sourcePage, AddWindowType type, ListBox target) : this(sourcePage, type)
         {
             this.target = target;
         }
@@ -91,6 +103,21 @@ namespace SpyAdminApplication.Windows
                         });
                         sourcePage._pagescontrol.GenerateAcceptablePagesGroups(client, this.target);
                         break;
+                    case AddWindowType.AddWorkstation:
+                        client.AddWorkstation(new WorkStation()
+                        {
+                            IP = this.textboxField1.Text,
+                        });
+                        sourceWorkstationPage._workstationscontrol.GenerateAcceptableworkstations(client, this.target);
+                        break;
+                    case AddWindowType.AddWorkstationGroup:
+                        client.AddWorkstationsGroup(new WorkStationsGroup()
+                        {
+                            Name = this.textboxField1.Text
+                        });
+                        sourceWorkstationPage._workstationscontrol.GenerateAcceptableworkstationsGroups(client, this.target);
+                        break;
+
                     default:
                         break;
                 }
@@ -106,7 +133,9 @@ namespace SpyAdminApplication.Windows
     public enum AddWindowType
     {
         AddPage,
-        AddGroup
+        AddGroup,
+        AddWorkstation,
+        AddWorkstationGroup
         
     } 
 }

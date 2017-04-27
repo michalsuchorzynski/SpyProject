@@ -57,11 +57,23 @@ namespace SpyClientConsole.ServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetAcceptablePageForGroupFromDB", ReplyAction="http://tempuri.org/IClientService/GetAcceptablePageForGroupFromDBResponse")]
         System.Threading.Tasks.Task<SpyClientLibrary.ServiceReference.AcceptablePage[]> GetAcceptablePageForGroupFromDBAsync(int groupId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/AddPagesGroup", ReplyAction="http://tempuri.org/IClientService/AddPagesGroupResponse")]
-        bool AddPagesGroup(SpyClientLibrary.ServiceReference.AcceptablePagesGroup group);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetWorkstationsGroupFromDB", ReplyAction="http://tempuri.org/IClientService/GetWorkstationsGroupFromDBResponse")]
+        SpyClientLibrary.ServiceReference.WorkStationsGroup[] GetWorkstationsGroupFromDB();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/AddPagesGroup", ReplyAction="http://tempuri.org/IClientService/AddPagesGroupResponse")]
-        System.Threading.Tasks.Task<bool> AddPagesGroupAsync(SpyClientLibrary.ServiceReference.AcceptablePagesGroup group);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetWorkstationsGroupFromDB", ReplyAction="http://tempuri.org/IClientService/GetWorkstationsGroupFromDBResponse")]
+        System.Threading.Tasks.Task<SpyClientLibrary.ServiceReference.WorkStationsGroup[]> GetWorkstationsGroupFromDBAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetWorkstationsFromDB", ReplyAction="http://tempuri.org/IClientService/GetWorkstationsFromDBResponse")]
+        SpyClientLibrary.ServiceReference.WorkStation[] GetWorkstationsFromDB();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetWorkstationsFromDB", ReplyAction="http://tempuri.org/IClientService/GetWorkstationsFromDBResponse")]
+        System.Threading.Tasks.Task<SpyClientLibrary.ServiceReference.WorkStation[]> GetWorkstationsFromDBAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetWorkstationsForGroupFromDB", ReplyAction="http://tempuri.org/IClientService/GetWorkstationsForGroupFromDBResponse")]
+        SpyClientLibrary.ServiceReference.WorkStation[] GetWorkstationsForGroupFromDB(int groupId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetWorkstationsForGroupFromDB", ReplyAction="http://tempuri.org/IClientService/GetWorkstationsForGroupFromDBResponse")]
+        System.Threading.Tasks.Task<SpyClientLibrary.ServiceReference.WorkStation[]> GetWorkstationsForGroupFromDBAsync(int groupId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/AddAcceptablePage", ReplyAction="http://tempuri.org/IClientService/AddAcceptablePageResponse")]
         bool AddAcceptablePage(SpyClientLibrary.ServiceReference.AcceptablePage page);
@@ -177,12 +189,28 @@ namespace SpyClientConsole.ServiceReference {
             return base.Channel.GetAcceptablePageForGroupFromDBAsync(groupId);
         }
         
-        public bool AddPagesGroup(SpyClientLibrary.ServiceReference.AcceptablePagesGroup group) {
-            return base.Channel.AddPagesGroup(group);
+        public SpyClientLibrary.ServiceReference.WorkStationsGroup[] GetWorkstationsGroupFromDB() {
+            return base.Channel.GetWorkstationsGroupFromDB();
         }
         
-        public System.Threading.Tasks.Task<bool> AddPagesGroupAsync(SpyClientLibrary.ServiceReference.AcceptablePagesGroup group) {
-            return base.Channel.AddPagesGroupAsync(group);
+        public System.Threading.Tasks.Task<SpyClientLibrary.ServiceReference.WorkStationsGroup[]> GetWorkstationsGroupFromDBAsync() {
+            return base.Channel.GetWorkstationsGroupFromDBAsync();
+        }
+        
+        public SpyClientLibrary.ServiceReference.WorkStation[] GetWorkstationsFromDB() {
+            return base.Channel.GetWorkstationsFromDB();
+        }
+        
+        public System.Threading.Tasks.Task<SpyClientLibrary.ServiceReference.WorkStation[]> GetWorkstationsFromDBAsync() {
+            return base.Channel.GetWorkstationsFromDBAsync();
+        }
+        
+        public SpyClientLibrary.ServiceReference.WorkStation[] GetWorkstationsForGroupFromDB(int groupId) {
+            return base.Channel.GetWorkstationsForGroupFromDB(groupId);
+        }
+        
+        public System.Threading.Tasks.Task<SpyClientLibrary.ServiceReference.WorkStation[]> GetWorkstationsForGroupFromDBAsync(int groupId) {
+            return base.Channel.GetWorkstationsForGroupFromDBAsync(groupId);
         }
         
         public bool AddAcceptablePage(SpyClientLibrary.ServiceReference.AcceptablePage page) {

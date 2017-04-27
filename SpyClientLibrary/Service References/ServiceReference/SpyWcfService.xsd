@@ -167,4 +167,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfAcceptablePage" nillable="true" type="tns:ArrayOfAcceptablePage" />
+  <xs:complexType name="ArrayOfWorkStationsGroup">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="WorkStationsGroup" nillable="true" type="tns:WorkStationsGroup" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfWorkStationsGroup" nillable="true" type="tns:ArrayOfWorkStationsGroup" />
 </xs:schema>

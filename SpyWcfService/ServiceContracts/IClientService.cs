@@ -29,15 +29,26 @@ namespace SpyWcfService.ServiceContracts
         [OperationContract]
         List<AcceptablePage> GetAcceptablePageForGroupFromDB(int groupId);
         [OperationContract]
+        List<WorkStationsGroup> GetWorkstationsGroupFromDB();
+        [OperationContract]
+        List<WorkStation> GetWorkstationsFromDB();
+        [OperationContract]
+        List<WorkStation> GetWorkstationsForGroupFromDB(int groupId);
         #endregion
 
-
         #region UpdateToDb
+        [OperationContract]
         bool AddPagesGroup(AcceptablePagesGroup group);
         [OperationContract]
         bool AddAcceptablePage(AcceptablePage page);
         [OperationContract]
         bool AddAcceptablePageForGroup(AcceptablePage page, AcceptablePagesGroup group);
+        [OperationContract]
+        bool AddWorkstationsGroup(WorkStationsGroup group);
+        [OperationContract]
+        bool AddWorkstation(WorkStation workstation);
+        [OperationContract]
+        bool AddWorkstationForGroup(WorkStation workstation, WorkStationsGroup group);
         #endregion
 
         #region DeleteFromDB
@@ -47,6 +58,12 @@ namespace SpyWcfService.ServiceContracts
         bool DeleteAcceptablePage(AcceptablePage page);
         [OperationContract]
         bool DeleteAcceptablePageForGroup(AcceptablePage page, AcceptablePagesGroup group);
+        [OperationContract]
+        bool DeleteWorkstationGroup(WorkStationsGroup group);
+        [OperationContract]
+        bool DeleteWorkstation(WorkStation workstation);
+        [OperationContract]
+        bool DeleteWorkstationsForGroup(WorkStation workstation, WorkStationsGroup group);
         #endregion
     }
 }

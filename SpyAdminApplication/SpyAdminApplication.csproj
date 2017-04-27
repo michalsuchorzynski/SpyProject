@@ -58,12 +58,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AcceptablePages\AcceptablePagesControl.cs" />
+    <Compile Include="Control\AcceptablePagesControl.cs" />
+    <Compile Include="Control\WorkstationsControl.cs" />
     <Compile Include="Pages\AcceptablePagesPage.xaml.cs">
       <DependentUpon>AcceptablePagesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\OneScreenShotPage.xaml.cs">
       <DependentUpon>OneScreenShotPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\WorkstatationsPage.xaml.cs">
+      <DependentUpon>WorkstatationsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Service References\ServiceReference1\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -90,6 +94,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\OneScreenShotPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\WorkstatationsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -132,6 +140,12 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ServiceReference1\SpyAdminApplication.ServiceReference1.AcceptablePagesGroup.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\SpyAdminApplication.ServiceReference1.WorkStation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\SpyAdminApplication.ServiceReference1.WorkStationsGroup.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ServiceReference1\SpyWcfService.Messages.xsd">

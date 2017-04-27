@@ -99,6 +99,50 @@ namespace SpyWcfService.ServiceImplementations
             }
             return list;            
         }
+
+        public List<WorkStationsGroup> GetWorkstationsGroupFromDB()
+        {
+            List<WorkStationsGroup> list = new List<WorkStationsGroup>();
+            foreach (WorkStationsGroup group in context.WorkStationsGroups)
+            {
+                list.Add(new WorkStationsGroup()
+                {
+                    WorkStationsGroupId = group.WorkStationsGroupId,
+                    Name = group.Name
+
+                });
+            }
+            return list;
+        }
+        public List<WorkStation> GetWorkstationsFromDB()
+        {
+            List<WorkStation> list = new List<WorkStation>();
+            foreach (WorkStation workStation in context.WorkStations)
+            {
+                list.Add(new WorkStation()
+                {
+                    WorkStationId = workStation.WorkStationId,
+                    IP = workStation.IP,
+                });
+            }
+            return list;
+        }
+        public List<WorkStation> GetWorkstationsForGroupFromDB(int GroupId)
+        {
+            List<WorkStation> list = new List<WorkStation>();
+            var query = from gr in context.WorkStationsForGroups
+                        where gr.WorkStationsGroupId == GroupId
+                        select gr.WorkStation;
+            foreach (WorkStation workstation in query.ToList())
+            {
+                list.Add(new WorkStation()
+                {
+                    WorkStationId = workstation.WorkStationId,
+                    IP = workstation.IP,
+                });
+            }
+            return list;
+        }
         #endregion
 
         #region AddFromDB
@@ -125,6 +169,31 @@ namespace SpyWcfService.ServiceImplementations
             context.SaveChanges();
             return true;
         }
+
+        public bool AddWorkstationsGroup(WorkStationsGroup group)
+        {
+            context.WorkStationsGroups.Add(group);
+            context.SaveChanges();
+            return true;
+        }
+        public bool AddWorkstation(WorkStation workstation)
+        {
+            context.WorkStations.Add(workstation);
+            context.SaveChanges();
+            return true;
+        }
+        public bool AddWorkstationForGroup(WorkStation workstation, WorkStationsGroup group)
+        {
+            WorkStationsForGroup workstationgroup = new WorkStationsForGroup()
+            {
+                WorkStationId = workstation.WorkStationId,
+                WorkStationsGroupId = group.WorkStationsGroupId,
+            };
+            context.WorkStationsForGroups.Add(workstationgroup);
+            context.SaveChanges();
+            return true;
+        }
+
         #endregion
 
         #region DeleteFromDB
@@ -153,7 +222,32 @@ namespace SpyWcfService.ServiceImplementations
             context.SaveChanges();
             return true;
         }
-        
+
+        public bool DeleteWorkstationGroup(WorkStationsGroup group)
+        {
+            var toDelete = context.WorkStationsGroups.FirstOrDefault(x => x.WorkStationsGroupId == group.WorkStationsGroupId);
+            foreach (WorkStationsForGroup workstationsingroup in context.WorkStationsForGroups.Where(x => x.WorkStationsGroupId == toDelete.WorkStationsGroupId))
+                context.WorkStationsForGroups.Remove(workstationsingroup);
+            context.WorkStationsGroups.Remove(toDelete);
+            context.SaveChanges();
+            return true;
+        }
+        public bool DeleteWorkstation(WorkStation workstation)
+        {
+            var toDelete = context.WorkStations.FirstOrDefault(x => x.WorkStationId == workstation.WorkStationId);
+            foreach (WorkStationsForGroup workstationingroup in context.WorkStationsForGroups.Where(x => x.WorkStationId == toDelete.WorkStationId))
+                context.WorkStationsForGroups.Remove(workstationingroup);
+            context.WorkStations.Remove(toDelete);
+            context.SaveChanges();
+            return true;
+        }
+        public bool DeleteWorkstationsForGroup(WorkStation workstation, WorkStationsGroup group)
+        {
+            var toDelete = context.WorkStationsForGroups.FirstOrDefault(x => x.WorkStationId == workstation.WorkStationId && x.WorkStationsGroupId == group.WorkStationsGroupId);
+            context.WorkStationsForGroups.Remove(toDelete);
+            context.SaveChanges();
+            return true;
+        }
 
         #endregion
     }

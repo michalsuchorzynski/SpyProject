@@ -35,19 +35,23 @@ namespace SpyAdminApplication
         #region Events
         private void MenuItemStart_Click(object sender, RoutedEventArgs e)
         {
-            GridLengthConverter gridLengthConverter = new GridLengthConverter();
             OneScreenShotPage showedPage = new OneScreenShotPage();
             firstFrame.Navigate(showedPage);
         }
         private void MenuItemPages_Click(object sender, RoutedEventArgs e)
         {
-            GridLengthConverter gridLengthConverter = new GridLengthConverter();
             AcceptablePagesPage app = new AcceptablePagesPage();
             firstFrame.Navigate(app);
         }
 
-        #endregion
+        private void MenuItemWorkstations_Click(object sender, RoutedEventArgs e)
+        {
+            WorkstatationsPage wp = new WorkstatationsPage();
+            firstFrame.Navigate(wp);
+        }
 
+
+        #endregion
 
 
     }

@@ -14,89 +14,90 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SpyAdminApplication.Windows;
 using SpyAdminApplication.ServiceReference1;
-using SpyAdminApplication.Pages;
 
 namespace SpyAdminApplication.Pages
 {
     /// <summary>
-    /// Interaction logic for AcceptablePagesPage.xaml
+    /// Interaction logic for WorkstatationsPage.xaml
     /// </summary>
-    public partial class AcceptablePagesPage : Page
+    public partial class WorkstatationsPage : Page
     {
-        public AcceptablePages.AcceptablePagesControl _pagescontrol;
-        
-        public AcceptablePagesPage()
+        public Control.WorkstationsControl _workstationscontrol;
+
+        public WorkstatationsPage()
         {
             InitializeComponent();
-            _pagescontrol = new AcceptablePages.AcceptablePagesControl();
+            _workstationscontrol = new Control.WorkstationsControl();
             using (ClientServiceClient client = new ClientServiceClient())
             {
-                _pagescontrol.GenereteListBox(client, listBoxPages, listBoxGroups, listBoxPagesForGroup);
+                _workstationscontrol.GenereteListBox(client, listBoxPages, listBoxGroups, listBoxPagesForGroup);
             }
+
         }
         #region Events
         private void buttonPagesForGroupAdd_Click(object sender, RoutedEventArgs e)
         {
-            var selectedgroups = _pagescontrol._acceptablePagesGroups.FirstOrDefault(x => x.Name == ((ListBoxItem)this.listBoxGroups.SelectedItem).Content.ToString());
-            var selectedpage = _pagescontrol._acceptablePages.FirstOrDefault(x => x.Url == ((ListBoxItem)this.listBoxPages.SelectedItem).Content.ToString());
+            var selectedgroups = _workstationscontrol._workstationsGroups.FirstOrDefault(x => x.Name == ((ListBoxItem)this.listBoxGroups.SelectedItem).Content.ToString());
+            var selectedworkstation = _workstationscontrol._workstations.FirstOrDefault(x => x.IP == ((ListBoxItem)this.listBoxPages.SelectedItem).Content.ToString());
             using (ClientServiceClient client = new ClientServiceClient())
             {
-                client.AddAcceptablePageForGroup(selectedpage, selectedgroups);
-                _pagescontrol.GenerateactiveGroupPages(client, listBoxPagesForGroup, selectedgroups.AcceptablePagesGroupId);
+                client.AddWorkstationForGroup(selectedworkstation, selectedgroups);
+                _workstationscontrol.GenerateactiveGroupworkstations(client, listBoxPagesForGroup, selectedgroups.WorkStationsGroupId);
             }
         }
         private void buttonPagesForGroupDelete_Click(object sender, RoutedEventArgs e)
         {
-            var selectedgroups = _pagescontrol._acceptablePagesGroups.FirstOrDefault(x => x.Name == ((ListBoxItem)this.listBoxGroups.SelectedItem).Content.ToString());
-            var selectedPage = _pagescontrol._acceptablePages.FirstOrDefault(x => x.Url == ((ListBoxItem)this.listBoxPagesForGroup.SelectedItem).Content.ToString());
+            var selectedgroups = _workstationscontrol._workstationsGroups.FirstOrDefault(x => x.Name == ((ListBoxItem)this.listBoxGroups.SelectedItem).Content.ToString());
+            var selectedworkstation = _workstationscontrol._workstations.FirstOrDefault(x => x.IP == ((ListBoxItem)this.listBoxPagesForGroup.SelectedItem).Content.ToString());
             using (ClientServiceClient client = new ClientServiceClient())
             {
-                client.DeleteAcceptablePageForGroup(selectedPage, selectedgroups);
+                client.DeleteWorkstationsForGroup(selectedworkstation, selectedgroups);
             }
             this.listBoxPagesForGroup.Items.Remove(this.listBoxPagesForGroup.SelectedItem);
         }
 
         private void buttonGroupAdd_Click(object sender, RoutedEventArgs e)
         {
-            AddItemWindow addwindow = new AddItemWindow(this, AddWindowType.AddGroup, this.listBoxGroups);
+            AddItemWindow addwindow = new AddItemWindow(this, AddWindowType.AddWorkstationGroup, this.listBoxGroups);
             addwindow.Show();
 
         }
         private void buttonGroupDelete_Click(object sender, RoutedEventArgs e)
         {
-            var selected = _pagescontrol._acceptablePagesGroups.FirstOrDefault(x => x.Name == ((ListBoxItem)this.listBoxGroups.SelectedItem).Content.ToString());
+            var selected = _workstationscontrol._workstationsGroups.FirstOrDefault(x => x.Name == ((ListBoxItem)this.listBoxGroups.SelectedItem).Content.ToString());
             using (ClientServiceClient client = new ClientServiceClient())
             {
-                client.DeletePagesGroup(selected);
+                client.DeleteWorkstationGroup(selected);
             }
             this.listBoxGroups.Items.Remove(this.listBoxGroups.SelectedItem);
         }
 
         private void buttonPagesAdd_Click(object sender, RoutedEventArgs e)
         {
-            AddItemWindow addwindow = new AddItemWindow(this, AddWindowType.AddPage, this.listBoxPages);
+            AddItemWindow addwindow = new AddItemWindow(this, AddWindowType.AddWorkstation, this.listBoxPages);
             addwindow.Show();
         }
         private void buttonPagesDelete_Click(object sender, RoutedEventArgs e)
         {
-            var selected = _pagescontrol._acceptablePages.FirstOrDefault(x => x.Url == ((ListBoxItem)this.listBoxPages.SelectedItem).Content.ToString());
+            var selected = _workstationscontrol._workstations.FirstOrDefault(x => x.IP == ((ListBoxItem)this.listBoxPages.SelectedItem).Content.ToString());
             using (ClientServiceClient client = new ClientServiceClient())
             {
-                client.DeleteAcceptablePage(selected);
+               client.DeleteWorkstation(selected);
             }
             this.listBoxPages.Items.Remove(this.listBoxPages.SelectedItem);
         }
 
         private void listBoxGroups_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var selectedgroups = _pagescontrol._acceptablePagesGroups[0];
+            var selectedgroups = _workstationscontrol._workstationsGroups[0];
             if (this.listBoxGroups.SelectedItem != null)
             {
-                selectedgroups = _pagescontrol._acceptablePagesGroups.FirstOrDefault(x => x.Name == ((ListBoxItem)this.listBoxGroups.SelectedItem).Content.ToString());
+                selectedgroups = _workstationscontrol._workstationsGroups.FirstOrDefault(x => x.Name == ((ListBoxItem)this.listBoxGroups.SelectedItem).Content.ToString());
             }
+            
             using (ClientServiceClient client = new ClientServiceClient())
             {
-                _pagescontrol.GenerateactiveGroupPages(client, listBoxPagesForGroup, selectedgroups.AcceptablePagesGroupId);
+                _workstationscontrol.GenerateactiveGroupworkstations(client, listBoxPagesForGroup, selectedgroups.WorkStationsGroupId);
             }
             if (CheckIsPageInGroup())
                 this.buttonPagesForGroupAdd.IsEnabled = true;
@@ -128,7 +129,6 @@ namespace SpyAdminApplication.Pages
             this.buttonPagesForGroupDelete.IsEnabled = true;
         }
         #endregion
-
         private bool CheckIsPageInGroup()
         {
             if (listBoxPages.SelectedItem == null)
@@ -146,7 +146,5 @@ namespace SpyAdminApplication.Pages
             }
             return true;
         }
-
-
     }
 }

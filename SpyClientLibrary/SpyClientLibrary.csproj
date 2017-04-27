@@ -78,6 +78,12 @@
     <None Include="Service References\ServiceReference\SpyClientLibrary.ServiceReference.AcceptablePagesGroup.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\ServiceReference\SpyClientLibrary.ServiceReference.WorkStation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference\SpyClientLibrary.ServiceReference.WorkStationsGroup.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\ServiceReference\SpyWcfService.Messages.xsd">
       <SubType>Designer</SubType>
     </None>

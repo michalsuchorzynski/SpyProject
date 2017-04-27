@@ -92,10 +92,48 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetWorkstationsGroupFromDB">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWorkstationsGroupFromDBResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="GetWorkstationsGroupFromDBResult" nillable="true" type="q5:ArrayOfWorkStationsGroup" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWorkstationsFromDB">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWorkstationsFromDBResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="GetWorkstationsFromDBResult" nillable="true" type="q6:ArrayOfWorkStation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWorkstationsForGroupFromDB">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="groupId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWorkstationsForGroupFromDBResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="GetWorkstationsForGroupFromDBResult" nillable="true" type="q7:ArrayOfWorkStation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="AddPagesGroup">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="group" nillable="true" type="q5:AcceptablePagesGroup" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="group" nillable="true" type="q8:AcceptablePagesGroup" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -109,7 +147,7 @@
   <xs:element name="AddAcceptablePage">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="page" nillable="true" type="q6:AcceptablePage" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="page" nillable="true" type="q9:AcceptablePage" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -123,8 +161,8 @@
   <xs:element name="AddAcceptablePageForGroup">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="page" nillable="true" type="q7:AcceptablePage" />
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="group" nillable="true" type="q8:AcceptablePagesGroup" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="page" nillable="true" type="q10:AcceptablePage" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="group" nillable="true" type="q11:AcceptablePagesGroup" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -135,10 +173,53 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="AddWorkstationsGroup">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="group" nillable="true" type="q12:WorkStationsGroup" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddWorkstationsGroupResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddWorkstationsGroupResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddWorkstation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="workstation" nillable="true" type="q13:WorkStation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddWorkstationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddWorkstationResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddWorkstationForGroup">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="workstation" nillable="true" type="q14:WorkStation" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="group" nillable="true" type="q15:WorkStationsGroup" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddWorkstationForGroupResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddWorkstationForGroupResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="DeletePagesGroup">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="group" nillable="true" type="q9:AcceptablePagesGroup" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="group" nillable="true" type="q16:AcceptablePagesGroup" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -152,7 +233,7 @@
   <xs:element name="DeleteAcceptablePage">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="page" nillable="true" type="q10:AcceptablePage" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="page" nillable="true" type="q17:AcceptablePage" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -166,8 +247,8 @@
   <xs:element name="DeleteAcceptablePageForGroup">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="page" nillable="true" type="q11:AcceptablePage" />
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="group" nillable="true" type="q12:AcceptablePagesGroup" />
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="page" nillable="true" type="q18:AcceptablePage" />
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="group" nillable="true" type="q19:AcceptablePagesGroup" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -175,6 +256,49 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="DeleteAcceptablePageForGroupResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteWorkstationGroup">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="group" nillable="true" type="q20:WorkStationsGroup" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteWorkstationGroupResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteWorkstationGroupResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteWorkstation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="workstation" nillable="true" type="q21:WorkStation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteWorkstationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteWorkstationResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteWorkstationsForGroup">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="workstation" nillable="true" type="q22:WorkStation" />
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="group" nillable="true" type="q23:WorkStationsGroup" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteWorkstationsForGroupResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteWorkstationsForGroupResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
