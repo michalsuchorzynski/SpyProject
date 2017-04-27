@@ -15,6 +15,11 @@ namespace SpyWcfService.ServiceContracts
         bool SaveScreenShotToDB(ClientRequest request);
         [OperationContract]
         byte[] GetScreenFromDB();
+        [OperationContract]
+        byte[] GetScreenByIdFromDB(int id);
+       
+        [OperationContract]
+        int GetScreenCountFromDB();
 
         #region GetFromDB
         [OperationContract]

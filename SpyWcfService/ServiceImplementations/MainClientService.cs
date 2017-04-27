@@ -20,10 +20,14 @@ namespace SpyWcfService.ServiceImplementations
 
         public byte[] GetScreenFromDB()
         {
-            var a =  context.ScreenShots.ToList();
-            return a[3].Data;
+            var sccreanShotList =  context.ScreenShots.ToList();
+            return sccreanShotList[3].Data;
         }
-
+        
+        public int GetScreenCountFromDB()
+        {
+            return context.ScreenShots.Count();
+        }
         public bool SaveScreenShotToDB(ClientRequest request)
         {
             try
@@ -42,8 +46,13 @@ namespace SpyWcfService.ServiceImplementations
             }
             return true;
         }
-        
-        
+
+        public byte[] GetScreenByIdFromDB(int id)
+        {
+            var sccreanShotList = context.ScreenShots.ToList();
+            return sccreanShotList[id].Data;
+        }
+
         #region GetFromDB
         public List<AcceptablePagesGroup> GetPagesGroupFromDB()
         {
@@ -144,6 +153,8 @@ namespace SpyWcfService.ServiceImplementations
             context.SaveChanges();
             return true;
         }
+        
+
         #endregion
     }
 }

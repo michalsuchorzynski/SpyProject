@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using SpyAdminApplication.ServiceReference1;
+using SpyAdminApplication.Pages;
 
 namespace SpyAdminApplication.Windows
 {
@@ -20,18 +21,18 @@ namespace SpyAdminApplication.Windows
     /// </summary>
     public partial class AddItemWindow : Window
     {
-        private MainWindow sourceWindow;
+        private AcceptablePagesPage sourcePage;
         private AddWindowType type;
         private ListBox target;
 
-        public AddItemWindow(MainWindow sourceWindow, AddWindowType type)
+        public AddItemWindow(AcceptablePagesPage sourcePage, AddWindowType type)
         {
             this.type = type;
-            this.sourceWindow = sourceWindow;
+            this.sourcePage = sourcePage;
             InitializeComponent();
             GenerateContent();
         }
-        public AddItemWindow(MainWindow sourceWindow, AddWindowType type, ListBox target) : this(sourceWindow, type)
+        public AddItemWindow(AcceptablePagesPage sourcePage, AddWindowType type, ListBox target) : this(sourcePage, type)
         {
             this.target = target;
         }
@@ -81,14 +82,14 @@ namespace SpyAdminApplication.Windows
                         {
                             Url = this.textboxField1.Text,
                         });
-                        sourceWindow._pagescontrol.GenerateAcceptablePages(client, this.target);
+                        sourcePage._pagescontrol.GenerateAcceptablePages(client, this.target);
                         break;
                     case AddWindowType.AddGroup:
                         client.AddPagesGroup(new AcceptablePagesGroup()
                         {
                             Name = this.textboxField1.Text
                         });
-                        sourceWindow._pagescontrol.GenerateAcceptablePagesGroups(client, this.target);
+                        sourcePage._pagescontrol.GenerateAcceptablePagesGroups(client, this.target);
                         break;
                     default:
                         break;

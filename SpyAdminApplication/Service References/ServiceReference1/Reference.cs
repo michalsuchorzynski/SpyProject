@@ -1414,6 +1414,18 @@ namespace SpyAdminApplication.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetScreenFromDB", ReplyAction="http://tempuri.org/IClientService/GetScreenFromDBResponse")]
         System.Threading.Tasks.Task<byte[]> GetScreenFromDBAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetScreenByIdFromDB", ReplyAction="http://tempuri.org/IClientService/GetScreenByIdFromDBResponse")]
+        byte[] GetScreenByIdFromDB(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetScreenByIdFromDB", ReplyAction="http://tempuri.org/IClientService/GetScreenByIdFromDBResponse")]
+        System.Threading.Tasks.Task<byte[]> GetScreenByIdFromDBAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetScreenCountFromDB", ReplyAction="http://tempuri.org/IClientService/GetScreenCountFromDBResponse")]
+        int GetScreenCountFromDB();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetScreenCountFromDB", ReplyAction="http://tempuri.org/IClientService/GetScreenCountFromDBResponse")]
+        System.Threading.Tasks.Task<int> GetScreenCountFromDBAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetPagesGroupFromDB", ReplyAction="http://tempuri.org/IClientService/GetPagesGroupFromDBResponse")]
         SpyAdminApplication.ServiceReference1.AcceptablePagesGroup[] GetPagesGroupFromDB();
         
@@ -1510,6 +1522,22 @@ namespace SpyAdminApplication.ServiceReference1 {
         
         public System.Threading.Tasks.Task<byte[]> GetScreenFromDBAsync() {
             return base.Channel.GetScreenFromDBAsync();
+        }
+        
+        public byte[] GetScreenByIdFromDB(int id) {
+            return base.Channel.GetScreenByIdFromDB(id);
+        }
+        
+        public System.Threading.Tasks.Task<byte[]> GetScreenByIdFromDBAsync(int id) {
+            return base.Channel.GetScreenByIdFromDBAsync(id);
+        }
+        
+        public int GetScreenCountFromDB() {
+            return base.Channel.GetScreenCountFromDB();
+        }
+        
+        public System.Threading.Tasks.Task<int> GetScreenCountFromDBAsync() {
+            return base.Channel.GetScreenCountFromDBAsync();
         }
         
         public SpyAdminApplication.ServiceReference1.AcceptablePagesGroup[] GetPagesGroupFromDB() {

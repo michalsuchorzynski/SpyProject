@@ -20,6 +20,18 @@
   <wsdl:message name="IClientService_GetScreenFromDB_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetScreenFromDBResponse" />
   </wsdl:message>
+  <wsdl:message name="IClientService_GetScreenByIdFromDB_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetScreenByIdFromDB" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_GetScreenByIdFromDB_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetScreenByIdFromDBResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_GetScreenCountFromDB_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetScreenCountFromDB" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_GetScreenCountFromDB_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetScreenCountFromDBResponse" />
+  </wsdl:message>
   <wsdl:message name="IClientService_GetPagesGroupFromDB_InputMessage">
     <wsdl:part name="parameters" element="tns:GetPagesGroupFromDB" />
   </wsdl:message>
@@ -83,6 +95,14 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IClientService/GetScreenFromDB" message="tns:IClientService_GetScreenFromDB_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IClientService/GetScreenFromDBResponse" message="tns:IClientService_GetScreenFromDB_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetScreenByIdFromDB">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/GetScreenByIdFromDB" message="tns:IClientService_GetScreenByIdFromDB_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/GetScreenByIdFromDBResponse" message="tns:IClientService_GetScreenByIdFromDB_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetScreenCountFromDB">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/GetScreenCountFromDB" message="tns:IClientService_GetScreenCountFromDB_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/GetScreenCountFromDBResponse" message="tns:IClientService_GetScreenCountFromDB_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetPagesGroupFromDB">
       <wsdl:input wsaw:Action="http://tempuri.org/IClientService/GetPagesGroupFromDB" message="tns:IClientService_GetPagesGroupFromDB_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IClientService/GetPagesGroupFromDBResponse" message="tns:IClientService_GetPagesGroupFromDB_OutputMessage" />
@@ -133,6 +153,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetScreenFromDB">
       <soap:operation soapAction="http://tempuri.org/IClientService/GetScreenFromDB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetScreenByIdFromDB">
+      <soap:operation soapAction="http://tempuri.org/IClientService/GetScreenByIdFromDB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetScreenCountFromDB">
+      <soap:operation soapAction="http://tempuri.org/IClientService/GetScreenCountFromDB" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
