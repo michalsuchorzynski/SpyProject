@@ -28,8 +28,9 @@ namespace SpyWcfService.ServiceImplementations
         {
             return context.ScreenShots.Count();
         }
-        public bool SaveScreenShotToDB(ClientRequest request)
+        public int SaveScreenShotToDB(ClientRequest request)
         {
+            int result;
             try
             {
                 ScreenShot screentosave = new ScreenShot(){
@@ -39,18 +40,35 @@ namespace SpyWcfService.ServiceImplementations
                 };
                 context.ScreenShots.Add(screentosave);
                 context.SaveChanges();
+                result = screentosave.ScreenShotId;                
             }
             catch(Exception e)
             {
-                return false;
+                return 0;
             }
-            return true;
+            return result;
         }
 
         public byte[] GetScreenByIdFromDB(int id)
         {
             var sccreanShotList = context.ScreenShots.ToList();
-            return sccreanShotList[id].Data;
+            if(id==0)
+                return sccreanShotList[id].Data;
+            else
+                return sccreanShotList[id - 1].Data;
+        }
+
+        public bool CreateExamSession(AcceptablePagesGroup pagegorup, WorkStationsGroup worksgroup)
+        {
+            ExamSession exam = new ExamSession()
+            {
+                AcceptablePagesGroupId = pagegorup.AcceptablePagesGroupId,
+                WorkStationsGroupId = worksgroup.WorkStationsGroupId,
+            };
+            context.ExamSessions.Add(exam);
+            context.SaveChanges();
+            return true;
+            
         }
 
         #region GetFromDB
@@ -145,7 +163,7 @@ namespace SpyWcfService.ServiceImplementations
         }
         #endregion
 
-        #region AddFromDB
+        #region AddtoDB
         public bool AddPagesGroup(AcceptablePagesGroup group)
         {
             context.AcceptablePagesGroups.Add(group);
@@ -248,6 +266,8 @@ namespace SpyWcfService.ServiceImplementations
             context.SaveChanges();
             return true;
         }
+
+        
 
         #endregion
     }

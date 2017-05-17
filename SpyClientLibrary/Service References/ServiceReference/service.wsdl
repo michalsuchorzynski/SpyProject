@@ -32,6 +32,12 @@
   <wsdl:message name="IClientService_GetScreenCountFromDB_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetScreenCountFromDBResponse" />
   </wsdl:message>
+  <wsdl:message name="IClientService_CreateExamSession_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateExamSession" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_CreateExamSession_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateExamSessionResponse" />
+  </wsdl:message>
   <wsdl:message name="IClientService_GetPagesGroupFromDB_InputMessage">
     <wsdl:part name="parameters" element="tns:GetPagesGroupFromDB" />
   </wsdl:message>
@@ -86,6 +92,24 @@
   <wsdl:message name="IClientService_AddAcceptablePageForGroup_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddAcceptablePageForGroupResponse" />
   </wsdl:message>
+  <wsdl:message name="IClientService_AddWorkstationsGroup_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddWorkstationsGroup" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_AddWorkstationsGroup_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddWorkstationsGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_AddWorkstation_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddWorkstation" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_AddWorkstation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddWorkstationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_AddWorkstationForGroup_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddWorkstationForGroup" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_AddWorkstationForGroup_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddWorkstationForGroupResponse" />
+  </wsdl:message>
   <wsdl:message name="IClientService_DeletePagesGroup_InputMessage">
     <wsdl:part name="parameters" element="tns:DeletePagesGroup" />
   </wsdl:message>
@@ -104,6 +128,24 @@
   <wsdl:message name="IClientService_DeleteAcceptablePageForGroup_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteAcceptablePageForGroupResponse" />
   </wsdl:message>
+  <wsdl:message name="IClientService_DeleteWorkstationGroup_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteWorkstationGroup" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_DeleteWorkstationGroup_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteWorkstationGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_DeleteWorkstation_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteWorkstation" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_DeleteWorkstation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteWorkstationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_DeleteWorkstationsForGroup_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteWorkstationsForGroup" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_DeleteWorkstationsForGroup_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteWorkstationsForGroupResponse" />
+  </wsdl:message>
   <wsdl:portType name="IClientService">
     <wsdl:operation name="SaveScreenShotToDB">
       <wsdl:input wsaw:Action="http://tempuri.org/IClientService/SaveScreenShotToDB" message="tns:IClientService_SaveScreenShotToDB_InputMessage" />
@@ -120,6 +162,10 @@
     <wsdl:operation name="GetScreenCountFromDB">
       <wsdl:input wsaw:Action="http://tempuri.org/IClientService/GetScreenCountFromDB" message="tns:IClientService_GetScreenCountFromDB_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IClientService/GetScreenCountFromDBResponse" message="tns:IClientService_GetScreenCountFromDB_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateExamSession">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/CreateExamSession" message="tns:IClientService_CreateExamSession_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/CreateExamSessionResponse" message="tns:IClientService_CreateExamSession_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetPagesGroupFromDB">
       <wsdl:input wsaw:Action="http://tempuri.org/IClientService/GetPagesGroupFromDB" message="tns:IClientService_GetPagesGroupFromDB_InputMessage" />
@@ -157,6 +203,18 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IClientService/AddAcceptablePageForGroup" message="tns:IClientService_AddAcceptablePageForGroup_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IClientService/AddAcceptablePageForGroupResponse" message="tns:IClientService_AddAcceptablePageForGroup_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="AddWorkstationsGroup">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/AddWorkstationsGroup" message="tns:IClientService_AddWorkstationsGroup_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/AddWorkstationsGroupResponse" message="tns:IClientService_AddWorkstationsGroup_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddWorkstation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/AddWorkstation" message="tns:IClientService_AddWorkstation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/AddWorkstationResponse" message="tns:IClientService_AddWorkstation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddWorkstationForGroup">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/AddWorkstationForGroup" message="tns:IClientService_AddWorkstationForGroup_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/AddWorkstationForGroupResponse" message="tns:IClientService_AddWorkstationForGroup_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="DeletePagesGroup">
       <wsdl:input wsaw:Action="http://tempuri.org/IClientService/DeletePagesGroup" message="tns:IClientService_DeletePagesGroup_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IClientService/DeletePagesGroupResponse" message="tns:IClientService_DeletePagesGroup_OutputMessage" />
@@ -168,6 +226,18 @@
     <wsdl:operation name="DeleteAcceptablePageForGroup">
       <wsdl:input wsaw:Action="http://tempuri.org/IClientService/DeleteAcceptablePageForGroup" message="tns:IClientService_DeleteAcceptablePageForGroup_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IClientService/DeleteAcceptablePageForGroupResponse" message="tns:IClientService_DeleteAcceptablePageForGroup_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteWorkstationGroup">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/DeleteWorkstationGroup" message="tns:IClientService_DeleteWorkstationGroup_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/DeleteWorkstationGroupResponse" message="tns:IClientService_DeleteWorkstationGroup_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteWorkstation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/DeleteWorkstation" message="tns:IClientService_DeleteWorkstation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/DeleteWorkstationResponse" message="tns:IClientService_DeleteWorkstation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteWorkstationsForGroup">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/DeleteWorkstationsForGroup" message="tns:IClientService_DeleteWorkstationsForGroup_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/DeleteWorkstationsForGroupResponse" message="tns:IClientService_DeleteWorkstationsForGroup_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IClientService" type="tns:IClientService">
@@ -201,6 +271,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetScreenCountFromDB">
       <soap:operation soapAction="http://tempuri.org/IClientService/GetScreenCountFromDB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateExamSession">
+      <soap:operation soapAction="http://tempuri.org/IClientService/CreateExamSession" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -289,6 +368,33 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="AddWorkstationsGroup">
+      <soap:operation soapAction="http://tempuri.org/IClientService/AddWorkstationsGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddWorkstation">
+      <soap:operation soapAction="http://tempuri.org/IClientService/AddWorkstation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddWorkstationForGroup">
+      <soap:operation soapAction="http://tempuri.org/IClientService/AddWorkstationForGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="DeletePagesGroup">
       <soap:operation soapAction="http://tempuri.org/IClientService/DeletePagesGroup" style="document" />
       <wsdl:input>
@@ -309,6 +415,33 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteAcceptablePageForGroup">
       <soap:operation soapAction="http://tempuri.org/IClientService/DeleteAcceptablePageForGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteWorkstationGroup">
+      <soap:operation soapAction="http://tempuri.org/IClientService/DeleteWorkstationGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteWorkstation">
+      <soap:operation soapAction="http://tempuri.org/IClientService/DeleteWorkstation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteWorkstationsForGroup">
+      <soap:operation soapAction="http://tempuri.org/IClientService/DeleteWorkstationsForGroup" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

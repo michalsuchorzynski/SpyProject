@@ -1403,10 +1403,10 @@ namespace SpyClientLibrary.ServiceReference {
     public interface IClientService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/SaveScreenShotToDB", ReplyAction="http://tempuri.org/IClientService/SaveScreenShotToDBResponse")]
-        bool SaveScreenShotToDB(SpyClientLibrary.ServiceReference.ClientRequest request);
+        int SaveScreenShotToDB(SpyClientLibrary.ServiceReference.ClientRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/SaveScreenShotToDB", ReplyAction="http://tempuri.org/IClientService/SaveScreenShotToDBResponse")]
-        System.Threading.Tasks.Task<bool> SaveScreenShotToDBAsync(SpyClientLibrary.ServiceReference.ClientRequest request);
+        System.Threading.Tasks.Task<int> SaveScreenShotToDBAsync(SpyClientLibrary.ServiceReference.ClientRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetScreenFromDB", ReplyAction="http://tempuri.org/IClientService/GetScreenFromDBResponse")]
         byte[] GetScreenFromDB();
@@ -1425,6 +1425,12 @@ namespace SpyClientLibrary.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetScreenCountFromDB", ReplyAction="http://tempuri.org/IClientService/GetScreenCountFromDBResponse")]
         System.Threading.Tasks.Task<int> GetScreenCountFromDBAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/CreateExamSession", ReplyAction="http://tempuri.org/IClientService/CreateExamSessionResponse")]
+        bool CreateExamSession(SpyClientLibrary.ServiceReference.AcceptablePagesGroup pagegorup, SpyClientLibrary.ServiceReference.WorkStationsGroup worksgroup);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/CreateExamSession", ReplyAction="http://tempuri.org/IClientService/CreateExamSessionResponse")]
+        System.Threading.Tasks.Task<bool> CreateExamSessionAsync(SpyClientLibrary.ServiceReference.AcceptablePagesGroup pagegorup, SpyClientLibrary.ServiceReference.WorkStationsGroup worksgroup);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetPagesGroupFromDB", ReplyAction="http://tempuri.org/IClientService/GetPagesGroupFromDBResponse")]
         SpyClientLibrary.ServiceReference.AcceptablePagesGroup[] GetPagesGroupFromDB();
@@ -1480,6 +1486,24 @@ namespace SpyClientLibrary.ServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/AddAcceptablePageForGroup", ReplyAction="http://tempuri.org/IClientService/AddAcceptablePageForGroupResponse")]
         System.Threading.Tasks.Task<bool> AddAcceptablePageForGroupAsync(SpyClientLibrary.ServiceReference.AcceptablePage page, SpyClientLibrary.ServiceReference.AcceptablePagesGroup group);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/AddWorkstationsGroup", ReplyAction="http://tempuri.org/IClientService/AddWorkstationsGroupResponse")]
+        bool AddWorkstationsGroup(SpyClientLibrary.ServiceReference.WorkStationsGroup group);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/AddWorkstationsGroup", ReplyAction="http://tempuri.org/IClientService/AddWorkstationsGroupResponse")]
+        System.Threading.Tasks.Task<bool> AddWorkstationsGroupAsync(SpyClientLibrary.ServiceReference.WorkStationsGroup group);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/AddWorkstation", ReplyAction="http://tempuri.org/IClientService/AddWorkstationResponse")]
+        bool AddWorkstation(SpyClientLibrary.ServiceReference.WorkStation workstation);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/AddWorkstation", ReplyAction="http://tempuri.org/IClientService/AddWorkstationResponse")]
+        System.Threading.Tasks.Task<bool> AddWorkstationAsync(SpyClientLibrary.ServiceReference.WorkStation workstation);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/AddWorkstationForGroup", ReplyAction="http://tempuri.org/IClientService/AddWorkstationForGroupResponse")]
+        bool AddWorkstationForGroup(SpyClientLibrary.ServiceReference.WorkStation workstation, SpyClientLibrary.ServiceReference.WorkStationsGroup group);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/AddWorkstationForGroup", ReplyAction="http://tempuri.org/IClientService/AddWorkstationForGroupResponse")]
+        System.Threading.Tasks.Task<bool> AddWorkstationForGroupAsync(SpyClientLibrary.ServiceReference.WorkStation workstation, SpyClientLibrary.ServiceReference.WorkStationsGroup group);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/DeletePagesGroup", ReplyAction="http://tempuri.org/IClientService/DeletePagesGroupResponse")]
         bool DeletePagesGroup(SpyClientLibrary.ServiceReference.AcceptablePagesGroup group);
         
@@ -1497,6 +1521,24 @@ namespace SpyClientLibrary.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/DeleteAcceptablePageForGroup", ReplyAction="http://tempuri.org/IClientService/DeleteAcceptablePageForGroupResponse")]
         System.Threading.Tasks.Task<bool> DeleteAcceptablePageForGroupAsync(SpyClientLibrary.ServiceReference.AcceptablePage page, SpyClientLibrary.ServiceReference.AcceptablePagesGroup group);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/DeleteWorkstationGroup", ReplyAction="http://tempuri.org/IClientService/DeleteWorkstationGroupResponse")]
+        bool DeleteWorkstationGroup(SpyClientLibrary.ServiceReference.WorkStationsGroup group);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/DeleteWorkstationGroup", ReplyAction="http://tempuri.org/IClientService/DeleteWorkstationGroupResponse")]
+        System.Threading.Tasks.Task<bool> DeleteWorkstationGroupAsync(SpyClientLibrary.ServiceReference.WorkStationsGroup group);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/DeleteWorkstation", ReplyAction="http://tempuri.org/IClientService/DeleteWorkstationResponse")]
+        bool DeleteWorkstation(SpyClientLibrary.ServiceReference.WorkStation workstation);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/DeleteWorkstation", ReplyAction="http://tempuri.org/IClientService/DeleteWorkstationResponse")]
+        System.Threading.Tasks.Task<bool> DeleteWorkstationAsync(SpyClientLibrary.ServiceReference.WorkStation workstation);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/DeleteWorkstationsForGroup", ReplyAction="http://tempuri.org/IClientService/DeleteWorkstationsForGroupResponse")]
+        bool DeleteWorkstationsForGroup(SpyClientLibrary.ServiceReference.WorkStation workstation, SpyClientLibrary.ServiceReference.WorkStationsGroup group);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/DeleteWorkstationsForGroup", ReplyAction="http://tempuri.org/IClientService/DeleteWorkstationsForGroupResponse")]
+        System.Threading.Tasks.Task<bool> DeleteWorkstationsForGroupAsync(SpyClientLibrary.ServiceReference.WorkStation workstation, SpyClientLibrary.ServiceReference.WorkStationsGroup group);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1526,11 +1568,11 @@ namespace SpyClientLibrary.ServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public bool SaveScreenShotToDB(SpyClientLibrary.ServiceReference.ClientRequest request) {
+        public int SaveScreenShotToDB(SpyClientLibrary.ServiceReference.ClientRequest request) {
             return base.Channel.SaveScreenShotToDB(request);
         }
         
-        public System.Threading.Tasks.Task<bool> SaveScreenShotToDBAsync(SpyClientLibrary.ServiceReference.ClientRequest request) {
+        public System.Threading.Tasks.Task<int> SaveScreenShotToDBAsync(SpyClientLibrary.ServiceReference.ClientRequest request) {
             return base.Channel.SaveScreenShotToDBAsync(request);
         }
         
@@ -1556,6 +1598,14 @@ namespace SpyClientLibrary.ServiceReference {
         
         public System.Threading.Tasks.Task<int> GetScreenCountFromDBAsync() {
             return base.Channel.GetScreenCountFromDBAsync();
+        }
+        
+        public bool CreateExamSession(SpyClientLibrary.ServiceReference.AcceptablePagesGroup pagegorup, SpyClientLibrary.ServiceReference.WorkStationsGroup worksgroup) {
+            return base.Channel.CreateExamSession(pagegorup, worksgroup);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CreateExamSessionAsync(SpyClientLibrary.ServiceReference.AcceptablePagesGroup pagegorup, SpyClientLibrary.ServiceReference.WorkStationsGroup worksgroup) {
+            return base.Channel.CreateExamSessionAsync(pagegorup, worksgroup);
         }
         
         public SpyClientLibrary.ServiceReference.AcceptablePagesGroup[] GetPagesGroupFromDB() {
@@ -1630,6 +1680,30 @@ namespace SpyClientLibrary.ServiceReference {
             return base.Channel.AddAcceptablePageForGroupAsync(page, group);
         }
         
+        public bool AddWorkstationsGroup(SpyClientLibrary.ServiceReference.WorkStationsGroup group) {
+            return base.Channel.AddWorkstationsGroup(group);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AddWorkstationsGroupAsync(SpyClientLibrary.ServiceReference.WorkStationsGroup group) {
+            return base.Channel.AddWorkstationsGroupAsync(group);
+        }
+        
+        public bool AddWorkstation(SpyClientLibrary.ServiceReference.WorkStation workstation) {
+            return base.Channel.AddWorkstation(workstation);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AddWorkstationAsync(SpyClientLibrary.ServiceReference.WorkStation workstation) {
+            return base.Channel.AddWorkstationAsync(workstation);
+        }
+        
+        public bool AddWorkstationForGroup(SpyClientLibrary.ServiceReference.WorkStation workstation, SpyClientLibrary.ServiceReference.WorkStationsGroup group) {
+            return base.Channel.AddWorkstationForGroup(workstation, group);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AddWorkstationForGroupAsync(SpyClientLibrary.ServiceReference.WorkStation workstation, SpyClientLibrary.ServiceReference.WorkStationsGroup group) {
+            return base.Channel.AddWorkstationForGroupAsync(workstation, group);
+        }
+        
         public bool DeletePagesGroup(SpyClientLibrary.ServiceReference.AcceptablePagesGroup group) {
             return base.Channel.DeletePagesGroup(group);
         }
@@ -1652,6 +1726,30 @@ namespace SpyClientLibrary.ServiceReference {
         
         public System.Threading.Tasks.Task<bool> DeleteAcceptablePageForGroupAsync(SpyClientLibrary.ServiceReference.AcceptablePage page, SpyClientLibrary.ServiceReference.AcceptablePagesGroup group) {
             return base.Channel.DeleteAcceptablePageForGroupAsync(page, group);
+        }
+        
+        public bool DeleteWorkstationGroup(SpyClientLibrary.ServiceReference.WorkStationsGroup group) {
+            return base.Channel.DeleteWorkstationGroup(group);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteWorkstationGroupAsync(SpyClientLibrary.ServiceReference.WorkStationsGroup group) {
+            return base.Channel.DeleteWorkstationGroupAsync(group);
+        }
+        
+        public bool DeleteWorkstation(SpyClientLibrary.ServiceReference.WorkStation workstation) {
+            return base.Channel.DeleteWorkstation(workstation);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteWorkstationAsync(SpyClientLibrary.ServiceReference.WorkStation workstation) {
+            return base.Channel.DeleteWorkstationAsync(workstation);
+        }
+        
+        public bool DeleteWorkstationsForGroup(SpyClientLibrary.ServiceReference.WorkStation workstation, SpyClientLibrary.ServiceReference.WorkStationsGroup group) {
+            return base.Channel.DeleteWorkstationsForGroup(workstation, group);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteWorkstationsForGroupAsync(SpyClientLibrary.ServiceReference.WorkStation workstation, SpyClientLibrary.ServiceReference.WorkStationsGroup group) {
+            return base.Channel.DeleteWorkstationsForGroupAsync(workstation, group);
         }
     }
 }

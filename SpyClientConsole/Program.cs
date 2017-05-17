@@ -12,6 +12,7 @@ namespace SpyClientConsole
     {
         static void Main(string[] args)
         {
+            Console.ReadKey();
 
             Control controlmanager = new Control();
             controlmanager.StartControl();

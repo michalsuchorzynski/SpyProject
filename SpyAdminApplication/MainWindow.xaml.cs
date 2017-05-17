@@ -49,6 +49,11 @@ namespace SpyAdminApplication
             WorkstatationsPage wp = new WorkstatationsPage();
             firstFrame.Navigate(wp);
         }
+        private void MenuItemExamSession_Click(object sender, RoutedEventArgs e)
+        {
+            ExamSessionStartPage es = new ExamSessionStartPage();
+            firstFrame.Navigate(es);
+        }
 
 
         #endregion

@@ -59,9 +59,13 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Control\AcceptablePagesControl.cs" />
+    <Compile Include="Control\ExamSessionControl.cs" />
     <Compile Include="Control\WorkstationsControl.cs" />
     <Compile Include="Pages\AcceptablePagesPage.xaml.cs">
       <DependentUpon>AcceptablePagesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ExamSessionStartPage.xaml.cs">
+      <DependentUpon>ExamSessionStartPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\OneScreenShotPage.xaml.cs">
       <DependentUpon>OneScreenShotPage.xaml</DependentUpon>
@@ -90,6 +94,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\AcceptablePagesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ExamSessionStartPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

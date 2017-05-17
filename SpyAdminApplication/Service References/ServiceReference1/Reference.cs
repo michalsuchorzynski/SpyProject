@@ -1426,6 +1426,12 @@ namespace SpyAdminApplication.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetScreenCountFromDB", ReplyAction="http://tempuri.org/IClientService/GetScreenCountFromDBResponse")]
         System.Threading.Tasks.Task<int> GetScreenCountFromDBAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/CreateExamSession", ReplyAction="http://tempuri.org/IClientService/CreateExamSessionResponse")]
+        bool CreateExamSession(SpyAdminApplication.ServiceReference1.AcceptablePagesGroup pagegorup, SpyAdminApplication.ServiceReference1.WorkStationsGroup worksgroup);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/CreateExamSession", ReplyAction="http://tempuri.org/IClientService/CreateExamSessionResponse")]
+        System.Threading.Tasks.Task<bool> CreateExamSessionAsync(SpyAdminApplication.ServiceReference1.AcceptablePagesGroup pagegorup, SpyAdminApplication.ServiceReference1.WorkStationsGroup worksgroup);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetPagesGroupFromDB", ReplyAction="http://tempuri.org/IClientService/GetPagesGroupFromDBResponse")]
         SpyAdminApplication.ServiceReference1.AcceptablePagesGroup[] GetPagesGroupFromDB();
         
@@ -1592,6 +1598,14 @@ namespace SpyAdminApplication.ServiceReference1 {
         
         public System.Threading.Tasks.Task<int> GetScreenCountFromDBAsync() {
             return base.Channel.GetScreenCountFromDBAsync();
+        }
+        
+        public bool CreateExamSession(SpyAdminApplication.ServiceReference1.AcceptablePagesGroup pagegorup, SpyAdminApplication.ServiceReference1.WorkStationsGroup worksgroup) {
+            return base.Channel.CreateExamSession(pagegorup, worksgroup);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CreateExamSessionAsync(SpyAdminApplication.ServiceReference1.AcceptablePagesGroup pagegorup, SpyAdminApplication.ServiceReference1.WorkStationsGroup worksgroup) {
+            return base.Channel.CreateExamSessionAsync(pagegorup, worksgroup);
         }
         
         public SpyAdminApplication.ServiceReference1.AcceptablePagesGroup[] GetPagesGroupFromDB() {

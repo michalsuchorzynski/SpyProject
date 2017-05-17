@@ -10,6 +10,7 @@
     <DockPanel Name="DockPanelMain">
         <Menu DockPanel.Dock="Top">
             <MenuItem Name="MenuItemStart" Header="Start" Click="MenuItemStart_Click"></MenuItem>
+            <MenuItem Name="MenuItemExamSession" Header="Egzamin" Click="MenuItemExamSession_Click"></MenuItem>
             <MenuItem Name="MenuItemPages" Header="Akpectowalne strony" Click="MenuItemPages_Click"></MenuItem>
             <MenuItem Name="MenuItemWorkstations" Header="Stanowiska" Click="MenuItemWorkstations_Click"></MenuItem>
         </Menu>

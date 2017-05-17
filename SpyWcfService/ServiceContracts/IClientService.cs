@@ -12,14 +12,17 @@ namespace SpyWcfService.ServiceContracts
     public interface IClientService
     {
         [OperationContract]
-        bool SaveScreenShotToDB(ClientRequest request);
+        int SaveScreenShotToDB(ClientRequest request);
         [OperationContract]
         byte[] GetScreenFromDB();
         [OperationContract]
-        byte[] GetScreenByIdFromDB(int id);
-       
+        byte[] GetScreenByIdFromDB(int id);       
         [OperationContract]
         int GetScreenCountFromDB();
+
+        [OperationContract]
+        bool CreateExamSession(AcceptablePagesGroup pagegorup, WorkStationsGroup worksgroup);
+
 
         #region GetFromDB
         [OperationContract]
