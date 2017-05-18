@@ -46,7 +46,6 @@ namespace SpyAdminApplication.Pages
                 client.CreateExamSession(selectedpagegroup, selectedworkgroup);
                 _examsessioncontrol.StartExamSession(client, selectedpagegroup, selectedworkgroup, dataGridStudents);
             }
-           // dataGridStudents.ItemsSource = _examsessioncontrol._currentSessionStudents;
             
 
 

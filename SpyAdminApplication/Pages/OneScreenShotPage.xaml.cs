@@ -16,7 +16,7 @@ using SpyAdminApplication.ServiceReference1;
 using System.Drawing;
 using System.IO;
 using System.Net.Sockets;
-
+using System.Net.NetworkInformation;
 
 namespace SpyAdminApplication.Pages
 {
@@ -29,21 +29,31 @@ namespace SpyAdminApplication.Pages
         public OneScreenShotPage()
         {
             InitializeComponent();
+            //using (ClientServiceClient client = new ClientServiceClient())
+            //{
+            //    screenShotCount = client.GetScreenCountFromDB();
+            //    if (screenShotCount > 0)
+            //    {
+            //        var bytearray = client.GetScreenByIdFromDB(0);
+            //        ImageSourceConverter converter = new ImageSourceConverter();
+            //        imageScreenShot.Source = ToImage(bytearray);
+            //        comboboxScreenNumber.SelectedIndex = 0;
+            //    }
+            //}
             using (ClientServiceClient client = new ClientServiceClient())
             {
                 screenShotCount = client.GetScreenCountFromDB();
                 if (screenShotCount > 0)
                 {
-                    var bytearray = client.GetScreenByIdFromDB(0);
-                    ImageSourceConverter converter = new ImageSourceConverter();
-                    imageScreenShot.Source = ToImage(bytearray);
-                    comboboxScreenNumber.SelectedIndex = 0;
+                    screenShotCount = client.GetScreenCountFromDB();
                 }
             }
-            for(int i = 0;i<screenShotCount;i++)
+            
+            for (int i = 0;i<screenShotCount;i++)
             {
                 comboboxScreenNumber.Items.Add(i.ToString());
             }
+            
         }
 
         public BitmapImage ToImage(byte[] array)
@@ -61,21 +71,21 @@ namespace SpyAdminApplication.Pages
                        
         private void comboboxScreenNumber_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            using (ClientServiceClient client = new ClientServiceClient())
-            {
-                var id = SendCMD("192.168.1.1", "Screen");
-                var bytearray = client.GetScreenByIdFromDB(Convert.ToInt32(id));
-                ImageSourceConverter converter = new ImageSourceConverter();
-                imageScreenShot.Source = ToImage(bytearray);
+            //using (ClientServiceClient client = new ClientServiceClient())
+            //{
+            //    var id = SendCMD(ip, "Screen");
+            //    var bytearray = client.GetScreenByIdFromDB(Convert.ToInt32(id));
+            //    ImageSourceConverter converter = new ImageSourceConverter();
+            //    imageScreenShot.Source = ToImage(bytearray);
 
-            }
+            //}
 
         }
         private string SendCMD(string wIp, string cmd)
         {
             string request = "";
             TcpClient tcpclnt = new TcpClient();
-            tcpclnt.Connect("95.108.69.237", 8002);
+            tcpclnt.Connect(comboboxScreenNumber.SelectedItem.ToString(), 8002);
 
             Stream stm = tcpclnt.GetStream();
             ASCIIEncoding asen = new ASCIIEncoding();
@@ -91,6 +101,28 @@ namespace SpyAdminApplication.Pages
             tcpclnt.Close();
             return request;
         }
+        
+        private void buttonGetCurrentScreen_Click(object sender, RoutedEventArgs e)
+        {
+            using (ClientServiceClient client = new ClientServiceClient())
+            {
+                var id = SendCMD(comboboxScreenNumber.SelectedItem.ToString(), "Screen");
+                var bytearray = client.GetScreenByIdFromDB(Convert.ToInt32(id));
+                ImageSourceConverter converter = new ImageSourceConverter();
+                imageScreenShot.Source = ToImage(bytearray);
 
+            }
+        }
+
+        private void buttonGetLastScreen_Click(object sender, RoutedEventArgs e)
+        {
+            using (ClientServiceClient client = new ClientServiceClient())
+            {
+                var bytearray = client.GetScreenByIdFromDB(client.GetScreenCountFromDB());
+                ImageSourceConverter converter = new ImageSourceConverter();
+                imageScreenShot.Source = ToImage(bytearray);
+
+            }
+        }
     }
 }

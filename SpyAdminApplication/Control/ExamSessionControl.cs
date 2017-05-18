@@ -19,6 +19,7 @@ namespace SpyAdminApplication.Control
 
         public List<WorkStation> _currentSessionWorkstations;
         public List<Student> _currentSessionStudents;
+        public int _currentSessionPagesGroupId;
 
         public Thread _examThread;
         public int _currentExamSessionID { get; set; }
@@ -34,6 +35,7 @@ namespace SpyAdminApplication.Control
         {
             _currentSessionWorkstations = new List<WorkStation>();
             _currentSessionStudents = new List<Student>();
+            _currentSessionPagesGroupId = acceptablePagesgroups.AcceptablePagesGroupId;
             foreach (var workstation in client.GetWorkstationsForGroupFromDB(workstationsgroups.WorkStationsGroupId))
             {
                 _currentSessionWorkstations.Add(workstation);
@@ -69,7 +71,7 @@ namespace SpyAdminApplication.Control
                     }
                     dataGridStudents.ItemsSource = null;
                     dataGridStudents.ItemsSource = _currentSessionStudents;
-                    var response = SendCMD(wIp, "start");
+                    var response = SendCMD(wIp, "start|"+Convert.ToInt32(_currentSessionPagesGroupId));
                     foreach(Student s in _currentSessionStudents)
                     {
                         if(s.Ip==station.IP)

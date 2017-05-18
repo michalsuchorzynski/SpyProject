@@ -16,6 +16,7 @@ using System.Collections.ObjectModel;
 using SpyAdminApplication.Windows;
 using SpyAdminApplication.ServiceReference1;
 using SpyAdminApplication.Pages;
+using static SpyAdminApplication.Control.ExamSessionControl;
 
 namespace SpyAdminApplication
 {
@@ -25,6 +26,11 @@ namespace SpyAdminApplication
     public partial class MainWindow : Window
     {
         public AcceptablePages.AcceptablePagesControl _pagescontrol;
+        public AcceptablePagesPage app = new AcceptablePagesPage();
+        public WorkstatationsPage wp = new WorkstatationsPage();
+        public ExamSessionStartPage es = new ExamSessionStartPage();
+        public OneScreenShotPage showedPage = new OneScreenShotPage();
+
         public MainWindow()
         {
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
@@ -35,24 +41,48 @@ namespace SpyAdminApplication
         #region Events
         private void MenuItemStart_Click(object sender, RoutedEventArgs e)
         {
-            OneScreenShotPage showedPage = new OneScreenShotPage();
+            showedPage.comboboxScreenNumber.Items.Clear();
+            if (es._examsessioncontrol._currentSessionStudents != null)
+            {
+                foreach (Student s in es._examsessioncontrol._currentSessionStudents)
+                {
+                    if (s.Status.ToString() == "Połączono")
+                    {
+                        showedPage.comboboxScreenNumber.Items.Add(s.Ip.ToString());
+                        showedPage.comboboxScreenNumber.SelectedIndex = 0;
+                    }
+                }
+            }
+            if(showedPage.comboboxScreenNumber.Items.Count>0)
+            {
+                showedPage.buttonGetCurrentScreen.IsEnabled = true;
+                showedPage.buttonGetLastScreen.IsEnabled = true;
+            }
+            else
+            {
+                showedPage.buttonGetCurrentScreen.IsEnabled = false;
+                showedPage.buttonGetLastScreen.IsEnabled = false;
+            }
+
             firstFrame.Navigate(showedPage);
         }
         private void MenuItemPages_Click(object sender, RoutedEventArgs e)
         {
-            AcceptablePagesPage app = new AcceptablePagesPage();
             firstFrame.Navigate(app);
         }
 
         private void MenuItemWorkstations_Click(object sender, RoutedEventArgs e)
         {
-            WorkstatationsPage wp = new WorkstatationsPage();
             firstFrame.Navigate(wp);
         }
         private void MenuItemExamSession_Click(object sender, RoutedEventArgs e)
         {
-            ExamSessionStartPage es = new ExamSessionStartPage();
+            using (ClientServiceClient client = new ClientServiceClient())
+            {
+                es._examsessioncontrol.GenereteSelects(client, es.comboBoxAcceptablePagesGroup, es.comboBoxWorkstationGroups);
+            }
             firstFrame.Navigate(es);
+            
         }
 
 

@@ -17,6 +17,7 @@ namespace SpyClientLibrary
     {
         public TaskManager _taskmanager { get; set; }
         public User _user { get; set; }
+        private int _acceptablepagesgroupid;
         public Control()
         {
 
@@ -29,7 +30,7 @@ namespace SpyClientLibrary
             ThredScreen.Start();
 
             _user = new User();
-            _taskmanager = new TaskManager(1);
+            _taskmanager = new TaskManager(_acceptablepagesgroupid);
             while(true)
             {
                 if (!_taskmanager.CheckOpenPrograms())
@@ -45,7 +46,7 @@ namespace SpyClientLibrary
         {
             while (true)
             {
-                IPAddress ipAd = IPAddress.Parse("95.108.69.237");
+                IPAddress ipAd = IPAddress.Parse("192.168.43.107");
                 TcpListener myList = new TcpListener(ipAd, 8002);
                 myList.Start();
 
@@ -65,16 +66,26 @@ namespace SpyClientLibrary
         }
         private void GetCmd()
         {
-            IPAddress ipAd = IPAddress.Parse("95.108.69.237");
+            IPAddress ipAd = IPAddress.Parse("192.168.43.107");
             TcpListener myList = new TcpListener(ipAd, 8001);
             myList.Start();
 
             byte[] b = new byte[100];
             Socket s = myList.AcceptSocket();
             int k = s.Receive(b);
+            bool read = false;
+            string id = "";
             for (int i = 0; i < k; i++)
+            {
+                if (read == true)
+                    id += Convert.ToChar(b[i]);
+                if (Convert.ToChar(b[i]) == '|')
+                {
+                    read = true;
+                }
                 Console.Write(Convert.ToChar(b[i]));
-
+            }
+            _acceptablepagesgroupid = Convert.ToInt32(id);
             ASCIIEncoding asen = new ASCIIEncoding();
             s.Send(asen.GetBytes("StartACK"));
             s.Close();

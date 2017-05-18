@@ -8,7 +8,7 @@
       d:DesignHeight="300" d:DesignWidth="300"
       Title="OneScreenShotPage">
 
-    <Grid Name="main" Background="Red">
+    <Grid Name="main" Background="Black">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition Height="5*"></RowDefinition>
@@ -17,9 +17,13 @@
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
                 <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
             </Grid.RowDefinitions>
             <Label Content="Numer screena"></Label>
             <ComboBox x:Name="comboboxScreenNumber" Grid.Row="1" SelectionChanged="comboboxScreenNumber_SelectionChanged"></ComboBox>
+            <Button x:Name="buttonGetCurrentScreen" Content="Aktualny widok" Grid.Row="2" Click="buttonGetCurrentScreen_Click"></Button>
+            <Button x:Name="buttonGetLastScreen" Content="Ostatni screen" Grid.Row="3" Click="buttonGetLastScreen_Click"></Button>
         </Grid>
         <Image x:Name="imageScreenShot" Height="600" Width="800" Grid.Row="1"/>
         
