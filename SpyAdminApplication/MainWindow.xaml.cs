@@ -48,7 +48,7 @@ namespace SpyAdminApplication
                 {
                     if (s.Status.ToString() == "Połączono")
                     {
-                        showedPage.comboboxScreenNumber.Items.Add(s.Ip.ToString());
+                        showedPage.comboboxScreenNumber.Items.Add(s.Ip.ToString() + "-"+s.User);
                         showedPage.comboboxScreenNumber.SelectedIndex = 0;
                     }
                 }

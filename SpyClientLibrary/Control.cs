@@ -17,20 +17,21 @@ namespace SpyClientLibrary
     {
         public TaskManager _taskmanager { get; set; }
         public User _user { get; set; }
-        private int _acceptablepagesgroupid;
+        private int _examsessionid;
         public Control()
         {
 
         }
         public void StartControl()
         {
+            _user = new User();
             Console.WriteLine("Start working");
             GetCmd();
             Thread ThredScreen = new Thread(new ThreadStart(WaitForScreenCMD));
             ThredScreen.Start();
 
-            _user = new User();
-            _taskmanager = new TaskManager(_acceptablepagesgroupid);
+            
+            _taskmanager = new TaskManager(_examsessionid);
             while(true)
             {
                 if (!_taskmanager.CheckOpenPrograms())
@@ -85,9 +86,9 @@ namespace SpyClientLibrary
                 }
                 Console.Write(Convert.ToChar(b[i]));
             }
-            _acceptablepagesgroupid = Convert.ToInt32(id);
+            _examsessionid = Convert.ToInt32(id);
             ASCIIEncoding asen = new ASCIIEncoding();
-            s.Send(asen.GetBytes("StartACK"));
+            s.Send(asen.GetBytes(_user._userName));
             s.Close();
             myList.Stop();
         } 

@@ -43,12 +43,8 @@ namespace SpyAdminApplication.Pages
             var selectedworkgroup = _examsessioncontrol._workstationsGroups.FirstOrDefault(x => x.Name == (this.comboBoxWorkstationGroups.SelectedValue.ToString()));
             using (ClientServiceClient client = new ClientServiceClient())
             {
-                client.CreateExamSession(selectedpagegroup, selectedworkgroup);
                 _examsessioncontrol.StartExamSession(client, selectedpagegroup, selectedworkgroup, dataGridStudents);
             }
-            
-
-
         }
     }
 }

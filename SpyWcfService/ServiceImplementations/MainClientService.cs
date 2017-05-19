@@ -58,7 +58,7 @@ namespace SpyWcfService.ServiceImplementations
                 return sccreanShotList[id - 1].Data;
         }
 
-        public bool CreateExamSession(AcceptablePagesGroup pagegorup, WorkStationsGroup worksgroup)
+        public int CreateExamSession(AcceptablePagesGroup pagegorup, WorkStationsGroup worksgroup)
         {
             ExamSession exam = new ExamSession()
             {
@@ -67,8 +67,8 @@ namespace SpyWcfService.ServiceImplementations
             };
             context.ExamSessions.Add(exam);
             context.SaveChanges();
-            return true;
-            
+            return exam.ExamSessionId;
+
         }
 
         #region GetFromDB
@@ -117,6 +117,16 @@ namespace SpyWcfService.ServiceImplementations
             }
             return list;            
         }
+
+        public List<AcceptablePage> GetAcceptablePageForExamFromDB(int ExamId)
+        {
+            var query = from ex in context.ExamSessions
+                        where ex.ExamSessionId == ExamId
+                        select ex.AcceptablePagesGroupId;
+            return GetAcceptablePageForGroupFromDB(Convert.ToInt32(query.ToList()[0]));
+
+        }
+
 
         public List<WorkStationsGroup> GetWorkstationsGroupFromDB()
         {

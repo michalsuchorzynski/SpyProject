@@ -106,7 +106,8 @@ namespace SpyAdminApplication.Pages
         {
             using (ClientServiceClient client = new ClientServiceClient())
             {
-                var id = SendCMD(comboboxScreenNumber.SelectedItem.ToString(), "Screen");
+                var current_ip = comboboxScreenNumber.SelectedItem.ToString().Substring(comboboxScreenNumber.SelectedItem.ToString().IndexOf("-")-1);
+                var id = SendCMD(current_ip, "Screen");
                 var bytearray = client.GetScreenByIdFromDB(Convert.ToInt32(id));
                 ImageSourceConverter converter = new ImageSourceConverter();
                 imageScreenShot.Source = ToImage(bytearray);

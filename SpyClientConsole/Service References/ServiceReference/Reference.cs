@@ -40,10 +40,10 @@ namespace SpyClientConsole.ServiceReference {
         System.Threading.Tasks.Task<int> GetScreenCountFromDBAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/CreateExamSession", ReplyAction="http://tempuri.org/IClientService/CreateExamSessionResponse")]
-        bool CreateExamSession(SpyClientLibrary.ServiceReference.AcceptablePagesGroup pagegorup, SpyClientLibrary.ServiceReference.WorkStationsGroup worksgroup);
+        int CreateExamSession(SpyClientLibrary.ServiceReference.AcceptablePagesGroup pagegorup, SpyClientLibrary.ServiceReference.WorkStationsGroup worksgroup);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/CreateExamSession", ReplyAction="http://tempuri.org/IClientService/CreateExamSessionResponse")]
-        System.Threading.Tasks.Task<bool> CreateExamSessionAsync(SpyClientLibrary.ServiceReference.AcceptablePagesGroup pagegorup, SpyClientLibrary.ServiceReference.WorkStationsGroup worksgroup);
+        System.Threading.Tasks.Task<int> CreateExamSessionAsync(SpyClientLibrary.ServiceReference.AcceptablePagesGroup pagegorup, SpyClientLibrary.ServiceReference.WorkStationsGroup worksgroup);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetPagesGroupFromDB", ReplyAction="http://tempuri.org/IClientService/GetPagesGroupFromDBResponse")]
         SpyClientLibrary.ServiceReference.AcceptablePagesGroup[] GetPagesGroupFromDB();
@@ -62,6 +62,12 @@ namespace SpyClientConsole.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetAcceptablePageForGroupFromDB", ReplyAction="http://tempuri.org/IClientService/GetAcceptablePageForGroupFromDBResponse")]
         System.Threading.Tasks.Task<SpyClientLibrary.ServiceReference.AcceptablePage[]> GetAcceptablePageForGroupFromDBAsync(int groupId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetAcceptablePageForExamFromDB", ReplyAction="http://tempuri.org/IClientService/GetAcceptablePageForExamFromDBResponse")]
+        SpyClientLibrary.ServiceReference.AcceptablePage[] GetAcceptablePageForExamFromDB(int ExamId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetAcceptablePageForExamFromDB", ReplyAction="http://tempuri.org/IClientService/GetAcceptablePageForExamFromDBResponse")]
+        System.Threading.Tasks.Task<SpyClientLibrary.ServiceReference.AcceptablePage[]> GetAcceptablePageForExamFromDBAsync(int ExamId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetWorkstationsGroupFromDB", ReplyAction="http://tempuri.org/IClientService/GetWorkstationsGroupFromDBResponse")]
         SpyClientLibrary.ServiceReference.WorkStationsGroup[] GetWorkstationsGroupFromDB();
@@ -213,11 +219,11 @@ namespace SpyClientConsole.ServiceReference {
             return base.Channel.GetScreenCountFromDBAsync();
         }
         
-        public bool CreateExamSession(SpyClientLibrary.ServiceReference.AcceptablePagesGroup pagegorup, SpyClientLibrary.ServiceReference.WorkStationsGroup worksgroup) {
+        public int CreateExamSession(SpyClientLibrary.ServiceReference.AcceptablePagesGroup pagegorup, SpyClientLibrary.ServiceReference.WorkStationsGroup worksgroup) {
             return base.Channel.CreateExamSession(pagegorup, worksgroup);
         }
         
-        public System.Threading.Tasks.Task<bool> CreateExamSessionAsync(SpyClientLibrary.ServiceReference.AcceptablePagesGroup pagegorup, SpyClientLibrary.ServiceReference.WorkStationsGroup worksgroup) {
+        public System.Threading.Tasks.Task<int> CreateExamSessionAsync(SpyClientLibrary.ServiceReference.AcceptablePagesGroup pagegorup, SpyClientLibrary.ServiceReference.WorkStationsGroup worksgroup) {
             return base.Channel.CreateExamSessionAsync(pagegorup, worksgroup);
         }
         
@@ -243,6 +249,14 @@ namespace SpyClientConsole.ServiceReference {
         
         public System.Threading.Tasks.Task<SpyClientLibrary.ServiceReference.AcceptablePage[]> GetAcceptablePageForGroupFromDBAsync(int groupId) {
             return base.Channel.GetAcceptablePageForGroupFromDBAsync(groupId);
+        }
+        
+        public SpyClientLibrary.ServiceReference.AcceptablePage[] GetAcceptablePageForExamFromDB(int ExamId) {
+            return base.Channel.GetAcceptablePageForExamFromDB(ExamId);
+        }
+        
+        public System.Threading.Tasks.Task<SpyClientLibrary.ServiceReference.AcceptablePage[]> GetAcceptablePageForExamFromDBAsync(int ExamId) {
+            return base.Channel.GetAcceptablePageForExamFromDBAsync(ExamId);
         }
         
         public SpyClientLibrary.ServiceReference.WorkStationsGroup[] GetWorkstationsGroupFromDB() {

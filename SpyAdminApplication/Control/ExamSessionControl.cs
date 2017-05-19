@@ -36,6 +36,7 @@ namespace SpyAdminApplication.Control
             _currentSessionWorkstations = new List<WorkStation>();
             _currentSessionStudents = new List<Student>();
             _currentSessionPagesGroupId = acceptablePagesgroups.AcceptablePagesGroupId;
+            _currentExamSessionID = client.CreateExamSession(acceptablePagesgroups, workstationsgroups);
             foreach (var workstation in client.GetWorkstationsForGroupFromDB(workstationsgroups.WorkStationsGroupId))
             {
                 _currentSessionWorkstations.Add(workstation);
@@ -77,6 +78,7 @@ namespace SpyAdminApplication.Control
                         if(s.Ip==station.IP)
                         {
                             s.Status = "Połączono";
+                            s.User = response;
                             
                         }
                     }

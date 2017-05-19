@@ -21,7 +21,7 @@ namespace SpyWcfService.ServiceContracts
         int GetScreenCountFromDB();
 
         [OperationContract]
-        bool CreateExamSession(AcceptablePagesGroup pagegorup, WorkStationsGroup worksgroup);
+        int CreateExamSession(AcceptablePagesGroup pagegorup, WorkStationsGroup worksgroup);
 
 
         #region GetFromDB
@@ -31,6 +31,8 @@ namespace SpyWcfService.ServiceContracts
         List<AcceptablePage> GetAcceptablePageFromDB();
         [OperationContract]
         List<AcceptablePage> GetAcceptablePageForGroupFromDB(int groupId);
+        [OperationContract]
+        List<AcceptablePage> GetAcceptablePageForExamFromDB(int ExamId);
         [OperationContract]
         List<WorkStationsGroup> GetWorkstationsGroupFromDB();
         [OperationContract]
