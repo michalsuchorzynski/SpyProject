@@ -71,9 +71,6 @@
     <None Include="Service References\ServiceReference\service1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference\SpyWcfService.Messages.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\ServiceReference\SpyWcfService.xsd">
       <SubType>Designer</SubType>
     </None>

@@ -11,18 +11,23 @@ namespace SpyWcfService.ServiceContracts
     [ServiceContract]
     public interface IClientService
     {
+        #region ScreensShots
         [OperationContract]
-        int SaveScreenShotToDB(ClientRequest request);
+        int SaveScreenShotToDB(ScreenShot screen, WorkStation station, ClientUser user);
         [OperationContract]
         byte[] GetScreenFromDB();
         [OperationContract]
         byte[] GetScreenByIdFromDB(int id);       
         [OperationContract]
         int GetScreenCountFromDB();
+        #endregion
 
+        #region ExamSession
         [OperationContract]
         int CreateExamSession(AcceptablePagesGroup pagegorup, WorkStationsGroup worksgroup);
-
+        [OperationContract]
+        int CreateUser(ClientUser user, int station);
+        #endregion
 
         #region GetFromDB
         [OperationContract]
@@ -39,6 +44,8 @@ namespace SpyWcfService.ServiceContracts
         List<WorkStation> GetWorkstationsFromDB();
         [OperationContract]
         List<WorkStation> GetWorkstationsForGroupFromDB(int groupId);
+        [OperationContract]
+        int GetWorkstationByIp(string ip);
         #endregion
 
         #region UpdateToDb

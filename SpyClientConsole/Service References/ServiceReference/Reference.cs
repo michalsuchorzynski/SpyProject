@@ -16,10 +16,10 @@ namespace SpyClientConsole.ServiceReference {
     public interface IClientService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/SaveScreenShotToDB", ReplyAction="http://tempuri.org/IClientService/SaveScreenShotToDBResponse")]
-        int SaveScreenShotToDB(SpyClientLibrary.ServiceReference.ClientRequest request);
+        int SaveScreenShotToDB(SpyClientLibrary.ServiceReference.ScreenShot screen, SpyClientLibrary.ServiceReference.WorkStation station, SpyClientLibrary.ServiceReference.ClientUser user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/SaveScreenShotToDB", ReplyAction="http://tempuri.org/IClientService/SaveScreenShotToDBResponse")]
-        System.Threading.Tasks.Task<int> SaveScreenShotToDBAsync(SpyClientLibrary.ServiceReference.ClientRequest request);
+        System.Threading.Tasks.Task<int> SaveScreenShotToDBAsync(SpyClientLibrary.ServiceReference.ScreenShot screen, SpyClientLibrary.ServiceReference.WorkStation station, SpyClientLibrary.ServiceReference.ClientUser user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetScreenFromDB", ReplyAction="http://tempuri.org/IClientService/GetScreenFromDBResponse")]
         byte[] GetScreenFromDB();
@@ -44,6 +44,12 @@ namespace SpyClientConsole.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/CreateExamSession", ReplyAction="http://tempuri.org/IClientService/CreateExamSessionResponse")]
         System.Threading.Tasks.Task<int> CreateExamSessionAsync(SpyClientLibrary.ServiceReference.AcceptablePagesGroup pagegorup, SpyClientLibrary.ServiceReference.WorkStationsGroup worksgroup);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/CreateUser", ReplyAction="http://tempuri.org/IClientService/CreateUserResponse")]
+        int CreateUser(SpyClientLibrary.ServiceReference.ClientUser user, int station);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/CreateUser", ReplyAction="http://tempuri.org/IClientService/CreateUserResponse")]
+        System.Threading.Tasks.Task<int> CreateUserAsync(SpyClientLibrary.ServiceReference.ClientUser user, int station);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetPagesGroupFromDB", ReplyAction="http://tempuri.org/IClientService/GetPagesGroupFromDBResponse")]
         SpyClientLibrary.ServiceReference.AcceptablePagesGroup[] GetPagesGroupFromDB();
@@ -86,6 +92,12 @@ namespace SpyClientConsole.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetWorkstationsForGroupFromDB", ReplyAction="http://tempuri.org/IClientService/GetWorkstationsForGroupFromDBResponse")]
         System.Threading.Tasks.Task<SpyClientLibrary.ServiceReference.WorkStation[]> GetWorkstationsForGroupFromDBAsync(int groupId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetWorkstationByIp", ReplyAction="http://tempuri.org/IClientService/GetWorkstationByIpResponse")]
+        int GetWorkstationByIp(string ip);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetWorkstationByIp", ReplyAction="http://tempuri.org/IClientService/GetWorkstationByIpResponse")]
+        System.Threading.Tasks.Task<int> GetWorkstationByIpAsync(string ip);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/AddPagesGroup", ReplyAction="http://tempuri.org/IClientService/AddPagesGroupResponse")]
         bool AddPagesGroup(SpyClientLibrary.ServiceReference.AcceptablePagesGroup group);
@@ -187,12 +199,12 @@ namespace SpyClientConsole.ServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public int SaveScreenShotToDB(SpyClientLibrary.ServiceReference.ClientRequest request) {
-            return base.Channel.SaveScreenShotToDB(request);
+        public int SaveScreenShotToDB(SpyClientLibrary.ServiceReference.ScreenShot screen, SpyClientLibrary.ServiceReference.WorkStation station, SpyClientLibrary.ServiceReference.ClientUser user) {
+            return base.Channel.SaveScreenShotToDB(screen, station, user);
         }
         
-        public System.Threading.Tasks.Task<int> SaveScreenShotToDBAsync(SpyClientLibrary.ServiceReference.ClientRequest request) {
-            return base.Channel.SaveScreenShotToDBAsync(request);
+        public System.Threading.Tasks.Task<int> SaveScreenShotToDBAsync(SpyClientLibrary.ServiceReference.ScreenShot screen, SpyClientLibrary.ServiceReference.WorkStation station, SpyClientLibrary.ServiceReference.ClientUser user) {
+            return base.Channel.SaveScreenShotToDBAsync(screen, station, user);
         }
         
         public byte[] GetScreenFromDB() {
@@ -225,6 +237,14 @@ namespace SpyClientConsole.ServiceReference {
         
         public System.Threading.Tasks.Task<int> CreateExamSessionAsync(SpyClientLibrary.ServiceReference.AcceptablePagesGroup pagegorup, SpyClientLibrary.ServiceReference.WorkStationsGroup worksgroup) {
             return base.Channel.CreateExamSessionAsync(pagegorup, worksgroup);
+        }
+        
+        public int CreateUser(SpyClientLibrary.ServiceReference.ClientUser user, int station) {
+            return base.Channel.CreateUser(user, station);
+        }
+        
+        public System.Threading.Tasks.Task<int> CreateUserAsync(SpyClientLibrary.ServiceReference.ClientUser user, int station) {
+            return base.Channel.CreateUserAsync(user, station);
         }
         
         public SpyClientLibrary.ServiceReference.AcceptablePagesGroup[] GetPagesGroupFromDB() {
@@ -281,6 +301,14 @@ namespace SpyClientConsole.ServiceReference {
         
         public System.Threading.Tasks.Task<SpyClientLibrary.ServiceReference.WorkStation[]> GetWorkstationsForGroupFromDBAsync(int groupId) {
             return base.Channel.GetWorkstationsForGroupFromDBAsync(groupId);
+        }
+        
+        public int GetWorkstationByIp(string ip) {
+            return base.Channel.GetWorkstationByIp(ip);
+        }
+        
+        public System.Threading.Tasks.Task<int> GetWorkstationByIpAsync(string ip) {
+            return base.Channel.GetWorkstationByIpAsync(ip);
         }
         
         public bool AddPagesGroup(SpyClientLibrary.ServiceReference.AcceptablePagesGroup group) {

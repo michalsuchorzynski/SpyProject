@@ -16,29 +16,42 @@ namespace SpyClientLibrary
     public class Control
     {
         public TaskManager _taskmanager { get; set; }
-        public User _user { get; set; }
+
+        private ClientUser _user { get; set; }
+        private WorkStation _myWorkstation { get; set; }
         private int _examsessionid;
+        private string _ip = "192.168.1.6";
+
         public Control()
         {
 
         }
         public void StartControl()
         {
-            _user = new User();
-            Console.WriteLine("Start working");
+            User user = new User();
+            _user = new ClientUser();
+            _user.UserName = user._userName;
+
             GetCmd();
             Thread ThredScreen = new Thread(new ThreadStart(WaitForScreenCMD));
             ThredScreen.Start();
 
-            
             _taskmanager = new TaskManager(_examsessionid);
-            while(true)
+            _user.ExamSessionId = _examsessionid;
+            using (ClientServiceClient client = new ClientServiceClient())
+            {
+                _myWorkstation = new WorkStation();
+                _myWorkstation.WorkStationId = client.GetWorkstationByIp(_ip);
+                _user.ClientUserId = client.CreateUser(_user, _myWorkstation.WorkStationId);
+                
+            }
+            while (true)
             {
                 if (!_taskmanager.CheckOpenPrograms())
                 {
                     ScreenShot screen = new ScreenShot(_user);
                     screen.GenerateCurrentScreen();
-                    SendScreen(screen);
+                    SendScreen(screen,_myWorkstation,_user);
                 }
             }
         }
@@ -47,7 +60,7 @@ namespace SpyClientLibrary
         {
             while (true)
             {
-                IPAddress ipAd = IPAddress.Parse("192.168.43.107");
+                IPAddress ipAd = IPAddress.Parse(_ip);
                 TcpListener myList = new TcpListener(ipAd, 8002);
                 myList.Start();
 
@@ -58,7 +71,7 @@ namespace SpyClientLibrary
                     Console.Write(Convert.ToChar(b[i]));
 
                 ScreenShot screen = new ScreenShot(_user);
-                var id = SendScreen(screen);
+                var id = SendScreen(screen,_myWorkstation,_user);
                 ASCIIEncoding asen = new ASCIIEncoding();
                 s.Send(asen.GetBytes(id.ToString()));
                 s.Close();
@@ -67,7 +80,7 @@ namespace SpyClientLibrary
         }
         private void GetCmd()
         {
-            IPAddress ipAd = IPAddress.Parse("192.168.43.107");
+            IPAddress ipAd = IPAddress.Parse(_ip);
             TcpListener myList = new TcpListener(ipAd, 8001);
             myList.Start();
 
@@ -86,28 +99,32 @@ namespace SpyClientLibrary
                 }
                 Console.Write(Convert.ToChar(b[i]));
             }
+
             _examsessionid = Convert.ToInt32(id);
+            _user.ExamSessionId = _examsessionid;
             ASCIIEncoding asen = new ASCIIEncoding();
-            s.Send(asen.GetBytes(_user._userName));
+            s.Send(asen.GetBytes(_user.UserName));
             s.Close();
             myList.Stop();
         } 
 
-        public int SendScreen(ScreenShot screen)
+        public int SendScreen(ScreenShot screen, WorkStation station, ClientUser user)
         {
             int id;
+            ServiceReference.ScreenShot screentodb = new ServiceReference.ScreenShot()
+            {
+                Data = screen._data,
+                ScreenDate = screen._scrrenDate
+            };
+
+
             using (ClientServiceClient client = new ClientServiceClient())
-            {                
+            {
+
                 screen.GenerateCurrentScreen();
-                id = client.SaveScreenShotToDB(
-                        new ClientRequest()
-                        {
-                            _username = screen._user._userName,
-                            _scrrenDate = screen._scrrenDate,
-                            _scrrenName = screen._screenName,
-                            _data = screen._data
-                        });
-            }
+                id = client.SaveScreenShotToDB(screentodb, station, user);
+
+            }    
             return id;
         }
     }

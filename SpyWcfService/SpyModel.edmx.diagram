@@ -25,9 +25,11 @@
         <EntityTypeShape EntityType="SpyModel.ClientUserForWorkstation" Width="1.5" PointX="8.25" PointY="7.125" />
         <AssociationConnector Association="SpyModel.FK__ClientUse__Clien__6754599E" />
         <AssociationConnector Association="SpyModel.FK__ClientUse__WorkS__68487DD7" />
-        <EntityTypeShape EntityType="SpyModel.ScreenShotsForWorkstation" Width="1.5" PointX="4.75" PointY="5.25" />
+        <EntityTypeShape EntityType="SpyModel.ScreenShotsForWorkstation" Width="1.5" PointX="5" PointY="5.5" />
         <AssociationConnector Association="SpyModel.FK__ScreenSho__Scree__6EF57B66" />
         <AssociationConnector Association="SpyModel.FK__ScreenSho__WorkS__6FE99F9F" />
+        <AssociationConnector Association="SpyModel.ClientUserId" />
+        <AssociationConnector Association="SpyModel.ExamSessionId" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

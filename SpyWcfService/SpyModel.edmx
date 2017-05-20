@@ -28,6 +28,7 @@
           <Property Name="UserLogin" Type="varchar" MaxLength="255" />
           <Property Name="UserName" Type="varchar" MaxLength="255" />
           <Property Name="UserSurname" Type="varchar" MaxLength="255" />
+          <Property Name="ExamSessionId" Type="int" />
         </EntityType>
         <EntityType Name="ClientUserForWorkstations">
           <Key>
@@ -78,6 +79,7 @@
           <Property Name="ScreenShotsForWorkstationsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ScreenShotId" Type="int" />
           <Property Name="WorkStationId" Type="int" />
+          <Property Name="ClientUserId" Type="int" />
         </EntityType>
         <EntityType Name="WorkStation">
           <Key>
@@ -102,6 +104,30 @@
           <Property Name="WorkStationsGroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="255" />
         </EntityType>
+        <Association Name="ClientUserId">
+          <End Role="ClientUser" Type="Self.ClientUser" Multiplicity="0..1" />
+          <End Role="ScreenShotsForWorkstation" Type="Self.ScreenShotsForWorkstation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientUser">
+              <PropertyRef Name="ClientUserId" />
+            </Principal>
+            <Dependent Role="ScreenShotsForWorkstation">
+              <PropertyRef Name="ClientUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ExamSessionId">
+          <End Role="ExamSession" Type="Self.ExamSession" Multiplicity="0..1" />
+          <End Role="ClientUser" Type="Self.ClientUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExamSession">
+              <PropertyRef Name="ExamSessionId" />
+            </Principal>
+            <Dependent Role="ClientUser">
+              <PropertyRef Name="ExamSessionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__ClientUse__Clien__6754599E">
           <End Role="ClientUser" Type="Self.ClientUser" Multiplicity="0..1" />
           <End Role="ClientUserForWorkstations" Type="Self.ClientUserForWorkstations" Multiplicity="*" />
@@ -247,6 +273,14 @@
           <EntitySet Name="WorkStation" EntityType="Self.WorkStation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WorkStationsForGroup" EntityType="Self.WorkStationsForGroup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WorkStationsGroup" EntityType="Self.WorkStationsGroup" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="ClientUserId" Association="Self.ClientUserId">
+            <End Role="ClientUser" EntitySet="ClientUser" />
+            <End Role="ScreenShotsForWorkstation" EntitySet="ScreenShotsForWorkstation" />
+          </AssociationSet>
+          <AssociationSet Name="ExamSessionId" Association="Self.ExamSessionId">
+            <End Role="ExamSession" EntitySet="ExamSession" />
+            <End Role="ClientUser" EntitySet="ClientUser" />
+          </AssociationSet>
           <AssociationSet Name="FK__ClientUse__Clien__6754599E" Association="Self.FK__ClientUse__Clien__6754599E">
             <End Role="ClientUser" EntitySet="ClientUser" />
             <End Role="ClientUserForWorkstations" EntitySet="ClientUserForWorkstations" />
@@ -353,6 +387,14 @@
             <End Role="WorkStation" EntitySet="WorkStations" />
             <End Role="ScreenShotsForWorkstation" EntitySet="ScreenShotsForWorkstations" />
           </AssociationSet>
+          <AssociationSet Name="ClientUserId" Association="SpyModel.ClientUserId">
+            <End Role="ClientUser" EntitySet="ClientUsers" />
+            <End Role="ScreenShotsForWorkstation" EntitySet="ScreenShotsForWorkstations" />
+          </AssociationSet>
+          <AssociationSet Name="ExamSessionId" Association="SpyModel.ExamSessionId">
+            <End Role="ExamSession" EntitySet="ExamSessions" />
+            <End Role="ClientUser" EntitySet="ClientUsers" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="ScreenShot">
           <Key>
@@ -391,6 +433,7 @@
           <Property Name="WorkStationsGroupId" Type="Int32" />
           <NavigationProperty Name="AcceptablePagesGroup" Relationship="SpyModel.FK__ExamSessi__Accep__5DCAEF64" FromRole="ExamSession" ToRole="AcceptablePagesGroup" />
           <NavigationProperty Name="WorkStationsGroup" Relationship="SpyModel.FK__ExamSessi__WorkS__5EBF139D" FromRole="ExamSession" ToRole="WorkStationsGroup" />
+          <NavigationProperty Name="ClientUsers" Relationship="SpyModel.ExamSessionId" FromRole="ExamSession" ToRole="ClientUser" />
         </EntityType>
         <EntityType Name="PagesForGroup">
           <Key>
@@ -534,6 +577,9 @@
           <Property Name="UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="UserSurname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="ClientUserForWorkstations" Relationship="SpyModel.FK__ClientUse__Clien__6754599E" FromRole="ClientUser" ToRole="ClientUserForWorkstation" />
+          <Property Name="ExamSessionId" Type="Int32" />
+          <NavigationProperty Name="ScreenShotsForWorkstations" Relationship="SpyModel.ClientUserId" FromRole="ClientUser" ToRole="ScreenShotsForWorkstation" />
+          <NavigationProperty Name="ExamSession" Relationship="SpyModel.ExamSessionId" FromRole="ClientUser" ToRole="ExamSession" />
         </EntityType>
         <EntityType Name="ClientUserForWorkstation">
           <Key>
@@ -580,6 +626,8 @@
           <Property Name="WorkStationId" Type="Int32" />
           <NavigationProperty Name="ScreenShot" Relationship="SpyModel.FK__ScreenSho__Scree__6EF57B66" FromRole="ScreenShotsForWorkstation" ToRole="ScreenShot" />
           <NavigationProperty Name="WorkStation" Relationship="SpyModel.FK__ScreenSho__WorkS__6FE99F9F" FromRole="ScreenShotsForWorkstation" ToRole="WorkStation" />
+          <Property Name="ClientUserId" Type="Int32" />
+          <NavigationProperty Name="ClientUser" Relationship="SpyModel.ClientUserId" FromRole="ScreenShotsForWorkstation" ToRole="ClientUser" />
         </EntityType>
         <Association Name="FK__ScreenSho__Scree__6EF57B66">
           <End Type="SpyModel.ScreenShot" Role="ScreenShot" Multiplicity="0..1" />
@@ -602,6 +650,30 @@
             </Principal>
             <Dependent Role="ScreenShotsForWorkstation">
               <PropertyRef Name="WorkStationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ClientUserId">
+          <End Type="SpyModel.ClientUser" Role="ClientUser" Multiplicity="0..1" />
+          <End Type="SpyModel.ScreenShotsForWorkstation" Role="ScreenShotsForWorkstation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientUser">
+              <PropertyRef Name="ClientUserId" />
+            </Principal>
+            <Dependent Role="ScreenShotsForWorkstation">
+              <PropertyRef Name="ClientUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ExamSessionId">
+          <End Type="SpyModel.ExamSession" Role="ExamSession" Multiplicity="0..1" />
+          <End Type="SpyModel.ClientUser" Role="ClientUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExamSession">
+              <PropertyRef Name="ExamSessionId" />
+            </Principal>
+            <Dependent Role="ClientUser">
+              <PropertyRef Name="ExamSessionId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -693,6 +765,7 @@
           <EntitySetMapping Name="ClientUsers">
             <EntityTypeMapping TypeName="SpyModel.ClientUser">
               <MappingFragment StoreEntitySet="ClientUser">
+                <ScalarProperty Name="ExamSessionId" ColumnName="ExamSessionId" />
                 <ScalarProperty Name="UserSurname" ColumnName="UserSurname" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="UserLogin" ColumnName="UserLogin" />
@@ -714,6 +787,7 @@
           <EntitySetMapping Name="ScreenShotsForWorkstations">
             <EntityTypeMapping TypeName="SpyModel.ScreenShotsForWorkstation">
               <MappingFragment StoreEntitySet="ScreenShotsForWorkstation">
+                <ScalarProperty Name="ClientUserId" ColumnName="ClientUserId" />
                 <ScalarProperty Name="WorkStationId" ColumnName="WorkStationId" />
                 <ScalarProperty Name="ScreenShotId" ColumnName="ScreenShotId" />
                 <ScalarProperty Name="ScreenShotsForWorkstationsId" ColumnName="ScreenShotsForWorkstationsId" />

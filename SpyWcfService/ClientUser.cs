@@ -18,14 +18,19 @@ namespace SpyWcfService
         public ClientUser()
         {
             this.ClientUserForWorkstations = new HashSet<ClientUserForWorkstation>();
+            this.ScreenShotsForWorkstations = new HashSet<ScreenShotsForWorkstation>();
         }
     
         public int ClientUserId { get; set; }
         public string UserLogin { get; set; }
         public string UserName { get; set; }
         public string UserSurname { get; set; }
+        public Nullable<int> ExamSessionId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ClientUserForWorkstation> ClientUserForWorkstations { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ScreenShotsForWorkstation> ScreenShotsForWorkstations { get; set; }
+        public virtual ExamSession ExamSession { get; set; }
     }
 }

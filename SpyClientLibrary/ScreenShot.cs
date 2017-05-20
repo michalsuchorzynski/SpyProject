@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
 using System.IO;
+using SpyClientLibrary.ServiceReference;
 
 namespace SpyClientLibrary
 {
@@ -13,11 +14,11 @@ namespace SpyClientLibrary
     {
         public Bitmap _currentScreen { get; set; }
         public DateTime _scrrenDate { get; set; }
-        public User _user { get; set; }
+        public ClientUser _user { get; set; }
         public string _screenName { get; set; }        
         public byte[] _data { get; set; }
 
-        public ScreenShot(User user)
+        public ScreenShot(ClientUser user)
         {
             _user=user;
         }

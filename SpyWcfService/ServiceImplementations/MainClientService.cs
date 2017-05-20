@@ -12,10 +12,11 @@ namespace SpyWcfService.ServiceImplementations
     public class MainClientService : IClientService
     {
         private SpyEntities context;
+
+        #region ScreenShots
         public MainClientService()
         {
             context = new SpyEntities(); 
-
         }
 
         public byte[] GetScreenFromDB()
@@ -28,25 +29,19 @@ namespace SpyWcfService.ServiceImplementations
         {
             return context.ScreenShots.Count();
         }
-        public int SaveScreenShotToDB(ClientRequest request)
+        public int SaveScreenShotToDB(ScreenShot screen, WorkStation station, ClientUser user)
         {
-            int result;
-            try
+            ScreenShotsForWorkstation sw = new ScreenShotsForWorkstation()
             {
-                ScreenShot screentosave = new ScreenShot(){
-                    Data = request._data,
-                    ScreenDate = request._scrrenDate
-
-                };
-                context.ScreenShots.Add(screentosave);
-                context.SaveChanges();
-                result = screentosave.ScreenShotId;                
-            }
-            catch(Exception e)
-            {
-                return 0;
-            }
-            return result;
+                ClientUserId = user.ClientUserId,                
+                WorkStationId = station.WorkStationId
+            };
+            context.ScreenShots.Add(screen);
+            context.SaveChanges();
+            sw.ScreenShotId = screen.ScreenShotId;
+            context.ScreenShotsForWorkstations.Add(sw);
+            context.SaveChanges();
+            return screen.ScreenShotId;
         }
 
         public byte[] GetScreenByIdFromDB(int id)
@@ -57,7 +52,9 @@ namespace SpyWcfService.ServiceImplementations
             else
                 return sccreanShotList[id - 1].Data;
         }
+        #endregion
 
+        # region ExamSession
         public int CreateExamSession(AcceptablePagesGroup pagegorup, WorkStationsGroup worksgroup)
         {
             ExamSession exam = new ExamSession()
@@ -68,8 +65,30 @@ namespace SpyWcfService.ServiceImplementations
             context.ExamSessions.Add(exam);
             context.SaveChanges();
             return exam.ExamSessionId;
-
         }
+        public ExamSession GetExamSessionFromDB(int id)
+        {
+            var query = from es in context.ExamSessions
+                        where es.ExamSessionId == id
+                        select es;
+            return query.ToList()[0];
+        }
+
+        public int CreateUser(ClientUser user, int station)
+        {
+            context.ClientUsers.Add(user);
+            context.SaveChanges();
+
+            ClientUserForWorkstation cw = new ClientUserForWorkstation()
+            {
+                ClientUserId = user.ClientUserId,
+                WorkStationId = station,
+            };
+            context.ClientUserForWorkstations.Add(cw);
+            context.SaveChanges();
+            return user.ClientUserId;
+        }
+        #endregion
 
         #region GetFromDB
         public List<AcceptablePagesGroup> GetPagesGroupFromDB()
@@ -170,6 +189,13 @@ namespace SpyWcfService.ServiceImplementations
                 });
             }
             return list;
+        }
+        public int GetWorkstationByIp(string ip)
+        {
+            var query = from ws in context.WorkStations
+                        where ws.IP == ip
+                        select ws;
+            return query.ToList()[0].WorkStationId;
         }
         #endregion
 

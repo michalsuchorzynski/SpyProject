@@ -25,7 +25,6 @@
     <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="915836fd-2780-4e4a-8c40-258f397f3348" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/SpyWcfService/MainClientService/mex" />
     <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="503417bd-5695-4b6c-999f-0239c48ac430" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/SpyWcfService/MainClientService/mex" />
     <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="6629069a-1460-4a0b-baea-f0110969f22f" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/SpyWcfService/MainClientService/mex" />
-    <MetadataFile FileName="SpyWcfService.Messages.xsd" MetadataType="Schema" ID="cff15bd3-a71d-41e5-8719-c1eaa6122d3f" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/SpyWcfService/MainClientService/mex" />
     <MetadataFile FileName="SpyWcfService.xsd" MetadataType="Schema" ID="9c34788d-5438-4d68-919c-4a35562b640b" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/SpyWcfService/MainClientService/mex" />
   </Metadata>
   <Extensions>

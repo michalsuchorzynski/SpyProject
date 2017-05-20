@@ -14,6 +14,12 @@ namespace SpyWcfService
     
     public partial class ExamSession
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public ExamSession()
+        {
+            this.ClientUsers = new HashSet<ClientUser>();
+        }
+    
         public int ExamSessionId { get; set; }
         public string Name { get; set; }
         public Nullable<int> AcceptablePagesGroupId { get; set; }
@@ -21,5 +27,7 @@ namespace SpyWcfService
     
         public virtual AcceptablePagesGroup AcceptablePagesGroup { get; set; }
         public virtual WorkStationsGroup WorkStationsGroup { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ClientUser> ClientUsers { get; set; }
     }
 }

@@ -4,7 +4,6 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import namespace="http://tempuri.org/" />
       <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import namespace="http://schemas.datacontract.org/2004/07/SpyWcfService.Messages" />
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/SpyWcfService" />
     </xsd:schema>
   </wsdl:types>
@@ -37,6 +36,12 @@
   </wsdl:message>
   <wsdl:message name="IClientService_CreateExamSession_OutputMessage">
     <wsdl:part name="parameters" element="tns:CreateExamSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_CreateUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateUser" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_CreateUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateUserResponse" />
   </wsdl:message>
   <wsdl:message name="IClientService_GetPagesGroupFromDB_InputMessage">
     <wsdl:part name="parameters" element="tns:GetPagesGroupFromDB" />
@@ -79,6 +84,12 @@
   </wsdl:message>
   <wsdl:message name="IClientService_GetWorkstationsForGroupFromDB_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetWorkstationsForGroupFromDBResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_GetWorkstationByIp_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetWorkstationByIp" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_GetWorkstationByIp_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetWorkstationByIpResponse" />
   </wsdl:message>
   <wsdl:message name="IClientService_AddPagesGroup_InputMessage">
     <wsdl:part name="parameters" element="tns:AddPagesGroup" />
@@ -173,6 +184,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IClientService/CreateExamSession" message="tns:IClientService_CreateExamSession_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IClientService/CreateExamSessionResponse" message="tns:IClientService_CreateExamSession_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="CreateUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/CreateUser" message="tns:IClientService_CreateUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/CreateUserResponse" message="tns:IClientService_CreateUser_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetPagesGroupFromDB">
       <wsdl:input wsaw:Action="http://tempuri.org/IClientService/GetPagesGroupFromDB" message="tns:IClientService_GetPagesGroupFromDB_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IClientService/GetPagesGroupFromDBResponse" message="tns:IClientService_GetPagesGroupFromDB_OutputMessage" />
@@ -200,6 +215,10 @@
     <wsdl:operation name="GetWorkstationsForGroupFromDB">
       <wsdl:input wsaw:Action="http://tempuri.org/IClientService/GetWorkstationsForGroupFromDB" message="tns:IClientService_GetWorkstationsForGroupFromDB_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IClientService/GetWorkstationsForGroupFromDBResponse" message="tns:IClientService_GetWorkstationsForGroupFromDB_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkstationByIp">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/GetWorkstationByIp" message="tns:IClientService_GetWorkstationByIp_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/GetWorkstationByIpResponse" message="tns:IClientService_GetWorkstationByIp_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="AddPagesGroup">
       <wsdl:input wsaw:Action="http://tempuri.org/IClientService/AddPagesGroup" message="tns:IClientService_AddPagesGroup_InputMessage" />
@@ -297,6 +316,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="CreateUser">
+      <soap:operation soapAction="http://tempuri.org/IClientService/CreateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetPagesGroupFromDB">
       <soap:operation soapAction="http://tempuri.org/IClientService/GetPagesGroupFromDB" style="document" />
       <wsdl:input>
@@ -353,6 +381,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetWorkstationsForGroupFromDB">
       <soap:operation soapAction="http://tempuri.org/IClientService/GetWorkstationsForGroupFromDB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkstationByIp">
+      <soap:operation soapAction="http://tempuri.org/IClientService/GetWorkstationByIp" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

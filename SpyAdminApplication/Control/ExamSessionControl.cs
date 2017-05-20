@@ -72,7 +72,7 @@ namespace SpyAdminApplication.Control
                     }
                     dataGridStudents.ItemsSource = null;
                     dataGridStudents.ItemsSource = _currentSessionStudents;
-                    var response = SendCMD(wIp, "start|"+Convert.ToInt32(_currentSessionPagesGroupId));
+                    var response = SendCMD(wIp, "start|"+Convert.ToInt32(_currentExamSessionID));
                     foreach(Student s in _currentSessionStudents)
                     {
                         if(s.Ip==station.IP)

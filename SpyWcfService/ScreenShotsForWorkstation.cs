@@ -17,8 +17,10 @@ namespace SpyWcfService
         public int ScreenShotsForWorkstationsId { get; set; }
         public Nullable<int> ScreenShotId { get; set; }
         public Nullable<int> WorkStationId { get; set; }
+        public Nullable<int> ClientUserId { get; set; }
     
         public virtual ScreenShot ScreenShot { get; set; }
         public virtual WorkStation WorkStation { get; set; }
+        public virtual ClientUser ClientUser { get; set; }
     }
 }
