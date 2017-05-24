@@ -29,6 +29,18 @@ namespace SpyWcfService.ServiceImplementations
         {
             return context.ScreenShots.Count();
         }
+        public List<int> GetOffenceScreenId(int userid)
+        {
+            List<int> result = new List<int>();
+            foreach(ScreenShotsForWorkstation sw in context.ScreenShotsForWorkstations)
+            {
+                if(sw.ClientUserId==userid && sw.ScreenShot.isOfense==1)
+                {
+                    result.Add(Convert.ToInt32(sw.ScreenShotId));
+                }
+            }
+            return result;
+        }
         public int SaveScreenShotToDB(ScreenShot screen, WorkStation station, ClientUser user)
         {
             ScreenShotsForWorkstation sw = new ScreenShotsForWorkstation()
@@ -47,10 +59,10 @@ namespace SpyWcfService.ServiceImplementations
         public byte[] GetScreenByIdFromDB(int id)
         {
             var sccreanShotList = context.ScreenShots.ToList();
-            if(id==0)
-                return sccreanShotList[id].Data;
-            else
-                return sccreanShotList[id - 1].Data;
+            var scrren =sccreanShotList.Find(x => x.ScreenShotId == id);
+            if (scrren == null)
+                return sccreanShotList.Last().Data;
+            return scrren.Data;
         }
         #endregion
 
@@ -87,6 +99,24 @@ namespace SpyWcfService.ServiceImplementations
             context.ClientUserForWorkstations.Add(cw);
             context.SaveChanges();
             return user.ClientUserId;
+        }
+
+        public int GetUserForWorkstation(int examid, int stationid)
+        {
+            foreach (ClientUser user in context.ClientUsers)
+            {
+                if (user.ExamSessionId == examid)
+                {
+                    foreach (ClientUserForWorkstation cw in context.ClientUserForWorkstations)
+                    {
+                        if (cw.WorkStationId == stationid)
+                        {
+                            return user.ClientUserId;
+                        }
+                    }
+                }
+            }
+            return 0;
         }
         #endregion
 

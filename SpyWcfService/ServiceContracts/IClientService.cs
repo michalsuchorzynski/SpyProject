@@ -20,6 +20,8 @@ namespace SpyWcfService.ServiceContracts
         byte[] GetScreenByIdFromDB(int id);       
         [OperationContract]
         int GetScreenCountFromDB();
+        [OperationContract]
+        List<int> GetOffenceScreenId(int userid);
         #endregion
 
         #region ExamSession
@@ -27,6 +29,10 @@ namespace SpyWcfService.ServiceContracts
         int CreateExamSession(AcceptablePagesGroup pagegorup, WorkStationsGroup worksgroup);
         [OperationContract]
         int CreateUser(ClientUser user, int station);
+        [OperationContract]
+        int GetUserForWorkstation(int examid, int stationid);
+       
+
         #endregion
 
         #region GetFromDB

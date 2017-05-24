@@ -23,6 +23,7 @@ namespace SpyWcfService
         public int ScreenShotId { get; set; }
         public byte[] Data { get; set; }
         public Nullable<System.DateTime> ScreenDate { get; set; }
+        public Nullable<int> isOfense { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ScreenShotsForWorkstation> ScreenShotsForWorkstations { get; set; }

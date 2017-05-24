@@ -26,6 +26,8 @@ namespace SpyAdminApplication.Pages
     public partial class OneScreenShotPage : Page
     {
         private int screenShotCount;
+        public int examSessionId;
+        public List<WorkStation> _currentSessionWorkstations;
         public OneScreenShotPage()
         {
             InitializeComponent();
@@ -68,24 +70,29 @@ namespace SpyAdminApplication.Pages
                 return image;
             }
         }
-                       
+
         private void comboboxScreenNumber_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //using (ClientServiceClient client = new ClientServiceClient())
-            //{
-            //    var id = SendCMD(ip, "Screen");
-            //    var bytearray = client.GetScreenByIdFromDB(Convert.ToInt32(id));
-            //    ImageSourceConverter converter = new ImageSourceConverter();
-            //    imageScreenShot.Source = ToImage(bytearray);
+            var selectedip = comboboxScreenNumber.SelectedItem.ToString().Substring(0, comboboxScreenNumber.SelectedItem.ToString().IndexOf("-"));
+            var selectedWorkstation = _currentSessionWorkstations.Find(x => x.IP == selectedip);
+            int selectedUser;
 
-            //}
-
+            using (ClientServiceClient client = new ClientServiceClient())
+            {
+                selectedUser = client.GetUserForWorkstation(examSessionId, selectedWorkstation.WorkStationId);
+                var errorsforuser = client.GetOffenceScreenId(selectedUser);
+                comboboxOfenceID.Items.Clear();
+                for (int i = 0; i < errorsforuser.Length; i++)
+                {
+                    comboboxOfenceID.Items.Add(errorsforuser[i]);
+                }
+            }
         }
         private string SendCMD(string wIp, string cmd)
         {
             string request = "";
             TcpClient tcpclnt = new TcpClient();
-            tcpclnt.Connect(comboboxScreenNumber.SelectedItem.ToString(), 8002);
+            tcpclnt.Connect(wIp, 8002);
 
             Stream stm = tcpclnt.GetStream();
             ASCIIEncoding asen = new ASCIIEncoding();
@@ -106,7 +113,7 @@ namespace SpyAdminApplication.Pages
         {
             using (ClientServiceClient client = new ClientServiceClient())
             {
-                var current_ip = comboboxScreenNumber.SelectedItem.ToString().Substring(comboboxScreenNumber.SelectedItem.ToString().IndexOf("-")-1);
+                var current_ip = comboboxScreenNumber.SelectedItem.ToString().Substring(0,comboboxScreenNumber.SelectedItem.ToString().IndexOf("-"));
                 var id = SendCMD(current_ip, "Screen");
                 var bytearray = client.GetScreenByIdFromDB(Convert.ToInt32(id));
                 ImageSourceConverter converter = new ImageSourceConverter();
@@ -119,7 +126,7 @@ namespace SpyAdminApplication.Pages
         {
             using (ClientServiceClient client = new ClientServiceClient())
             {
-                var bytearray = client.GetScreenByIdFromDB(client.GetScreenCountFromDB());
+                var bytearray = client.GetScreenByIdFromDB(Convert.ToInt32(comboboxOfenceID.SelectedItem));
                 ImageSourceConverter converter = new ImageSourceConverter();
                 imageScreenShot.Source = ToImage(bytearray);
 

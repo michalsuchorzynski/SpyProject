@@ -20,7 +20,7 @@ namespace SpyClientLibrary
         private ClientUser _user { get; set; }
         private WorkStation _myWorkstation { get; set; }
         private int _examsessionid;
-        private string _ip = "192.168.1.6";
+        private string _ip = "95.108.69.237";
 
         public Control()
         {
@@ -50,6 +50,7 @@ namespace SpyClientLibrary
                 if (!_taskmanager.CheckOpenPrograms())
                 {
                     ScreenShot screen = new ScreenShot(_user);
+                    screen.isOffence = 1;
                     screen.GenerateCurrentScreen();
                     SendScreen(screen,_myWorkstation,_user);
                 }
@@ -71,6 +72,8 @@ namespace SpyClientLibrary
                     Console.Write(Convert.ToChar(b[i]));
 
                 ScreenShot screen = new ScreenShot(_user);
+                screen.GenerateCurrentScreen();
+                screen.isOffence = 0;
                 var id = SendScreen(screen,_myWorkstation,_user);
                 ASCIIEncoding asen = new ASCIIEncoding();
                 s.Send(asen.GetBytes(id.ToString()));
@@ -114,7 +117,8 @@ namespace SpyClientLibrary
             ServiceReference.ScreenShot screentodb = new ServiceReference.ScreenShot()
             {
                 Data = screen._data,
-                ScreenDate = screen._scrrenDate
+                ScreenDate = screen._scrrenDate,
+                isOfense=screen.isOffence
             };
 
 

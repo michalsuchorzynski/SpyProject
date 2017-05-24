@@ -5,6 +5,7 @@
       <xsd:import namespace="http://tempuri.org/" />
       <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/SpyWcfService" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IClientService_SaveScreenShotToDB_InputMessage">
@@ -31,6 +32,12 @@
   <wsdl:message name="IClientService_GetScreenCountFromDB_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetScreenCountFromDBResponse" />
   </wsdl:message>
+  <wsdl:message name="IClientService_GetOffenceScreenId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOffenceScreenId" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_GetOffenceScreenId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOffenceScreenIdResponse" />
+  </wsdl:message>
   <wsdl:message name="IClientService_CreateExamSession_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateExamSession" />
   </wsdl:message>
@@ -42,6 +49,12 @@
   </wsdl:message>
   <wsdl:message name="IClientService_CreateUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:CreateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_GetUserForWorkstation_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserForWorkstation" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_GetUserForWorkstation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserForWorkstationResponse" />
   </wsdl:message>
   <wsdl:message name="IClientService_GetPagesGroupFromDB_InputMessage">
     <wsdl:part name="parameters" element="tns:GetPagesGroupFromDB" />
@@ -180,6 +193,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IClientService/GetScreenCountFromDB" message="tns:IClientService_GetScreenCountFromDB_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IClientService/GetScreenCountFromDBResponse" message="tns:IClientService_GetScreenCountFromDB_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetOffenceScreenId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/GetOffenceScreenId" message="tns:IClientService_GetOffenceScreenId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/GetOffenceScreenIdResponse" message="tns:IClientService_GetOffenceScreenId_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="CreateExamSession">
       <wsdl:input wsaw:Action="http://tempuri.org/IClientService/CreateExamSession" message="tns:IClientService_CreateExamSession_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IClientService/CreateExamSessionResponse" message="tns:IClientService_CreateExamSession_OutputMessage" />
@@ -187,6 +204,10 @@
     <wsdl:operation name="CreateUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IClientService/CreateUser" message="tns:IClientService_CreateUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IClientService/CreateUserResponse" message="tns:IClientService_CreateUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserForWorkstation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/GetUserForWorkstation" message="tns:IClientService_GetUserForWorkstation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/GetUserForWorkstationResponse" message="tns:IClientService_GetUserForWorkstation_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetPagesGroupFromDB">
       <wsdl:input wsaw:Action="http://tempuri.org/IClientService/GetPagesGroupFromDB" message="tns:IClientService_GetPagesGroupFromDB_InputMessage" />
@@ -307,6 +328,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetOffenceScreenId">
+      <soap:operation soapAction="http://tempuri.org/IClientService/GetOffenceScreenId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="CreateExamSession">
       <soap:operation soapAction="http://tempuri.org/IClientService/CreateExamSession" style="document" />
       <wsdl:input>
@@ -318,6 +348,15 @@
     </wsdl:operation>
     <wsdl:operation name="CreateUser">
       <soap:operation soapAction="http://tempuri.org/IClientService/CreateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserForWorkstation">
+      <soap:operation soapAction="http://tempuri.org/IClientService/GetUserForWorkstation" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

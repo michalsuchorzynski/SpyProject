@@ -42,6 +42,8 @@ namespace SpyAdminApplication
         private void MenuItemStart_Click(object sender, RoutedEventArgs e)
         {
             showedPage.comboboxScreenNumber.Items.Clear();
+            showedPage.examSessionId = es._examsessioncontrol._currentExamSessionID;
+            showedPage._currentSessionWorkstations = es._examsessioncontrol._currentSessionWorkstations;
             if (es._examsessioncontrol._currentSessionStudents != null)
             {
                 foreach (Student s in es._examsessioncontrol._currentSessionStudents)
@@ -49,6 +51,7 @@ namespace SpyAdminApplication
                     if (s.Status.ToString() == "Połączono")
                     {
                         showedPage.comboboxScreenNumber.Items.Add(s.Ip.ToString() + "-"+s.User);
+                        showedPage.comboboxScreenNumber.Items.Add(s.Ip.ToString() + "-" + s.User);
                         showedPage.comboboxScreenNumber.SelectedIndex = 0;
                     }
                 }

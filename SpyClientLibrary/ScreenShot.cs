@@ -15,7 +15,8 @@ namespace SpyClientLibrary
         public Bitmap _currentScreen { get; set; }
         public DateTime _scrrenDate { get; set; }
         public ClientUser _user { get; set; }
-        public string _screenName { get; set; }        
+        public string _screenName { get; set; } 
+        public int isOffence { get; set; }       
         public byte[] _data { get; set; }
 
         public ScreenShot(ClientUser user)

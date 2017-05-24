@@ -34,6 +34,9 @@ namespace SpyAdminApplication.ServiceReference1 {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private SpyAdminApplication.ServiceReference1.ScreenShotsForWorkstation[] ScreenShotsForWorkstationsField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> isOfenseField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -92,6 +95,19 @@ namespace SpyAdminApplication.ServiceReference1 {
                 if ((object.ReferenceEquals(this.ScreenShotsForWorkstationsField, value) != true)) {
                     this.ScreenShotsForWorkstationsField = value;
                     this.RaisePropertyChanged("ScreenShotsForWorkstations");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> isOfense {
+            get {
+                return this.isOfenseField;
+            }
+            set {
+                if ((this.isOfenseField.Equals(value) != true)) {
+                    this.isOfenseField = value;
+                    this.RaisePropertyChanged("isOfense");
                 }
             }
         }
@@ -1429,6 +1445,12 @@ namespace SpyAdminApplication.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetScreenCountFromDB", ReplyAction="http://tempuri.org/IClientService/GetScreenCountFromDBResponse")]
         System.Threading.Tasks.Task<int> GetScreenCountFromDBAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetOffenceScreenId", ReplyAction="http://tempuri.org/IClientService/GetOffenceScreenIdResponse")]
+        int[] GetOffenceScreenId(int userid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetOffenceScreenId", ReplyAction="http://tempuri.org/IClientService/GetOffenceScreenIdResponse")]
+        System.Threading.Tasks.Task<int[]> GetOffenceScreenIdAsync(int userid);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/CreateExamSession", ReplyAction="http://tempuri.org/IClientService/CreateExamSessionResponse")]
         int CreateExamSession(SpyAdminApplication.ServiceReference1.AcceptablePagesGroup pagegorup, SpyAdminApplication.ServiceReference1.WorkStationsGroup worksgroup);
         
@@ -1440,6 +1462,12 @@ namespace SpyAdminApplication.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/CreateUser", ReplyAction="http://tempuri.org/IClientService/CreateUserResponse")]
         System.Threading.Tasks.Task<int> CreateUserAsync(SpyAdminApplication.ServiceReference1.ClientUser user, int station);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetUserForWorkstation", ReplyAction="http://tempuri.org/IClientService/GetUserForWorkstationResponse")]
+        int GetUserForWorkstation(int examid, int stationid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetUserForWorkstation", ReplyAction="http://tempuri.org/IClientService/GetUserForWorkstationResponse")]
+        System.Threading.Tasks.Task<int> GetUserForWorkstationAsync(int examid, int stationid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetPagesGroupFromDB", ReplyAction="http://tempuri.org/IClientService/GetPagesGroupFromDBResponse")]
         SpyAdminApplication.ServiceReference1.AcceptablePagesGroup[] GetPagesGroupFromDB();
@@ -1621,6 +1649,14 @@ namespace SpyAdminApplication.ServiceReference1 {
             return base.Channel.GetScreenCountFromDBAsync();
         }
         
+        public int[] GetOffenceScreenId(int userid) {
+            return base.Channel.GetOffenceScreenId(userid);
+        }
+        
+        public System.Threading.Tasks.Task<int[]> GetOffenceScreenIdAsync(int userid) {
+            return base.Channel.GetOffenceScreenIdAsync(userid);
+        }
+        
         public int CreateExamSession(SpyAdminApplication.ServiceReference1.AcceptablePagesGroup pagegorup, SpyAdminApplication.ServiceReference1.WorkStationsGroup worksgroup) {
             return base.Channel.CreateExamSession(pagegorup, worksgroup);
         }
@@ -1635,6 +1671,14 @@ namespace SpyAdminApplication.ServiceReference1 {
         
         public System.Threading.Tasks.Task<int> CreateUserAsync(SpyAdminApplication.ServiceReference1.ClientUser user, int station) {
             return base.Channel.CreateUserAsync(user, station);
+        }
+        
+        public int GetUserForWorkstation(int examid, int stationid) {
+            return base.Channel.GetUserForWorkstation(examid, stationid);
+        }
+        
+        public System.Threading.Tasks.Task<int> GetUserForWorkstationAsync(int examid, int stationid) {
+            return base.Channel.GetUserForWorkstationAsync(examid, stationid);
         }
         
         public SpyAdminApplication.ServiceReference1.AcceptablePagesGroup[] GetPagesGroupFromDB() {
