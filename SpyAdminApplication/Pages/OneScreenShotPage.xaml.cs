@@ -73,6 +73,9 @@ namespace SpyAdminApplication.Pages
 
         private void comboboxScreenNumber_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (comboboxScreenNumber.SelectedItem == null)
+                return;
+
             var selectedip = comboboxScreenNumber.SelectedItem.ToString().Substring(0, comboboxScreenNumber.SelectedItem.ToString().IndexOf("-"));
             var selectedWorkstation = _currentSessionWorkstations.Find(x => x.IP == selectedip);
             int selectedUser;

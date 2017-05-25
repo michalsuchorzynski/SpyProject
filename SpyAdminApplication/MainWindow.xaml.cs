@@ -44,7 +44,7 @@ namespace SpyAdminApplication
             showedPage.comboboxScreenNumber.Items.Clear();
             showedPage.examSessionId = es._examsessioncontrol._currentExamSessionID;
             showedPage._currentSessionWorkstations = es._examsessioncontrol._currentSessionWorkstations;
-            if (es._examsessioncontrol._currentSessionStudents != null)
+if (es._examsessioncontrol._currentSessionStudents != null)
             {
                 foreach (Student s in es._examsessioncontrol._currentSessionStudents)
                 {
