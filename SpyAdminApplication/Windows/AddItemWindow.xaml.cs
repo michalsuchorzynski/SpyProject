@@ -53,11 +53,19 @@ namespace SpyAdminApplication.Windows
             switch (type)
             {
                 case AddWindowType.AddPage:
-                    this.labelTittle.Content = "Nowa akceptowalna strona";
+                    this.Title = "Nowa akceptowalna strona";
                     this.labelField1.Content = "Podaj adres url strony";
                     break;
                 case AddWindowType.AddGroup:
-                    this.labelTittle.Content = "Nowa grupa stron";
+                    this.Title = "Nowa grupa stron";
+                    this.labelField1.Content = "Podaj nazwe grupy";
+                    break;
+                case AddWindowType.AddWorkstation:
+                    this.Title = "Nowa stacja robocza";
+                    this.labelField1.Content = "Podaj IP stacji roboczej";
+                    break;
+                case AddWindowType.AddWorkstationGroup:
+                    this.Title = "Nowa grupa stacji roboczych";
                     this.labelField1.Content = "Podaj nazwe grupy";
                     break;
                 default:
@@ -124,11 +132,7 @@ namespace SpyAdminApplication.Windows
             }
             this.Close();
         }
-
-        private void buttonClose_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
+              
     }
     public enum AddWindowType
     {
