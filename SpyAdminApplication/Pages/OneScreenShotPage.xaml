@@ -8,27 +8,32 @@
       d:DesignHeight="300" d:DesignWidth="300"
       Title="OneScreenShotPage">
 
-    <Grid Name="main" Background="Black">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="5*"></RowDefinition>
-        </Grid.RowDefinitions>
+    <Grid Name="main" Margin="20,20,20,20" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
-                <RowDefinition Height="30"></RowDefinition>
-                <RowDefinition Height="30"></RowDefinition>
-                <RowDefinition Height="30"></RowDefinition>
-                <RowDefinition Height="30"></RowDefinition>
-            </Grid.RowDefinitions>
-            <Label Content="Numer screena"></Label>
-            <ComboBox x:Name="comboboxScreenNumber" Grid.Row="1" SelectionChanged="comboboxScreenNumber_SelectionChanged"></ComboBox>
-            <Button x:Name="buttonGetCurrentScreen" Content="Aktualny widok" Grid.Row="2" Click="buttonGetCurrentScreen_Click"></Button>
-            <ComboBox x:Name="comboboxOfenceID" Grid.Row="3"></ComboBox>
-            <Button x:Name="buttonGetLastScreen" Content="Wykroczenie" Grid.Row="4" Click="buttonGetLastScreen_Click"></Button>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+         
+        </Grid.RowDefinitions>
+        <Label Content="Wybierz stacje roboczą"></Label>
+        <ComboBox x:Name="comboboxScreenNumber" Grid.Row="1" SelectionChanged="comboboxScreenNumber_SelectionChanged" Width="220" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0"></ComboBox>
+        <Button x:Name="buttonGetCurrentScreen" Content="Aktualny widok" Grid.Row="2" Click="buttonGetCurrentScreen_Click" Width="220" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0"></Button>
+        <Label Content="Wybierz wykroczenie" Grid.Row="3" Margin="0,0,0,0" ></Label>
+        <ComboBox x:Name="comboboxOfenceID" Grid.Row="4" Width="220" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0"></ComboBox>
+        <Button x:Name="buttonGetLastScreen" Content="Wykroczenie" Grid.Row="5" Click="buttonGetLastScreen_Click" Width="220" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0"></Button>
+            
         </Grid>
-        <Image x:Name="imageScreenShot" Height="600" Width="800" Grid.Row="1"/>
-        
+        <Grid  Height="604" Width="804" Grid.Column="1" Background="RosyBrown">
+            <Image x:Name="imageScreenShot"  Height="600" Width="800" Margin="2,2,2,2" />
+        </Grid>
 
     </Grid>
 </Page>

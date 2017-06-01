@@ -24,6 +24,8 @@ namespace SpyAdminApplication.Control
         public Thread _examThread;
         public int _currentExamSessionID { get; set; }
 
+        public DataGrid _currentdataGridStudents;
+        Action<System.Collections.IEnumerable> updateAction;
         public ExamSessionControl()
         {
             _acceptablePagesGroups = new List<AcceptablePagesGroup>();
@@ -57,6 +59,7 @@ namespace SpyAdminApplication.Control
 
         private void ConnectExamWorkstations(DataGrid dataGridStudents)
         {
+            _currentdataGridStudents = dataGridStudents;
             foreach (WorkStation station in _currentSessionWorkstations)
             {
                 var wIp = station.IP;
@@ -102,7 +105,27 @@ namespace SpyAdminApplication.Control
         {
             while(true)
             {
+                Thread.Sleep(2000);
+                foreach (WorkStation station in _currentSessionWorkstations)
+                {
+                    var wIp = station.IP;
 
+                    using (ClientServiceClient client = new ClientServiceClient())
+                    {
+                        var selectedUser = client.GetUserForWorkstation(_currentExamSessionID, station.WorkStationId);
+                        var errorsforuser = client.GetOffenceScreenId(selectedUser);
+                        foreach(Student s in _currentSessionStudents )
+                        {
+                            if(s.Ip==wIp)
+                            {
+                                s.WrongPageCount = errorsforuser.Length.ToString();
+                            }
+                        }                        
+                    }
+
+                    _currentdataGridStudents.Dispatcher.Invoke(() => _currentdataGridStudents.ItemsSource = null);
+                    _currentdataGridStudents.Dispatcher.Invoke(() => _currentdataGridStudents.ItemsSource = _currentSessionStudents);
+                }
             }
         }
         private string SendCMD(string wIp, string cmd)

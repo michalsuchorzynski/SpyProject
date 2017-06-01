@@ -16,11 +16,11 @@
             <RowDefinition Height="30" />
             <RowDefinition Height="300" />
         </Grid.RowDefinitions>
-        <Label x:Name="labelAcceptablePagesGroup" Grid.Row="0" Content="Grupa akceptowalnych stron" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="280"/>
-        <ComboBox x:Name="comboBoxAcceptablePagesGroup" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="labelWorkstationGroups" Grid.Row="2" Content="Grupa stanowisk laboratoryjnych" HorizontalAlignment="Left" VerticalAlignment="Top" Width="280"/>
-        <ComboBox x:Name="comboBoxWorkstationGroups" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="buttonStart" Content="Rozpocznij" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Top" Width="280" Click="buttonStart_Click"/>
+        <Label x:Name="labelAcceptablePagesGroup" Grid.Row="0" Content="Grupa akceptowalnych stron" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="280" Margin="50,0,0,0"/>
+        <ComboBox x:Name="comboBoxAcceptablePagesGroup" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="50,0,0,0"/>
+        <Label x:Name="labelWorkstationGroups" Grid.Row="2" Content="Grupa stanowisk laboratoryjnych" HorizontalAlignment="Left" VerticalAlignment="Top" Width="280" Margin="50,0,0,0"/>
+        <ComboBox x:Name="comboBoxWorkstationGroups" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="50,0,0,0"/>
+        <Button x:Name="buttonStart" Content="Rozpocznij" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Top" Width="280" Click="buttonStart_Click" Margin="50,0,0,0"/>
         <DataGrid Name="dataGridStudents" Margin ="50,50,50,50" AutoGenerateColumns="False" Grid.Row="5">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Stanowisko" Binding="{Binding Ip}" />
