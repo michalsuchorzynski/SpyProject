@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="YS9AmUxgLsAbIbc5XyuvRFPNxls=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="vfw+Vq58kapyXDhFilXoZPl+Kew=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="BasicHttpBinding_IClientService">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="BasicHttpBinding_IClientService" contract="ServiceReference.IClientService" bindingType="basicHttpBinding" address="http://localhost:8733/Design_Time_Addresses/SpyWcfService/MainClientService/" bindingConfiguration="BasicHttpBinding_IClientService">
+    <endpoint name="BasicHttpBinding_IClientService" contract="ServiceReference.IClientService" bindingType="basicHttpBinding" address="http://michal-komp:1234/SpyWcfService.ServiceImplementations.MainClientService.svc" bindingConfiguration="BasicHttpBinding_IClientService">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:8733/Design_Time_Addresses/SpyWcfService/MainClientService/</serializedValue>
+          <serializedValue>http://michal-komp:1234/SpyWcfService.ServiceImplementations.MainClientService.svc</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -22,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,6 +33,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
@@ -61,21 +64,29 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\DataSources\SpyClientLibrary.ServiceReference.AcceptablePage.datasource" />
+    <None Include="Properties\DataSources\SpyClientLibrary.ServiceReference.AcceptablePage1.datasource" />
     <None Include="Properties\DataSources\SpyClientLibrary.ServiceReference.AcceptablePagesGroup.datasource" />
+    <None Include="Properties\DataSources\SpyClientLibrary.ServiceReference.AcceptablePagesGroup1.datasource" />
     <None Include="Properties\DataSources\SpyClientLibrary.ServiceReference.ClientUser.datasource" />
     <None Include="Properties\DataSources\SpyClientLibrary.ServiceReference.WorkStation.datasource" />
+    <None Include="Properties\DataSources\SpyClientLibrary.ServiceReference.WorkStation1.datasource" />
     <None Include="Properties\DataSources\SpyClientLibrary.ServiceReference.WorkStationsGroup.datasource" />
-    <None Include="Service References\ServiceReference\Arrays.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ServiceReference\service.wsdl" />
-    <None Include="Service References\ServiceReference\service.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ServiceReference\service1.xsd">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="Properties\DataSources\SpyClientLibrary.ServiceReference.WorkStationsGroup1.datasource" />
+    <None Include="Properties\DataSources\SpyClientLibrary.ServiceReference2.AcceptablePage.datasource" />
+    <None Include="Properties\DataSources\SpyClientLibrary.ServiceReference2.AcceptablePagesGroup.datasource" />
+    <None Include="Properties\DataSources\SpyClientLibrary.ServiceReference2.WorkStation.datasource" />
+    <None Include="Properties\DataSources\SpyClientLibrary.ServiceReference2.WorkStationsGroup.datasource" />
+    <None Include="Service References\ServiceReference\MainClientService.wsdl" />
     <None Include="Service References\ServiceReference\SpyWcfService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference\SpyWcfService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference\SpyWcfService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference\SpyWcfService3.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -90,6 +101,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\ServiceReference\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReference\SpyWcfService.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ServiceReference\configuration91.svcinfo" />

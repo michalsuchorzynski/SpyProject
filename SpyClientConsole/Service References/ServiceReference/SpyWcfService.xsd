@@ -1,189 +1,394 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/SpyWcfService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/SpyWcfService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="ScreenShot">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Data" nillable="true" type="xs:base64Binary" />
-      <xs:element minOccurs="0" name="ScreenDate" nillable="true" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="ScreenShotId" type="xs:int" />
-      <xs:element minOccurs="0" name="ScreenShotsForWorkstations" nillable="true" type="tns:ArrayOfScreenShotsForWorkstation" />
-      <xs:element minOccurs="0" name="isOfense" nillable="true" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ScreenShot" nillable="true" type="tns:ScreenShot" />
-  <xs:complexType name="ArrayOfScreenShotsForWorkstation">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="ScreenShotsForWorkstation" nillable="true" type="tns:ScreenShotsForWorkstation" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfScreenShotsForWorkstation" nillable="true" type="tns:ArrayOfScreenShotsForWorkstation" />
-  <xs:complexType name="ScreenShotsForWorkstation">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="ClientUser" nillable="true" type="tns:ClientUser" />
-      <xs:element minOccurs="0" name="ClientUserId" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="ScreenShot" nillable="true" type="tns:ScreenShot" />
-      <xs:element minOccurs="0" name="ScreenShotId" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="ScreenShotsForWorkstationsId" type="xs:int" />
-      <xs:element minOccurs="0" name="WorkStation" nillable="true" type="tns:WorkStation" />
-      <xs:element minOccurs="0" name="WorkStationId" nillable="true" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ScreenShotsForWorkstation" nillable="true" type="tns:ScreenShotsForWorkstation" />
-  <xs:complexType name="ClientUser">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="ClientUserForWorkstations" nillable="true" type="tns:ArrayOfClientUserForWorkstation" />
-      <xs:element minOccurs="0" name="ClientUserId" type="xs:int" />
-      <xs:element minOccurs="0" name="ExamSession" nillable="true" type="tns:ExamSession" />
-      <xs:element minOccurs="0" name="ExamSessionId" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="ScreenShotsForWorkstations" nillable="true" type="tns:ArrayOfScreenShotsForWorkstation" />
-      <xs:element minOccurs="0" name="UserLogin" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="UserSurname" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ClientUser" nillable="true" type="tns:ClientUser" />
-  <xs:complexType name="ArrayOfClientUserForWorkstation">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="ClientUserForWorkstation" nillable="true" type="tns:ClientUserForWorkstation" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfClientUserForWorkstation" nillable="true" type="tns:ArrayOfClientUserForWorkstation" />
-  <xs:complexType name="ClientUserForWorkstation">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="ClientUser" nillable="true" type="tns:ClientUser" />
-      <xs:element minOccurs="0" name="ClientUserForWorkstationsId" type="xs:int" />
-      <xs:element minOccurs="0" name="ClientUserId" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="LogOutDate" nillable="true" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="LoginDate" nillable="true" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="WorkStation" nillable="true" type="tns:WorkStation" />
-      <xs:element minOccurs="0" name="WorkStationId" nillable="true" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ClientUserForWorkstation" nillable="true" type="tns:ClientUserForWorkstation" />
-  <xs:complexType name="WorkStation">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="ClientUserForWorkstations" nillable="true" type="tns:ArrayOfClientUserForWorkstation" />
-      <xs:element minOccurs="0" name="IP" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Room" nillable="true" type="tns:Room" />
-      <xs:element minOccurs="0" name="RoomId" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="ScreenShotsForWorkstations" nillable="true" type="tns:ArrayOfScreenShotsForWorkstation" />
-      <xs:element minOccurs="0" name="WorkStationId" type="xs:int" />
-      <xs:element minOccurs="0" name="WorkStationsForGroups" nillable="true" type="tns:ArrayOfWorkStationsForGroup" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="WorkStation" nillable="true" type="tns:WorkStation" />
-  <xs:complexType name="Room">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="RoomId" type="xs:int" />
-      <xs:element minOccurs="0" name="RoomNumber" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="WorkStations" nillable="true" type="tns:ArrayOfWorkStation" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Room" nillable="true" type="tns:Room" />
-  <xs:complexType name="ArrayOfWorkStation">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="WorkStation" nillable="true" type="tns:WorkStation" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfWorkStation" nillable="true" type="tns:ArrayOfWorkStation" />
-  <xs:complexType name="ArrayOfWorkStationsForGroup">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="WorkStationsForGroup" nillable="true" type="tns:WorkStationsForGroup" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfWorkStationsForGroup" nillable="true" type="tns:ArrayOfWorkStationsForGroup" />
-  <xs:complexType name="WorkStationsForGroup">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="WorkStation" nillable="true" type="tns:WorkStation" />
-      <xs:element minOccurs="0" name="WorkStationId" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="WorkStationsForGroupId" type="xs:int" />
-      <xs:element minOccurs="0" name="WorkStationsGroup" nillable="true" type="tns:WorkStationsGroup" />
-      <xs:element minOccurs="0" name="WorkStationsGroupId" nillable="true" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="WorkStationsForGroup" nillable="true" type="tns:WorkStationsForGroup" />
-  <xs:complexType name="WorkStationsGroup">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="ExamSessions" nillable="true" type="tns:ArrayOfExamSession" />
-      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="WorkStationsForGroups" nillable="true" type="tns:ArrayOfWorkStationsForGroup" />
-      <xs:element minOccurs="0" name="WorkStationsGroupId" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="WorkStationsGroup" nillable="true" type="tns:WorkStationsGroup" />
-  <xs:complexType name="ArrayOfExamSession">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="ExamSession" nillable="true" type="tns:ExamSession" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfExamSession" nillable="true" type="tns:ArrayOfExamSession" />
-  <xs:complexType name="ExamSession">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="AcceptablePagesGroup" nillable="true" type="tns:AcceptablePagesGroup" />
-      <xs:element minOccurs="0" name="AcceptablePagesGroupId" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="ClientUsers" nillable="true" type="tns:ArrayOfClientUser" />
-      <xs:element minOccurs="0" name="ExamSessionId" type="xs:int" />
-      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="WorkStationsGroup" nillable="true" type="tns:WorkStationsGroup" />
-      <xs:element minOccurs="0" name="WorkStationsGroupId" nillable="true" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ExamSession" nillable="true" type="tns:ExamSession" />
-  <xs:complexType name="AcceptablePagesGroup">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="AcceptablePagesGroupId" type="xs:int" />
-      <xs:element minOccurs="0" name="ExamSessions" nillable="true" type="tns:ArrayOfExamSession" />
-      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="PagesForGroups" nillable="true" type="tns:ArrayOfPagesForGroup" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="AcceptablePagesGroup" nillable="true" type="tns:AcceptablePagesGroup" />
-  <xs:complexType name="ArrayOfPagesForGroup">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="PagesForGroup" nillable="true" type="tns:PagesForGroup" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfPagesForGroup" nillable="true" type="tns:ArrayOfPagesForGroup" />
-  <xs:complexType name="PagesForGroup">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="AcceptablePage" nillable="true" type="tns:AcceptablePage" />
-      <xs:element minOccurs="0" name="AcceptablePageId" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="AcceptablePagesGroup" nillable="true" type="tns:AcceptablePagesGroup" />
-      <xs:element minOccurs="0" name="AcceptablePagesGroupId" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="PagesForGroupId" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="PagesForGroup" nillable="true" type="tns:PagesForGroup" />
-  <xs:complexType name="AcceptablePage">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="AcceptablePageId" type="xs:int" />
-      <xs:element minOccurs="0" name="HeadKeyWords" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="PagesForGroups" nillable="true" type="tns:ArrayOfPagesForGroup" />
-      <xs:element minOccurs="0" name="Url" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="AcceptablePage" nillable="true" type="tns:AcceptablePage" />
-  <xs:complexType name="ArrayOfClientUser">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="ClientUser" nillable="true" type="tns:ClientUser" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfClientUser" nillable="true" type="tns:ArrayOfClientUser" />
-  <xs:complexType name="ArrayOfAcceptablePagesGroup">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="AcceptablePagesGroup" nillable="true" type="tns:AcceptablePagesGroup" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfAcceptablePagesGroup" nillable="true" type="tns:ArrayOfAcceptablePagesGroup" />
-  <xs:complexType name="ArrayOfAcceptablePage">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="AcceptablePage" nillable="true" type="tns:AcceptablePage" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfAcceptablePage" nillable="true" type="tns:ArrayOfAcceptablePage" />
-  <xs:complexType name="ArrayOfWorkStationsGroup">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="WorkStationsGroup" nillable="true" type="tns:WorkStationsGroup" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfWorkStationsGroup" nillable="true" type="tns:ArrayOfWorkStationsGroup" />
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://michal-komp:1234/SpyWcfService.ServiceImplementations.MainClientService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SpyWcfService" />
+  <xs:import schemaLocation="http://michal-komp:1234/SpyWcfService.ServiceImplementations.MainClientService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="SaveScreenShotToDB">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="screen" nillable="true" type="q1:ScreenShot" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="station" nillable="true" type="q2:WorkStation" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="user" nillable="true" type="q3:ClientUser" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveScreenShotToDBResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SaveScreenShotToDBResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetScreenFromDB">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetScreenFromDBResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetScreenFromDBResult" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetScreenByIdFromDB">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetScreenByIdFromDBResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetScreenByIdFromDBResult" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetScreenCountFromDB">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetScreenCountFromDBResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetScreenCountFromDBResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOffenceScreenId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userid" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOffenceScreenIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetOffenceScreenIdResult" nillable="true" type="q4:ArrayOfint" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateExamSession">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="pagegorup" nillable="true" type="q5:AcceptablePagesGroup" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="worksgroup" nillable="true" type="q6:WorkStationsGroup" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateExamSessionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CreateExamSessionResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="user" nillable="true" type="q7:ClientUser" />
+        <xs:element minOccurs="0" name="station" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CreateUserResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserForWorkstation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="examid" type="xs:int" />
+        <xs:element minOccurs="0" name="stationid" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserForWorkstationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetUserForWorkstationResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPagesGroupFromDB">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPagesGroupFromDBResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="GetPagesGroupFromDBResult" nillable="true" type="q8:ArrayOfAcceptablePagesGroup" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAcceptablePageFromDB">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAcceptablePageFromDBResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="GetAcceptablePageFromDBResult" nillable="true" type="q9:ArrayOfAcceptablePage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAcceptablePageForGroupFromDB">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="groupId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAcceptablePageForGroupFromDBResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="GetAcceptablePageForGroupFromDBResult" nillable="true" type="q10:ArrayOfAcceptablePage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAcceptablePageForExamFromDB">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ExamId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAcceptablePageForExamFromDBResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="GetAcceptablePageForExamFromDBResult" nillable="true" type="q11:ArrayOfAcceptablePage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWorkstationsGroupFromDB">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWorkstationsGroupFromDBResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="GetWorkstationsGroupFromDBResult" nillable="true" type="q12:ArrayOfWorkStationsGroup" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWorkstationsFromDB">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWorkstationsFromDBResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="GetWorkstationsFromDBResult" nillable="true" type="q13:ArrayOfWorkStation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWorkstationsForGroupFromDB">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="groupId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWorkstationsForGroupFromDBResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="GetWorkstationsForGroupFromDBResult" nillable="true" type="q14:ArrayOfWorkStation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWorkstationByIp">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ip" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWorkstationByIpResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetWorkstationByIpResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddPagesGroup">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="group" nillable="true" type="q15:AcceptablePagesGroup" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddPagesGroupResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddPagesGroupResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddAcceptablePage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="page" nillable="true" type="q16:AcceptablePage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddAcceptablePageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddAcceptablePageResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddAcceptablePageForGroup">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="page" nillable="true" type="q17:AcceptablePage" />
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="group" nillable="true" type="q18:AcceptablePagesGroup" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddAcceptablePageForGroupResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddAcceptablePageForGroupResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddWorkstationsGroup">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="group" nillable="true" type="q19:WorkStationsGroup" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddWorkstationsGroupResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddWorkstationsGroupResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddWorkstation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="workstation" nillable="true" type="q20:WorkStation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddWorkstationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddWorkstationResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddWorkstationForGroup">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="workstation" nillable="true" type="q21:WorkStation" />
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="group" nillable="true" type="q22:WorkStationsGroup" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddWorkstationForGroupResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddWorkstationForGroupResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeletePagesGroup">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="group" nillable="true" type="q23:AcceptablePagesGroup" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeletePagesGroupResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeletePagesGroupResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteAcceptablePage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="page" nillable="true" type="q24:AcceptablePage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteAcceptablePageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteAcceptablePageResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteAcceptablePageForGroup">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="page" nillable="true" type="q25:AcceptablePage" />
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="group" nillable="true" type="q26:AcceptablePagesGroup" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteAcceptablePageForGroupResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteAcceptablePageForGroupResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteWorkstationGroup">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="group" nillable="true" type="q27:WorkStationsGroup" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteWorkstationGroupResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteWorkstationGroupResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteWorkstation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="workstation" nillable="true" type="q28:WorkStation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteWorkstationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteWorkstationResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteWorkstationsForGroup">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="workstation" nillable="true" type="q29:WorkStation" />
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/SpyWcfService" minOccurs="0" name="group" nillable="true" type="q30:WorkStationsGroup" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteWorkstationsForGroupResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteWorkstationsForGroupResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/SpyWcfService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/SpyWcfService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ScreenShot">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Data" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="ScreenDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ScreenShotId" type="xs:int" />
+      <xs:element minOccurs="0" name="ScreenShotsForWorkstations" nillable="true" type="tns:ArrayOfScreenShotsForWorkstation" />
+      <xs:element minOccurs="0" name="isOfense" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ScreenShot" nillable="true" type="tns:ScreenShot" />
+  <xs:complexType name="ArrayOfScreenShotsForWorkstation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ScreenShotsForWorkstation" nillable="true" type="tns:ScreenShotsForWorkstation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfScreenShotsForWorkstation" nillable="true" type="tns:ArrayOfScreenShotsForWorkstation" />
+  <xs:complexType name="ScreenShotsForWorkstation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClientUser" nillable="true" type="tns:ClientUser" />
+      <xs:element minOccurs="0" name="ClientUserId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ScreenShot" nillable="true" type="tns:ScreenShot" />
+      <xs:element minOccurs="0" name="ScreenShotId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ScreenShotsForWorkstationsId" type="xs:int" />
+      <xs:element minOccurs="0" name="WorkStation" nillable="true" type="tns:WorkStation" />
+      <xs:element minOccurs="0" name="WorkStationId" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ScreenShotsForWorkstation" nillable="true" type="tns:ScreenShotsForWorkstation" />
+  <xs:complexType name="ClientUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClientUserForWorkstations" nillable="true" type="tns:ArrayOfClientUserForWorkstation" />
+      <xs:element minOccurs="0" name="ClientUserId" type="xs:int" />
+      <xs:element minOccurs="0" name="ExamSession" nillable="true" type="tns:ExamSession" />
+      <xs:element minOccurs="0" name="ExamSessionId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ScreenShotsForWorkstations" nillable="true" type="tns:ArrayOfScreenShotsForWorkstation" />
+      <xs:element minOccurs="0" name="UserLogin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserSurname" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ClientUser" nillable="true" type="tns:ClientUser" />
+  <xs:complexType name="ArrayOfClientUserForWorkstation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ClientUserForWorkstation" nillable="true" type="tns:ClientUserForWorkstation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfClientUserForWorkstation" nillable="true" type="tns:ArrayOfClientUserForWorkstation" />
+  <xs:complexType name="ClientUserForWorkstation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClientUser" nillable="true" type="tns:ClientUser" />
+      <xs:element minOccurs="0" name="ClientUserForWorkstationsId" type="xs:int" />
+      <xs:element minOccurs="0" name="ClientUserId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="LogOutDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LoginDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="WorkStation" nillable="true" type="tns:WorkStation" />
+      <xs:element minOccurs="0" name="WorkStationId" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ClientUserForWorkstation" nillable="true" type="tns:ClientUserForWorkstation" />
+  <xs:complexType name="WorkStation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClientUserForWorkstations" nillable="true" type="tns:ArrayOfClientUserForWorkstation" />
+      <xs:element minOccurs="0" name="IP" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Room" nillable="true" type="tns:Room" />
+      <xs:element minOccurs="0" name="RoomId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ScreenShotsForWorkstations" nillable="true" type="tns:ArrayOfScreenShotsForWorkstation" />
+      <xs:element minOccurs="0" name="WorkStationId" type="xs:int" />
+      <xs:element minOccurs="0" name="WorkStationsForGroups" nillable="true" type="tns:ArrayOfWorkStationsForGroup" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WorkStation" nillable="true" type="tns:WorkStation" />
+  <xs:complexType name="Room">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="RoomId" type="xs:int" />
+      <xs:element minOccurs="0" name="RoomNumber" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="WorkStations" nillable="true" type="tns:ArrayOfWorkStation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Room" nillable="true" type="tns:Room" />
+  <xs:complexType name="ArrayOfWorkStation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="WorkStation" nillable="true" type="tns:WorkStation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfWorkStation" nillable="true" type="tns:ArrayOfWorkStation" />
+  <xs:complexType name="ArrayOfWorkStationsForGroup">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="WorkStationsForGroup" nillable="true" type="tns:WorkStationsForGroup" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfWorkStationsForGroup" nillable="true" type="tns:ArrayOfWorkStationsForGroup" />
+  <xs:complexType name="WorkStationsForGroup">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="WorkStation" nillable="true" type="tns:WorkStation" />
+      <xs:element minOccurs="0" name="WorkStationId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="WorkStationsForGroupId" type="xs:int" />
+      <xs:element minOccurs="0" name="WorkStationsGroup" nillable="true" type="tns:WorkStationsGroup" />
+      <xs:element minOccurs="0" name="WorkStationsGroupId" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WorkStationsForGroup" nillable="true" type="tns:WorkStationsForGroup" />
+  <xs:complexType name="WorkStationsGroup">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ExamSessions" nillable="true" type="tns:ArrayOfExamSession" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WorkStationsForGroups" nillable="true" type="tns:ArrayOfWorkStationsForGroup" />
+      <xs:element minOccurs="0" name="WorkStationsGroupId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WorkStationsGroup" nillable="true" type="tns:WorkStationsGroup" />
+  <xs:complexType name="ArrayOfExamSession">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ExamSession" nillable="true" type="tns:ExamSession" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfExamSession" nillable="true" type="tns:ArrayOfExamSession" />
+  <xs:complexType name="ExamSession">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AcceptablePagesGroup" nillable="true" type="tns:AcceptablePagesGroup" />
+      <xs:element minOccurs="0" name="AcceptablePagesGroupId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ClientUsers" nillable="true" type="tns:ArrayOfClientUser" />
+      <xs:element minOccurs="0" name="ExamSessionId" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WorkStationsGroup" nillable="true" type="tns:WorkStationsGroup" />
+      <xs:element minOccurs="0" name="WorkStationsGroupId" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ExamSession" nillable="true" type="tns:ExamSession" />
+  <xs:complexType name="AcceptablePagesGroup">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AcceptablePagesGroupId" type="xs:int" />
+      <xs:element minOccurs="0" name="ExamSessions" nillable="true" type="tns:ArrayOfExamSession" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PagesForGroups" nillable="true" type="tns:ArrayOfPagesForGroup" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AcceptablePagesGroup" nillable="true" type="tns:AcceptablePagesGroup" />
+  <xs:complexType name="ArrayOfPagesForGroup">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PagesForGroup" nillable="true" type="tns:PagesForGroup" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPagesForGroup" nillable="true" type="tns:ArrayOfPagesForGroup" />
+  <xs:complexType name="PagesForGroup">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AcceptablePage" nillable="true" type="tns:AcceptablePage" />
+      <xs:element minOccurs="0" name="AcceptablePageId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="AcceptablePagesGroup" nillable="true" type="tns:AcceptablePagesGroup" />
+      <xs:element minOccurs="0" name="AcceptablePagesGroupId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PagesForGroupId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PagesForGroup" nillable="true" type="tns:PagesForGroup" />
+  <xs:complexType name="AcceptablePage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AcceptablePageId" type="xs:int" />
+      <xs:element minOccurs="0" name="HeadKeyWords" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PagesForGroups" nillable="true" type="tns:ArrayOfPagesForGroup" />
+      <xs:element minOccurs="0" name="Url" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AcceptablePage" nillable="true" type="tns:AcceptablePage" />
+  <xs:complexType name="ArrayOfClientUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ClientUser" nillable="true" type="tns:ClientUser" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfClientUser" nillable="true" type="tns:ArrayOfClientUser" />
+  <xs:complexType name="ArrayOfAcceptablePagesGroup">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AcceptablePagesGroup" nillable="true" type="tns:AcceptablePagesGroup" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAcceptablePagesGroup" nillable="true" type="tns:ArrayOfAcceptablePagesGroup" />
+  <xs:complexType name="ArrayOfAcceptablePage">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AcceptablePage" nillable="true" type="tns:AcceptablePage" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAcceptablePage" nillable="true" type="tns:ArrayOfAcceptablePage" />
+  <xs:complexType name="ArrayOfWorkStationsGroup">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="WorkStationsGroup" nillable="true" type="tns:WorkStationsGroup" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfWorkStationsGroup" nillable="true" type="tns:ArrayOfWorkStationsGroup" />
+</xs:schema>

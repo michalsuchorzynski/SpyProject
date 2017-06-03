@@ -129,6 +129,8 @@ namespace SpyAdminApplication.Pages
         {
             using (ClientServiceClient client = new ClientServiceClient())
             {
+                var getScreenInfo = "data|domena";
+                var time=getScreenInfo.
                 var bytearray = client.GetScreenByIdFromDB(Convert.ToInt32(comboboxOfenceID.SelectedItem));
                 ImageSourceConverter converter = new ImageSourceConverter();
                 imageScreenShot.Source = ToImage(bytearray);

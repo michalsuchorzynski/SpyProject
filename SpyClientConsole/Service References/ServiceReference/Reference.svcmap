@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="97583883-ce21-448c-811f-f4db906f1fba" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d7dce388-aef7-4a3a-adf9-1de53292058a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,14 +19,15 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/SpyWcfService/MainClientService/mex" Protocol="mex" SourceId="1" />
+    <MetadataSource Address="http://95.108.69.237:1234/SpyWcfService.ServiceImplementations.MainClientService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="9bd0ad57-c9ee-49d3-9987-443a903f4c77" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/SpyWcfService/MainClientService/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="b22c46fd-4874-4161-bebe-b221a74f8ac2" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/SpyWcfService/MainClientService/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="c6532611-d493-4fc1-9121-97c8b1ecac7f" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/SpyWcfService/MainClientService/mex" />
-    <MetadataFile FileName="SpyWcfService.xsd" MetadataType="Schema" ID="82933a16-dc2c-4bc6-a29d-8ba1c3a5773c" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/SpyWcfService/MainClientService/mex" />
-    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="40872852-a3d8-426c-a55e-3c93ac1e56e6" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/SpyWcfService/MainClientService/mex" />
+    <MetadataFile FileName="SpyWcfService.xsd" MetadataType="Schema" ID="c16d0c78-51fa-494b-b15a-b85cd118f98a" SourceId="1" SourceUrl="http://michal-komp:1234/SpyWcfService.ServiceImplementations.MainClientService.svc?xsd=xsd0" />
+    <MetadataFile FileName="MainClientService.wsdl" MetadataType="Wsdl" ID="962a4bd4-1438-423a-a689-c711ecd20957" SourceId="1" SourceUrl="http://michal-komp:1234/SpyWcfService.ServiceImplementations.MainClientService.svc?wsdl" />
+    <MetadataFile FileName="SpyWcfService1.xsd" MetadataType="Schema" ID="306149b8-1f77-4621-afb8-320420638a9d" SourceId="1" SourceUrl="http://michal-komp:1234/SpyWcfService.ServiceImplementations.MainClientService.svc?xsd=xsd3" />
+    <MetadataFile FileName="SpyWcfService2.xsd" MetadataType="Schema" ID="ae4a15b6-58bb-4f8e-9113-96202e3ce3bf" SourceId="1" SourceUrl="http://michal-komp:1234/SpyWcfService.ServiceImplementations.MainClientService.svc?xsd=xsd2" />
+    <MetadataFile FileName="SpyWcfService.disco" MetadataType="Disco" ID="19043299-19d2-41c8-afdc-8b8a690c8751" SourceId="1" SourceUrl="http://michal-komp:1234/SpyWcfService.ServiceImplementations.MainClientService.svc?disco" />
+    <MetadataFile FileName="SpyWcfService3.xsd" MetadataType="Schema" ID="3f70c715-6e15-4780-bac4-ae4ca1faf66d" SourceId="1" SourceUrl="http://michal-komp:1234/SpyWcfService.ServiceImplementations.MainClientService.svc?xsd=xsd1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
