@@ -24,6 +24,7 @@ namespace SpyWcfService
         public byte[] Data { get; set; }
         public Nullable<System.DateTime> ScreenDate { get; set; }
         public Nullable<int> isOfense { get; set; }
+        public string Url { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ScreenShotsForWorkstation> ScreenShotsForWorkstations { get; set; }

@@ -22,6 +22,8 @@ namespace SpyWcfService.ServiceContracts
         int GetScreenCountFromDB();
         [OperationContract]
         List<int> GetOffenceScreenId(int userid);
+        [OperationContract]
+        string GetOffenceScreenInfo(int id);
         #endregion
 
         #region ExamSession

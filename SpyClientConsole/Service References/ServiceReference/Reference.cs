@@ -45,6 +45,12 @@ namespace SpyClientConsole.ServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetOffenceScreenId", ReplyAction="http://tempuri.org/IClientService/GetOffenceScreenIdResponse")]
         System.Threading.Tasks.Task<int[]> GetOffenceScreenIdAsync(int userid);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetOffenceScreenInfo", ReplyAction="http://tempuri.org/IClientService/GetOffenceScreenInfoResponse")]
+        string GetOffenceScreenInfo(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetOffenceScreenInfo", ReplyAction="http://tempuri.org/IClientService/GetOffenceScreenInfoResponse")]
+        System.Threading.Tasks.Task<string> GetOffenceScreenInfoAsync(int id);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/CreateExamSession", ReplyAction="http://tempuri.org/IClientService/CreateExamSessionResponse")]
         int CreateExamSession(SpyClientLibrary.ServiceReference.AcceptablePagesGroup pagegorup, SpyClientLibrary.ServiceReference.WorkStationsGroup worksgroup);
         
@@ -249,6 +255,14 @@ namespace SpyClientConsole.ServiceReference {
         
         public System.Threading.Tasks.Task<int[]> GetOffenceScreenIdAsync(int userid) {
             return base.Channel.GetOffenceScreenIdAsync(userid);
+        }
+        
+        public string GetOffenceScreenInfo(int id) {
+            return base.Channel.GetOffenceScreenInfo(id);
+        }
+        
+        public System.Threading.Tasks.Task<string> GetOffenceScreenInfoAsync(int id) {
+            return base.Channel.GetOffenceScreenInfoAsync(id);
         }
         
         public int CreateExamSession(SpyClientLibrary.ServiceReference.AcceptablePagesGroup pagegorup, SpyClientLibrary.ServiceReference.WorkStationsGroup worksgroup) {

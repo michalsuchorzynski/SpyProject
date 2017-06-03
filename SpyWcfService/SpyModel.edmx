@@ -72,6 +72,7 @@
           <Property Name="Data" Type="varbinary(max)" />
           <Property Name="ScreenDate" Type="date" />
           <Property Name="isOfense" Type="int" />
+          <Property Name="Url" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="ScreenShotsForWorkstation">
           <Key>
@@ -406,6 +407,7 @@
           <Property Name="ScreenDate" Type="DateTime" Precision="0" />
           <NavigationProperty Name="ScreenShotsForWorkstations" Relationship="SpyModel.FK__ScreenSho__Scree__6EF57B66" FromRole="ScreenShot" ToRole="ScreenShotsForWorkstation" />
           <Property Name="isOfense" Type="Int32" />
+          <Property Name="Url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="AcceptablePage">
           <Key>
@@ -688,6 +690,7 @@
           <EntitySetMapping Name="ScreenShots">
             <EntityTypeMapping TypeName="SpyModel.ScreenShot">
               <MappingFragment StoreEntitySet="ScreenShot">
+                <ScalarProperty Name="Url" ColumnName="Url" />
                 <ScalarProperty Name="isOfense" ColumnName="isOfense" />
                 <ScalarProperty Name="ScreenDate" ColumnName="ScreenDate" />
                 <ScalarProperty Name="Data" ColumnName="Data" />

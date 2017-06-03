@@ -6,6 +6,7 @@
       <xs:element minOccurs="0" name="ScreenDate" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="ScreenShotId" type="xs:int" />
       <xs:element minOccurs="0" name="ScreenShotsForWorkstations" nillable="true" type="tns:ArrayOfScreenShotsForWorkstation" />
+      <xs:element minOccurs="0" name="Url" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="isOfense" nillable="true" type="xs:int" />
     </xs:sequence>
   </xs:complexType>

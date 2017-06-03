@@ -41,6 +41,14 @@ namespace SpyWcfService.ServiceImplementations
             }
             return result;
         }
+        public string GetOffenceScreenInfo(int id)
+        {
+            var sccreanShotList = context.ScreenShots.ToList();
+            var scrren = sccreanShotList.Find(x => x.ScreenShotId == id);
+            if (scrren == null)
+                return sccreanShotList.Last().ScreenDate.ToString()+"|"+ sccreanShotList.Last().Url.ToString();
+            return scrren.ScreenDate.ToString()+"|"+ scrren.Url.ToString();
+        }
         public int SaveScreenShotToDB(ScreenShot screen, WorkStation station, ClientUser user)
         {
             ScreenShotsForWorkstation sw = new ScreenShotsForWorkstation()

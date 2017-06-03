@@ -50,7 +50,6 @@ if (es._examsessioncontrol._currentSessionStudents != null)
                 {
                     if (s.Status.ToString() == "Połączono")
                     {
-                        showedPage.comboboxScreenNumber.Items.Add(s.Ip.ToString() + "-"+s.User);
                         showedPage.comboboxScreenNumber.Items.Add(s.Ip.ToString() + "-" + s.User);
                         showedPage.comboboxScreenNumber.SelectedIndex = 0;
                     }

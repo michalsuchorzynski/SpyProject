@@ -28,6 +28,7 @@ namespace SpyAdminApplication.Pages
         private int screenShotCount;
         public int examSessionId;
         public List<WorkStation> _currentSessionWorkstations;
+        public List<int> _currentWorkstationOffense;
         public OneScreenShotPage()
         {
             InitializeComponent();
@@ -73,6 +74,7 @@ namespace SpyAdminApplication.Pages
 
         private void comboboxScreenNumber_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            _currentWorkstationOffense = new List<int>();
             if (comboboxScreenNumber.SelectedItem == null)
                 return;
 
@@ -86,8 +88,9 @@ namespace SpyAdminApplication.Pages
                 var errorsforuser = client.GetOffenceScreenId(selectedUser);
                 comboboxOfenceID.Items.Clear();
                 for (int i = 0; i < errorsforuser.Length; i++)
-                {
-                    comboboxOfenceID.Items.Add(errorsforuser[i]);
+                { 
+                    _currentWorkstationOffense.Add(errorsforuser[i]);
+                    comboboxOfenceID.Items.Add(client.GetOffenceScreenInfo(Convert.ToInt32(errorsforuser[i])));
                 }
             }
         }
@@ -129,11 +132,15 @@ namespace SpyAdminApplication.Pages
         {
             using (ClientServiceClient client = new ClientServiceClient())
             {
-                var getScreenInfo = "data|domena";
-                var time=getScreenInfo.
-                var bytearray = client.GetScreenByIdFromDB(Convert.ToInt32(comboboxOfenceID.SelectedItem));
+                var getScreenInfo = client.GetOffenceScreenInfo(Convert.ToInt32(_currentWorkstationOffense[comboboxOfenceID.SelectedIndex]));
+                var time = getScreenInfo.Substring(0,getScreenInfo.IndexOf('|'));
+                var page = getScreenInfo.Substring(time.Length + 1);
+                var bytearray = client.GetScreenByIdFromDB(Convert.ToInt32(_currentWorkstationOffense[comboboxOfenceID.SelectedIndex]));
                 ImageSourceConverter converter = new ImageSourceConverter();
                 imageScreenShot.Source = ToImage(bytearray);
+                labelScreenPage.Content = "Odwiedzona domena: " + page;
+                labelScreenTime.Content = "Data zdarzenia: " + time;
+
 
             }
         }

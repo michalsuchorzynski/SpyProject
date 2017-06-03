@@ -18,6 +18,7 @@ namespace SpyClientLibrary
         public string _screenName { get; set; } 
         public int isOffence { get; set; }       
         public byte[] _data { get; set; }
+        public string Url { get; set; }
 
         public ScreenShot(ClientUser user)
         {
