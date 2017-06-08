@@ -9,6 +9,8 @@ using System.Net;
 using System.Net.Sockets;
 using System.IO;
 using System.Threading;
+using System.Configuration;
+
 
 
 namespace SpyClientLibrary
@@ -20,11 +22,11 @@ namespace SpyClientLibrary
         private ClientUser _user { get; set; }
         private WorkStation _myWorkstation { get; set; }
         private int _examsessionid;
-        private string _ip = "95.108.69.237";
+        private string _ip;
 
-        public Control()
+        public Control(string ip)
         {
-
+            _ip = ip;
         }
         public void StartControl()
         {

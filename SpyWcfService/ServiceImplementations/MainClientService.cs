@@ -115,11 +115,12 @@ namespace SpyWcfService.ServiceImplementations
             {
                 if (user.ExamSessionId == examid)
                 {
-                    foreach (ClientUserForWorkstation cw in context.ClientUserForWorkstations)
+                    //foreach (ClientUserForWorkstation cw in context.ClientUserForWorkstations)
+                    for(int i=context.ClientUserForWorkstations.ToList().Count()-1;i>0;i--)
                     {
-                        if (cw.WorkStationId == stationid)
+                        if (context.ClientUserForWorkstations.ToList()[i].WorkStationId == stationid)
                         {
-                            return user.ClientUserId;
+                            return Convert.ToInt32(context.ClientUserForWorkstations.ToList()[i].ClientUserId);
                         }
                     }
                 }

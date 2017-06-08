@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SpyClientLibrary;
 using System.Threading;
+using System.Configuration;
 
 namespace SpyClientConsole
 {
@@ -13,7 +14,8 @@ namespace SpyClientConsole
         static void Main(string[] args)
         {
             Thread.Sleep(5000);
-            Control controlmanager = new Control();
+            string ip = ConfigurationManager.AppSettings["IPAdress"];
+            Control controlmanager = new Control(ip);
             controlmanager.StartControl();
            
         }
